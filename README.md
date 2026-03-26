@@ -7,5 +7,5 @@
 - remove 3307 in connection.php because I run it on different port **define("DB_HOST", 'localhost:3307')**
 
 ## login credentials
-U: admin123
-P: admin123
+- U: admin123
+- P: admin123
