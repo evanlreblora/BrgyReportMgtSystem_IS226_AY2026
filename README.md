@@ -4,7 +4,7 @@
 ### Tutorial to run the system
 - paste in on your localhost C:/xampp/htdocs/
 - import barangay.sql to your phpmyadmin
-- remove 3307 in connection.php because I run it in different port **define("DB_HOST", 'localhost:3307')**
+- remove 3307 in connection.php because I run it on different port **define("DB_HOST", 'localhost:3307')**
 
 ## login credentials
 U: admin123
