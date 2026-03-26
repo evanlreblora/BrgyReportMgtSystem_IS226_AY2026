@@ -1,5 +1,5 @@
 # **Brgy ReportMgtSystem_IS226_AY2026**
-## IS215 - WIS 
+## IS226 - Web Information System
 
 ### Tutorial to run the system
 - paste in on your localhost C:/xampp/htdocs/
