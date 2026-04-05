@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 01, 2025 at 07:25 AM
+-- Host: localhost:3307
+-- Generation Time: Apr 05, 2026 at 07:14 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,60 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `barangay`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activity_log`
---
-
-CREATE TABLE `activity_log` (
-  `id` int(11) NOT NULL,
-  `message` varchar(255) NOT NULL DEFAULT 'none',
-  `date` varchar(255) NOT NULL DEFAULT 'none',
-  `status` varchar(255) NOT NULL DEFAULT 'none'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `activity_log`
---
-
-INSERT INTO `activity_log` (`id`, `message`, `date`, `status`) VALUES
-(1250, 'ADMIN: UPDATED OFFICIAL POSITION -  0401202511295839347 |  FROM CHAIRMANS TO CHAIRMAN', '1-4-2025 1:05 PM', 'update'),
-(1251, 'ADMIN: DELETED POSITION -  77311317124789201092022180612765 | chairmans', '1-4-2025 7:05 AM', 'delete'),
-(1252, 'ADMIN: ADDED RESIDENT - 23388956417195 |  Alexandra Kane Non commodi saepe se', '1-4-2025 1:06 PM', 'create'),
-(1253, 'ADMIN: ADDED RESIDENT - 3188696235402 |  Alexandra Mooney In rem voluptatem E', '1-4-2025 1:06 PM', 'create'),
-(1254, 'ADMIN: Admin Admin | LOGOUT', '1-4-2025 7:07 AM', 'logout'),
-(1255, 'ADMIN: Admin Admin | LOGIN', '1-4-2025 1:09 PM', 'login'),
-(1256, 'ADMIN: ADDED BLOTTER RECORD  -  3647560271426891 | Complainant - Alexandra Kane | Incident - Incident | Date Incident 2025-04-19T13:10 | Location Incident Location of Incident | Complainant Statement - Complainant Statement | Respondent - Respondent', '1-4-2025 1:10 PM', 'delete'),
-(1257, 'ADMIN: ADDED BLOTTER RECORD  -  3647560271426891 | Person Involved - Alexandra Kane | Incident - Incident | Date Incident 2025-04-19T13:10 | Location Incident Location of Incident | Complainant Statement - Complainant Statement | Respondent - Respondent', '1-4-2025 1:10 PM', 'delete'),
-(1258, 'ADMIN: ADDED BLOTTER RECORD  -  3647560271426891 | Person Not Resident - wq | Incident - Incident | Date Incident 2025-04-19T13:10 | Location Incident Location of Incident | Complainant Statement - ewqewq | Respondent - Respondent', '1-4-2025 1:10 PM', 'delete'),
-(1259, 'ADMIN: ADDED BLOTTER RECORD  -  3647560271426891 | Complainant Not Resident - Complainant Not Resident | Incident - Incident | Date Incident 2025-04-19T13:10 | Location Incident Location of Incident | Complainant Statement - Complainant Statement | Respon', '1-4-2025 1:10 PM', 'delete'),
-(1260, 'ADMIN: ADDED RESIDENT - 37404238492438 |  Miriam Frost Harum sit ut provide', '1-4-2025 1:10 PM', 'create'),
-(1261, 'ADMIN: ADDED RESIDENT - 1086692484891 |  Jelani Ellison Dolorum qui qui id v', '1-4-2025 1:11 PM', 'create'),
-(1262, 'ADMIN: ADDED RESIDENT - 12435095932673 |  Darrel Kline Quas perferendis aut', '1-4-2025 1:11 PM', 'create'),
-(1263, 'ADMIN: ADDED RESIDENT - 34151365970057 |  Moana Burt Dolorum fugiat nisi', '1-4-2025 1:11 PM', 'create'),
-(1264, 'ADMIN: ADDED OFFICIAL - 0401202513120186625 | KAGAWAD Branden Whitney Minim dolores velit | START 2021-12-17 END 1971-04-06', '1-4-2025 1:12 PM', 'create'),
-(1265, 'ADMIN: Admin Admin | LOGOUT', '1-4-2025 7:12 AM', 'logout'),
-(1266, 'ADMIN: Admin Admin | LOGIN', '1-4-2025 1:15 PM', 'login');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `backup`
---
-
-CREATE TABLE `backup` (
-  `id` int(11) NOT NULL,
-  `path` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `backup`
---
-
-INSERT INTO `backup` (`id`, `path`) VALUES
-(170, 'BackupFile-04012025_071908.sql');
 
 -- --------------------------------------------------------
 
@@ -97,7 +43,7 @@ CREATE TABLE `barangay_information` (
 --
 
 INSERT INTO `barangay_information` (`id`, `barangay`, `zone`, `district`, `address`, `postal_address`, `image`, `image_path`) VALUES
-('32432432432432432', 'Barnagay', 'Zone', 'District', 'Manila', 'Postal Address', '165897181867eb5acf2e8c4.jpg', '../assets/dist/img/165897181867eb5acf2e8c4.jpg');
+('32432432432432432', 'Barangay WIS', 'Zone 215', 'District UPOU', 'Los Banos Laguna', 'IS 215 Web Information Systems', '71455783069c0c9ab50c0c.png', '../assets/dist/img/71455783069c0c9ab50c0c.png');
 
 -- --------------------------------------------------------
 
@@ -110,6 +56,14 @@ CREATE TABLE `blotter_complainant` (
   `blotter_main` varchar(255) NOT NULL,
   `complainant_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blotter_complainant`
+--
+
+INSERT INTO `blotter_complainant` (`id`, `blotter_main`, `complainant_id`) VALUES
+('1207845377307', '2147088204548172', '24956588345933'),
+('212253843699436', '2658237517722424', '24301084988720');
 
 -- --------------------------------------------------------
 
@@ -146,6 +100,14 @@ CREATE TABLE `blotter_record` (
   `date_added` varchar(255) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `blotter_record`
+--
+
+INSERT INTO `blotter_record` (`blotter_id`, `complainant_not_residence`, `statement`, `respodent`, `involved_not_resident`, `statement_person`, `date_incident`, `date_reported`, `type_of_incident`, `location_incident`, `status`, `remarks`, `date_added`) VALUES
+('2147088204548172', 'ascxasdas', 'dasdasda', 'asdasd', 'sadasd', 'asdasd', '2026-03-21T16:52', '2026-03-21T16:52', 'asfasf', 'asdasd', 'NEW', 'OPEN', '2026'),
+('2658237517722424', 'dgasdg', 'asdgadg', 'dfasdfasdf', 'asdasd', 'asdasd', '2026-04-04T19:34', '2026-04-10T19:34', 'asfasf', '', 'NEW', 'OPEN', '2026');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +119,14 @@ CREATE TABLE `blotter_status` (
   `blotter_main` varchar(255) NOT NULL,
   `person_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blotter_status`
+--
+
+INSERT INTO `blotter_status` (`blotter_id`, `blotter_main`, `person_id`) VALUES
+('194939222083180', '2147088204548172', ''),
+('390284140912512', '2658237517722424', '24956588345933');
 
 -- --------------------------------------------------------
 
@@ -211,47 +181,13 @@ CREATE TABLE `certificate_request` (
   `status` varchar(255) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `house_holds`
+-- Dumping data for table `certificate_request`
 --
 
-CREATE TABLE `house_holds` (
-  `a_i` int(11) NOT NULL,
-  `house_hold_id` varchar(255) NOT NULL DEFAULT 'none',
-  `hold_unique` varchar(255) NOT NULL,
-  `purok_id` varchar(255) NOT NULL,
-  `residence_id` varchar(255) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `middle_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `birth_date` varchar(255) NOT NULL,
-  `gender` varchar(255) NOT NULL,
-  `educ_attainment` varchar(255) NOT NULL,
-  `occupation` varchar(255) NOT NULL,
-  `nawasa` varchar(255) NOT NULL,
-  `water_pump` varchar(255) NOT NULL,
-  `water_sealed` varchar(255) NOT NULL,
-  `flush` varchar(255) NOT NULL,
-  `religion` varchar(255) NOT NULL,
-  `ethnicity` varchar(255) NOT NULL,
-  `sangkap_seal` varchar(255) NOT NULL,
-  `is_approved` varchar(255) NOT NULL,
-  `is_resident` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `house_holds`
---
-
-INSERT INTO `house_holds` (`a_i`, `house_hold_id`, `hold_unique`, `purok_id`, `residence_id`, `first_name`, `middle_name`, `last_name`, `birth_date`, `gender`, `educ_attainment`, `occupation`, `nawasa`, `water_pump`, `water_sealed`, `flush`, `religion`, `ethnicity`, `sangkap_seal`, `is_approved`, `is_resident`) VALUES
-(119, '765720104206', '90635228440419', '916259339179300507242022155033612', '16455182440138', ' First name', 'Middle name', 'Last name', '2022-10-08', 'Female', 'educ', 'Occupation', 'YES', 'YES', 'YES', 'YES', 'Religion', 'Ethnicity', 'YES', 'APPROVED', 'NO'),
-(120, '377220153950', '90635228440419', '916259339179300507242022155033612', '16455182440138', 'qe', 'qwe', 'qweqwe', '2022-10-12', 'Male', 'qweqw', 'wqe', 'YES', 'YES', 'YES', 'YES', 'qwe', 'eqwe', 'YES', 'APPROVED', 'NO'),
-(121, '377220153950', '90635228440419', '916259339179300507242022155033612', '16455182440138', 'First Name', 'Middle Name', 'Last Name', '2022-10-27', 'Male', 'qwewqe', 'Occupation', 'YES', 'YES', 'YES', 'NO', 'Religion', 'qwe', 'YES', 'APPROVED', 'YES'),
-(122, '530011579769', '70838125253292', '916259339179300507242022155033612', '54278971251733', ' First name', 'Middle name', 'Last name', '2022-10-08', 'Male', 'Educational Attainment', 'Occupation', 'YES', 'YES', 'YES', 'YES', 'Religion', 'Ethnicity', 'YES', 'PENDING', 'NO'),
-(123, '85351248693', '70838125253292', '916259339179300507242022155033612', '54278971251733', 'qwe', 'wqe', 'wqewqe', '2022-10-15', 'Female', 'wqe', 'wqe', 'YES', 'YES', 'YES', 'YES', 'qwe', 'qwe', 'YES', 'PENDING', 'NO'),
-(124, '85351248693', '70838125253292', '916259339179300507242022155033612', '54278971251733', 'Eugine', 'Palce', 'ROsillon', '1997-09-06', 'Male', 'Educational Attainment', 'Wala', 'YES', 'YES', 'YES', 'YES', 'Catholic', 'Ethnicity', 'YES', 'PENDING', 'YES');
+INSERT INTO `certificate_request` (`a_i`, `id`, `residence_id`, `certificate_type`, `purpose`, `message`, `date_issued`, `date_request`, `date_expired`, `status`) VALUES
+(64, '65880691503212026164929462189554539069be5b9970dd2', '24956588345933', 'none', 'CERT', 'none', '2026-03-21', '03/21/2026', '2026-03-22', 'ACCEPTED'),
+(65, '10407702060404202619465274480831137569d0fa2cb5b7a', '24956588345933', 'none', 'CERT', 'none', '2026-04-04', '04/04/2026', '2026-04-30', 'ACCEPTED');
 
 -- --------------------------------------------------------
 
@@ -345,6 +281,15 @@ CREATE TABLE `official_information` (
   `image_path` varchar(255) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `official_information`
+--
+
+INSERT INTO `official_information` (`a_i`, `official_id`, `first_name`, `middle_name`, `last_name`, `suffix`, `birth_date`, `birth_place`, `gender`, `age`, `civil_status`, `religion`, `nationality`, `municipality`, `zip`, `barangay`, `house_number`, `street`, `address`, `email_address`, `contact_number`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`, `image`, `image_path`) VALUES
+(65, '032120262004351100', 'riley', 'quintos', 'reblora', 'sfasf', '2026-03-05', 'asfasf', 'Male', '0', 'Single', 'cat', 'fil', 'Batong malaki', '4030', 'sad', '123w', 'asd', 'asdasd', 'asd@gmail.com', '23232131231', 'gasgasg', 'gasg', 'asgasg', '123123123123', '', ''),
+(66, '032120262020291060', 'Zoey Alyana', '', 'Reblora', '', '2026-03-01', 'cxvbdxcgb', 'Female', '0', 'Single', 'cat', 'fil', 'Anos', '4030', 'asgasga', 'gasgasg', 'asdasd', 'dasd', '', '23123123123', 'asfasfasf', 'asfa', 'asfasf', '', '', ''),
+(67, '032320261302435810', 'mina', 'shishi', 'kitano', '', '2026-04-10', 'LB', 'Female', '0', 'Single', 'cat', 'fil', 'San Antonio', '4030', 'asdasd', '6791', 'bangkal', '6791', 'evan.reblora@gmail.com', '12312312312', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -367,6 +312,15 @@ CREATE TABLE `official_status` (
   `date_added` varchar(69) NOT NULL DEFAULT 'none',
   `date_undeleted` varchar(255) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `official_status`
+--
+
+INSERT INTO `official_status` (`a_i`, `official_id`, `position`, `purok_id`, `senior`, `term_from`, `term_to`, `pwd`, `pwd_info`, `status`, `voters`, `single_parent`, `date_added`, `date_undeleted`) VALUES
+(59, '032120262004351100', '268778674891281501142022025704271', '', 'NO', '2026-03-21', '2026-03-27', 'NO', '', 'ACTIVE', 'YES', 'YES', '03/21/2026 08:04 PM', 'none'),
+(60, '032120262020291060', '619131249471207208162022141229307', '', 'NO', '2026-03-05', '2026-03-31', 'NO', '', 'ACTIVE', 'YES', 'NO', '03/21/2026 08:20 PM', 'none'),
+(61, '032320261302435810', '811981911875128801142022163118246', '', 'NO', '2026-03-03', '2026-04-01', 'NO', '', 'ACTIVE', 'YES', 'NO', '03/23/2026 01:02 PM', 'none');
 
 -- --------------------------------------------------------
 
@@ -480,6 +434,24 @@ CREATE TABLE `residence_information` (
   `image_path` varchar(255) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `residence_information`
+--
+
+INSERT INTO `residence_information` (`a_i`, `residence_id`, `first_name`, `middle_name`, `last_name`, `age`, `suffix`, `alias`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`, `occupation`, `employer_name`, `family_relation`, `national_number`, `sss_number`, `tin_number`, `gsis_number`, `pagibig_number`, `philhealth_number`, `bloodtype`, `image`, `image_path`) VALUES
+(182, '24956588345933', 'Evan', 'Llegado', 'Reblora', '49', '', '', 'Male', 'Married', 'catholic', 'filipino', '12312312312', 'evan.reblora@gmail.com', '6791', '1976-11-11', 'Los banos', 'Los banos', '4030', 'san antonio', '6791', 'bangkal', 'asdasd', 'asdasd', 'asdas', '123123123', '', '', '', '', '', '', '', '', '', '', '', ''),
+(183, '24301084988720', 'Zoey Alyana', 'q', 'Reblora', '33', '', '', 'Female', 'Single', 'catholic', 'fil', '12312312312', 'evan.reblora@gmail.com', '6791', '2026-03-06', 'fasfa', 'gadgasdg', '21321', 'asdasd', 'asdasda', 'asdasd', 'asfasfas', 'fasfas', 'fasfasf', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(184, '24956588345934', 'Juan', 'Santos', 'Dela Cruz', '34', 'Jr.', 'Johnny', 'Male', 'Single', 'Catholic', 'Filipino', '09171234567', 'juan.dc@example.com', '101', '1991-05-12', ' Manila', 'Manila', '1000', 'Barangay 1', '101', 'Rizal St.', 'Pedro Dela Cruz', 'Maria Santos', 'N/A', 'N/A', 'Engineer', 'ABC Corp', 'Son', 'N123456', 'S123456', 'T123456', 'G123456', 'P123456', 'PH123456', 'O+', '3940652669d1e7df47d1e.jpg', '../assets/dist/img/3940652669d1e7df47d1e.jpg'),
+(185, '24956588345935', 'Maria', 'Lopez', 'Garcia', '27', 'Sr.', 'Maya', 'Female', 'Married', 'Catholic', 'Filipino', '09181234567', 'maria.garcia@example.com', '202', '1998-07-22', ' Quezon City', 'Quezon City', '1100', 'Barangay 2', '202', 'Bonifacio Ave.', 'Jose Lopez', 'Ana Garcia', 'N/A', 'N/A', 'Teacher', 'XYZ School', 'Daughter', 'N223456', 'S223456', 'T223456', 'G223456', 'P223456', 'PH223456', 'A+', '45753376469d1e7c62e554.png', '../assets/dist/img/45753376469d1e7c62e554.png'),
+(186, '24956588345936', 'Carlos', 'Reyes', 'Mendoza', '42', '', 'Carl', 'Male', 'Married', 'Catholic', 'Filipino', '09191234567', 'carlos.mendoza@example.com', '303', '1984-03-15', ' Bulacan', 'Bulacan', '3000', 'Barangay 3', '303', 'Del Pilar St.', 'Juan Reyes', 'Celia Mendoza', 'N/A', 'N/A', 'Farmer', 'Self-employed', 'Father', 'N323456', 'S323456', 'T323456', 'G323456', 'P323456', 'PH323456', 'B+', '177935127069d1e7b3038bb.png', '../assets/dist/img/177935127069d1e7b3038bb.png'),
+(187, '24956588345937', 'Ana', 'Cruz', 'Villanueva', '30', '', 'Annie', 'Female', 'Single', 'Catholic', 'Filipino', '09201234567', 'ana.villanueva@example.com', '404', '1995-09-09', ' Laguna', 'Laguna', '4000', 'Barangay 4', '404', 'San Pedro St.', 'Mario Cruz', 'Luz Villanueva', 'N/A', 'N/A', 'Nurse', 'Laguna Hospital', 'Daughter', 'N423456', 'S423456', 'T423456', 'G423456', 'P423456', 'PH423456', 'AB+', '135183718869d1e7a872a12.png', '../assets/dist/img/135183718869d1e7a872a12.png'),
+(188, '24956588345938', 'Jose', 'Martinez', 'Ramos', '54', '', 'Pepe', 'Male', 'Married', 'Catholic', 'Filipino', '09211234567', 'jose.ramos@example.com', '505', '1971-11-20', ' Batangas', 'Batangas', '4200', 'Barangay 5', '505', 'Mabini St.', 'Ricardo Martinez', 'Teresa Ramos', 'N/A', 'N/A', 'Driver', 'Transport Co.', 'Father', 'N523456', 'S523456', 'T523456', 'G523456', 'P523456', 'PH523456', 'O-', '29941922969d1e79a12af5.png', '../assets/dist/img/29941922969d1e79a12af5.png'),
+(189, '24956588345939', 'Luisa', 'Fernandez', 'Torres', '23', '', 'Lulu', 'Female', 'Single', 'Catholic', 'Filipino', '09221234567', 'luisa.torres@example.com', '606', '2003-01-30', ' Cavite', 'Cavite', '4100', 'Barangay 6', '606', 'Magdalo St.', 'Antonio Fernandez', 'Rosa Torres', 'N/A', 'N/A', 'Student', '', 'Daughter', 'N623456', 'S623456', 'T623456', 'G623456', 'P623456', 'PH623456', 'A-', '180897334469d1e78e3a2ac.png', '../assets/dist/img/180897334469d1e78e3a2ac.png'),
+(190, '24956588345940', 'Miguel', 'Santiago', 'Domingo', '38', '', 'Mike', 'Male', 'Married', 'Catholic', 'Filipino', '09231234567', 'miguel.domingo@example.com', '707', '1987-06-18', ' Pampanga', 'Pampanga', '2000', 'Barangay 7', '707', 'Clark St.', 'Eduardo Santiago', 'Elena Domingo', 'N/A', 'N/A', 'Chef', 'Restaurant Inc.', 'Father', 'N723456', 'S723456', 'T723456', 'G723456', 'P723456', 'PH723456', 'B-', '158528132269d1e76ce7ea6.png', '../assets/dist/img/158528132269d1e76ce7ea6.png'),
+(191, '24956588345941', 'Sofia', 'Gomez', 'Navarro', '26', '', 'Sofie', 'Female', 'Single', 'Catholic', 'Filipino', '09241234567', 'sofia.navarro@example.com', '808', '1999-12-25', ' Nueva Ecija', 'Nueva Ecija', '3100', 'Barangay 8', '808', 'Gapan St.', 'Fernando Gomez', 'Isabel Navarro', 'N/A', 'N/A', 'Designer', 'Creative Studio', 'Daughter', 'N823456', 'S823456', 'T823456', 'G823456', 'P823456', 'PH823456', 'O+', '152935702169d1e75babb9e.png', '../assets/dist/img/152935702169d1e75babb9e.png'),
+(192, '24956588345942', 'Rafael', 'Castro', 'Aquino', '46', '', 'Rafa', 'Male', 'Married', 'Catholic', 'Filipino', '09251234567', 'rafael.aquino@example.com', '909', '1980-02-14', 'Tarlac', 'Tarlac', '2300', 'Barangay 9', '909', 'Concepcion St.', 'Manuel Castro', 'Dolores Aquino', 'N/A', 'N/A', 'Manager', 'Retail Co.', 'Father', 'N923456', 'S923456', 'T923456', 'G923456', 'P923456', 'PH923456', 'AB-', 'img1.jpg', '/images/img1.jpg'),
+(193, '24956588345943', 'Isabella', 'Flores', 'Delos Santos', '34', '', 'Bella', 'Female', 'Married', 'Catholic', 'Filipino', '09261234567', 'isabella.dls@example.com', '1001', '1992-08-08', 'Bataan', 'Bataan', '2100', 'Barangay 10', '1001', 'Balanga St.', 'Roberto Flores', 'Cristina Delos Santos', 'N/A', 'N/A', 'Accountant', 'Finance Inc.', 'Daughter', 'N1023456', 'S1023456', 'T1023456', 'G1023456', 'P1023456', 'PH1023456', 'A+', 'img1.jpg', '/images/img1.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -505,6 +477,22 @@ CREATE TABLE `residence_status` (
   `date_archive` varchar(69) NOT NULL DEFAULT 'none',
   `date_unarchive` varchar(69) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `residence_status`
+--
+
+INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, `voters`, `pwd`, `pwd_info`, `senior`, `single_parent`, `wra`, `4ps`, `purok_id`, `precint_id`, `archive`, `date_added`, `date_archive`, `date_unarchive`) VALUES
+(182, '24956588345933', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '03/21/2026 04:48 PM', 'none', 'none'),
+(183, '24301084988720', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '03/23/2026 09:10 AM', 'none', 'none'),
+(184, '24956588345934', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:00 PM', 'none', 'none'),
+(185, '24956588345935', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:01 PM', 'none', 'none'),
+(186, '24956588345936', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:02 PM', 'none', 'none'),
+(187, '24956588345937', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:03 PM', 'none', 'none'),
+(188, '24956588345938', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:04 PM', 'none', 'none'),
+(189, '24956588345939', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:05 PM', 'none', 'none'),
+(190, '24956588345940', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:06 PM', 'none', 'none'),
+(191, '24956588345941', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:07 PM', 'none', 'none');
 
 -- --------------------------------------------------------
 
@@ -532,7 +520,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`a_i`, `id`, `first_name`, `middle_name`, `last_name`, `username`, `password`, `user_type`, `contact_number`, `image`, `image_path`) VALUES
 (52, '1506135735699', 'Admin', 'Admin', 'Admin', 'admin123', 'admin123', 'admin', '11111111111', '182708071361a0f053c94fb.png', '../assets/dist/img/182708071361a0f053c94fb.png'),
-(195, '174668789044820710152022021619941', 'Secretary', 'Secretary', 'Secretary', 'secretary123', 'secretary123', 'secretary', '99999999999', '', '');
+(195, '174668789044820710152022021619941', 'Secretary', 'Secretary', 'Secretary', 'secretary123', 'secretary123', 'secretary', '99999999999', '', ''),
+(205, '24956588345933', 'Evan', 'Llegado', 'Reblora', 'evanreblora', '12345678', 'resident', '12312312312', '', ''),
+(206, '24301084988720', 'Zoey Alyana', 'q', 'Reblora', 'zoey1234', '12345678', 'resident', '12312312312', '', '');
 
 -- --------------------------------------------------------
 
@@ -595,18 +585,6 @@ INSERT INTO `wra` (`a_i`, `resident_id`, `nhts`, `pregnant`, `menopause`, `achie
 --
 
 --
--- Indexes for table `activity_log`
---
-ALTER TABLE `activity_log`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `backup`
---
-ALTER TABLE `backup`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `barangay_information`
 --
 ALTER TABLE `barangay_information`
@@ -653,12 +631,6 @@ ALTER TABLE `certificate`
 --
 ALTER TABLE `certificate_request`
   ADD UNIQUE KEY `a_i` (`a_i`);
-
---
--- Indexes for table `house_holds`
---
-ALTER TABLE `house_holds`
-  ADD PRIMARY KEY (`a_i`);
 
 --
 -- Indexes for table `official_end_information`
@@ -737,18 +709,6 @@ ALTER TABLE `wra`
 --
 
 --
--- AUTO_INCREMENT for table `activity_log`
---
-ALTER TABLE `activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1267;
-
---
--- AUTO_INCREMENT for table `backup`
---
-ALTER TABLE `backup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
-
---
 -- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
@@ -764,25 +724,19 @@ ALTER TABLE `certificate`
 -- AUTO_INCREMENT for table `certificate_request`
 --
 ALTER TABLE `certificate_request`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
-
---
--- AUTO_INCREMENT for table `house_holds`
---
-ALTER TABLE `house_holds`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `official_information`
 --
 ALTER TABLE `official_information`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `official_status`
 --
 ALTER TABLE `official_status`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `position`
@@ -806,19 +760,19 @@ ALTER TABLE `purok`
 -- AUTO_INCREMENT for table `residence_information`
 --
 ALTER TABLE `residence_information`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
 -- AUTO_INCREMENT for table `residence_status`
 --
 ALTER TABLE `residence_status`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `vaccine`
