@@ -25,11 +25,6 @@ $status_activity_log = 'logout';
 
 $date_activity = $now = date("j-n-Y g:i A"); 
 $message =  $user_type_log. ': '.$first_name.' '. $last_name .' | '. 'LOGOUT';
-$sql_system_logs= "INSERT INTO activity_log (`message`, `date`,`status`) VALUES (?,?,?)";
-$query_system_logs = $con->prepare($sql_system_logs) or die ($con->error);
-$query_system_logs->bind_param('sss',$message,$date_activity,$status_activity_log);
-$query_system_logs->execute();
-$query_system_logs->close();
 
 
 
