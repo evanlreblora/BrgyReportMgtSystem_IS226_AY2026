@@ -499,7 +499,7 @@ input:checked + .slider .off{
               <li class="nav-item">
                 <a href="archiveResidence.php" class="nav-link ">
                   <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Archive Residence</p>
+                  <p>Inactive Residence</p>
                 </a>
               </li>
             </ul>
