@@ -133,7 +133,7 @@ $sql = "SELECT * FROM `barangay_information`";
     <div class="container">
       <a href="" class="navbar-brand">
         <img src="assets/dist/img/<?= $image  ?>" alt="logo" class="brand-image img-circle " >
-        <span class="brand-text  text-white" style="font-weight: 700">BARANGAY PORTAL</span>
+        <span class="brand-text  text-white" style="font-weight: 700">Barangay Clearance and Incident Report Management System</span>
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -184,7 +184,7 @@ $sql = "SELECT * FROM `barangay_information`";
                 <img src="assets/dist/img/<?= $image;?>" alt="logo" class="img-circle logo">
               </div>
               <div class="col-sm-12">
-                <h1 class="card-text" style="font-weight: 1000; color: #444242">BARANGAY PORTAL</h1>
+                <h1 class="card-text" style="font-weight: 1000; color: #444242">Barangay Clearance and <br/> Incident Report <br/>Management  System</h1>
               </div>
              
               <div class="col-sm-12 mt-4">

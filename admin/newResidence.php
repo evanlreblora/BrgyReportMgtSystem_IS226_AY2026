@@ -72,7 +72,7 @@ try{
   <link rel="stylesheet" href="../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="../assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/phone code/intlTelInput.min.css">
+  <link rel="stylesheet" href="../assets/plugins/phonecode/intlTelInput.min.css">
   
  <style>
     #image_residence{
@@ -245,7 +245,7 @@ try{
               <li class="nav-item">
                 <a href="archiveResidence.php" class="nav-link ">
                   <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Archive Residence</p>
+                  <p>Inactive Residence</p>
                 </a>
               </li>
             </ul>
@@ -313,22 +313,7 @@ try{
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="systemLog.php" class="nav-link">
-              <i class="nav-icon fas fa-history"></i>
-              <p>
-                System Logs
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="backupRestore.php" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
-              <p>
-                Backup/Restore
-              </p>
-            </a>
-          </li>
+ 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -640,7 +625,7 @@ try{
 <script src="../assets/plugins/chart.js/Chart.min.js"></script>
 <script src="../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="../assets/plugins/jquery-validation/additional-methods.min.js"></script>
-<script src="../assets/plugins/phone code/intlTelInput.js"></script>
+<script src="../assets/plugins/phonecode/intlTelInput.js"></script>
 
 <script>
   $(document).ready(function(){

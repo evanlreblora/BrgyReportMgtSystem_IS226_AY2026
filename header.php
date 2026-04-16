@@ -4,7 +4,7 @@
     <div class="container">
       <a href="" class="navbar-brand">
         <img src="assets/dist/img/<?= $image  ?>" alt="logo" class="brand-image img-circle " >
-        <span class="brand-text  text-white"  style="font-weight: 700">BARANGAY PORTAL</span>
+        <span class="brand-text  text-white"  style="font-weight: 700">Barangay Clearance and Incident Report Management System</span>
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

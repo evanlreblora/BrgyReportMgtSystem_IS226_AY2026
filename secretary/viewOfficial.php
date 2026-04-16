@@ -243,7 +243,7 @@ if(isset($_REQUEST['request'])){
               <li class="nav-item">
                 <a href="archiveResidence.php" class="nav-link ">
                   <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Archive Residence</p>
+                  <p>Inactive Residence</p>
                 </a>
               </li>
             </ul>
@@ -293,14 +293,7 @@ if(isset($_REQUEST['request'])){
             </a>
           </li>
          
-          <li class="nav-item">
-            <a href="systemLog.php" class="nav-link">
-              <i class="nav-icon fas fa-history"></i>
-              <p>
-                System Logs
-              </p>
-            </a>
-          </li>
+ 
          
         </ul>
       </nav>
