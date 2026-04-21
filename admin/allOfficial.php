@@ -454,35 +454,6 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link bg-indigo">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newOfficial.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>New Official</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link active">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-users"></i>
@@ -512,6 +483,29 @@ input:checked + .slider .off{
               </li>
             </ul>
           </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link bg-indigo">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Staff
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link active">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
@@ -520,11 +514,21 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
+
+ 
+          <li class="nav-item">
+            <a href="blotterRecord.php" class="nav-link">
+              <i class="nav-icon fas fa-clipboard"></i>
+              <p>
+                Incident Record
+              </p>
+            </a>
+          </li>
           <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
-                Users
+                Users Management
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -543,21 +547,28 @@ input:checked + .slider .off{
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="position.php" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+           <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
               <p>
-                Position
+                Settings
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="blotterRecord.php" class="nav-link">
-              <i class="nav-icon fas fa-clipboard"></i>
-              <p>
-                Blotter Record
-              </p>
-            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Location Settings</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="position.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Position</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="report.php" class="nav-link">
@@ -567,15 +578,6 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="settings.php" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Settings
-              </p>
-            </a>
-          </li>
- 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
