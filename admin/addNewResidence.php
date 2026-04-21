@@ -118,7 +118,7 @@ $stmt->close();
 
 $sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`,`purok_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('sssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$add_purok,$date_added);
+$stmt_residence_status->bind_param('ssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$add_purok,$date_added);
 $stmt_residence_status->execute();
 $stmt_residence_status->close();
 
