@@ -40,6 +40,7 @@ $add_birth_place = $con->real_escape_string($_POST['add_birth_place']);
 $add_municipality = $con->real_escape_string($_POST['add_municipality']);
 $add_zip = $con->real_escape_string($_POST['add_zip']);
 $add_barangay = $con->real_escape_string($_POST['add_barangay']);
+$add_purok = $con->real_escape_string($_POST['add_purok']);
 $add_house_number = $con->real_escape_string($_POST['add_house_number']);
 $add_street = $con->real_escape_string($_POST['add_street']);
 $add_fathers_name = $con->real_escape_string($_POST['add_fathers_name']);
@@ -101,6 +102,7 @@ $stmt->bind_param('ssssssssssssssssssssssssss',
   $add_birth_place,
   $add_municipality,
   $add_zip,
+  $add_purok,
   $add_barangay,
   $add_house_number,
   $add_street,
@@ -114,9 +116,9 @@ $stmt->bind_param('ssssssssssssssssssssssssss',
 $stmt->execute();
 $stmt->close();
 
-$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?)";
+$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`,`purok_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('sssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$date_added);
+$stmt_residence_status->bind_param('sssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$add_purok,$date_added);
 $stmt_residence_status->execute();
 $stmt_residence_status->close();
 

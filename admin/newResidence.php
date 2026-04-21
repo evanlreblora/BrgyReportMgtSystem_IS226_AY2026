@@ -500,6 +500,18 @@ try{
                             </div>
                           </div>
                           <div class="col-sm-6">
+                            <div class="form-group ">
+                              <label >Purok</label>
+                              <select name="add_purok" id="add_purok" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
                             <div class="form-group">
                               <label>House Number</label>
                               <input type="text" class="form-control" id="add_house_number" name="add_house_number" >
