@@ -503,6 +503,7 @@ try{
                             <div class="form-group ">
                               <label >Purok</label>
                               <select name="add_purok" id="add_purok" class="form-control">
+                                <option value=""></option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
