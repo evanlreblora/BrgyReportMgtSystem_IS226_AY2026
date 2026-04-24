@@ -40,7 +40,7 @@ $add_birth_place = $con->real_escape_string($_POST['add_birth_place']);
 $add_municipality = $con->real_escape_string($_POST['add_municipality']);
 $add_zip = $con->real_escape_string($_POST['add_zip']);
 $add_barangay = $con->real_escape_string($_POST['add_barangay']);
-$add_purok = $con->real_escape_string($_POST['add_purok']);
+$add_zone = $con->real_escape_string($_POST['add_zone']);
 $add_house_number = $con->real_escape_string($_POST['add_house_number']);
 $add_street = $con->real_escape_string($_POST['add_street']);
 $add_fathers_name = $con->real_escape_string($_POST['add_fathers_name']);
@@ -121,9 +121,9 @@ $is_approved = '';
 $wra = '';
 $fourps = '';
 $precint_id = '';
-$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`,`purok_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`,`zone_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$add_purok,$is_approved,$wra,$fourps,$precint_id,$date_added);
+$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$add_zone,$is_approved,$wra,$fourps,$precint_id,$date_added);
 if(!$stmt_residence_status->execute()){
   die(json_encode(['error' => $stmt_residence_status->error]));
 }

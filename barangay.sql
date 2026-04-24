@@ -233,7 +233,7 @@ CREATE TABLE `official_end_information` (
 CREATE TABLE `official_end_status` (
   `official_id` varchar(255) NOT NULL,
   `position` varchar(69) NOT NULL DEFAULT 'none',
-  `purok_id` varchar(255) NOT NULL,
+  `zone_id` varchar(255) NOT NULL,
   `senior` varchar(69) NOT NULL DEFAULT 'none',
   `term_from` varchar(69) NOT NULL DEFAULT 'none',
   `term_to` varchar(69) NOT NULL DEFAULT 'none',
@@ -300,7 +300,7 @@ CREATE TABLE `official_status` (
   `a_i` int(11) NOT NULL,
   `official_id` varchar(255) NOT NULL,
   `position` varchar(69) NOT NULL DEFAULT 'none',
-  `purok_id` varchar(255) NOT NULL,
+  `zone_id` varchar(255) NOT NULL,
   `senior` varchar(69) NOT NULL DEFAULT 'none',
   `term_from` varchar(69) NOT NULL DEFAULT 'none',
   `term_to` varchar(69) NOT NULL DEFAULT 'none',
@@ -317,7 +317,7 @@ CREATE TABLE `official_status` (
 -- Dumping data for table `official_status`
 --
 
-INSERT INTO `official_status` (`a_i`, `official_id`, `position`, `purok_id`, `senior`, `term_from`, `term_to`, `pwd`, `pwd_info`, `status`, `voters`, `single_parent`, `date_added`, `date_undeleted`) VALUES
+INSERT INTO `official_status` (`a_i`, `official_id`, `position`, `zone_id`, `senior`, `term_from`, `term_to`, `pwd`, `pwd_info`, `status`, `voters`, `single_parent`, `date_added`, `date_undeleted`) VALUES
 (59, '032120262004351100', '268778674891281501142022025704271', '', 'NO', '2026-03-21', '2026-03-27', 'NO', '', 'ACTIVE', 'YES', 'YES', '03/21/2026 08:04 PM', 'none'),
 (60, '032120262020291060', '619131249471207208162022141229307', '', 'NO', '2026-03-05', '2026-03-31', 'NO', '', 'ACTIVE', 'YES', 'NO', '03/21/2026 08:20 PM', 'none'),
 (61, '032320261302435810', '811981911875128801142022163118246', '', 'NO', '2026-03-03', '2026-04-01', 'NO', '', 'ACTIVE', 'YES', 'NO', '03/23/2026 01:02 PM', 'none');
@@ -369,21 +369,21 @@ INSERT INTO `precint` (`a_i`, `precint_id`, `precint`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purok`
+-- Table structure for table `zone`
 --
 
-CREATE TABLE `purok` (
+CREATE TABLE `zone` (
   `a_i` int(11) NOT NULL,
-  `purok_id` varchar(255) NOT NULL,
-  `purok` varchar(255) NOT NULL,
+  `zone_id` varchar(255) NOT NULL,
+  `zone` varchar(255) NOT NULL,
   `leader` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `purok`
+-- Dumping data for table `zone`
 --
 
-INSERT INTO `purok` (`a_i`, `purok_id`, `purok`, `leader`) VALUES
+INSERT INTO `zone` (`a_i`, `zone_id`, `zone`, `leader`) VALUES
 (2, '916259339179300507242022155033612', 'puirok', 'qweqwe'),
 (5, '74710938236700907272022172121040', 'ewqe', 'wqewqeq');
 
@@ -470,7 +470,7 @@ CREATE TABLE `residence_status` (
   `single_parent` varchar(69) NOT NULL DEFAULT 'none',
   `wra` varchar(255) NOT NULL,
   `4ps` varchar(255) NOT NULL,
-  `purok_id` varchar(255) NOT NULL,
+  `zone_id` varchar(255) NOT NULL,
   `precint_id` varchar(255) NOT NULL,
   `archive` varchar(69) NOT NULL DEFAULT 'none',
   `date_added` varchar(69) NOT NULL DEFAULT 'none',
@@ -482,7 +482,7 @@ CREATE TABLE `residence_status` (
 -- Dumping data for table `residence_status`
 --
 
-INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, `voters`, `pwd`, `pwd_info`, `senior`, `single_parent`, `wra`, `4ps`, `purok_id`, `precint_id`, `archive`, `date_added`, `date_archive`, `date_unarchive`) VALUES
+INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, `voters`, `pwd`, `pwd_info`, `senior`, `single_parent`, `wra`, `4ps`, `zone_id`, `precint_id`, `archive`, `date_added`, `date_archive`, `date_unarchive`) VALUES
 (182, '24956588345933', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '03/21/2026 04:48 PM', 'none', 'none'),
 (183, '24301084988720', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '03/23/2026 09:10 AM', 'none', 'none'),
 (184, '24956588345934', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/05/2026 01:00 PM', 'none', 'none'),
@@ -525,60 +525,6 @@ INSERT INTO `users` (`a_i`, `id`, `first_name`, `middle_name`, `last_name`, `use
 (206, '24301084988720', 'Zoey Alyana', 'q', 'Reblora', 'zoey1234', '12345678', 'resident', '12312312312', '', '');
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `vaccine`
---
-
-CREATE TABLE `vaccine` (
-  `a_i` int(11) NOT NULL,
-  `vaccine_id` varchar(255) NOT NULL,
-  `residence_id` varchar(255) NOT NULL,
-  `vaccine` varchar(255) NOT NULL,
-  `second_vaccine` varchar(255) NOT NULL,
-  `first_dose_date` varchar(255) NOT NULL,
-  `second_dose_date` varchar(255) NOT NULL,
-  `booster` varchar(255) NOT NULL,
-  `booster_date` varchar(255) NOT NULL,
-  `second_booster` varchar(255) NOT NULL,
-  `second_booster_date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `vaccine`
---
-
-INSERT INTO `vaccine` (`a_i`, `vaccine_id`, `residence_id`, `vaccine`, `second_vaccine`, `first_dose_date`, `second_dose_date`, `booster`, `booster_date`, `second_booster`, `second_booster_date`) VALUES
-(35, '3267818051106726', '16455182440138', 'first', 'second', '2022-10-01', '2022-10-02', 'first b', '2022-10-03', 'second b', '2022-10-04'),
-(36, '9517807083807772', '54278971251733', 'first', 'second', '2022-10-01', '2022-10-02', 'first b', '2022-10-03', 'second b', '2022-10-04');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wra`
---
-
-CREATE TABLE `wra` (
-  `a_i` int(11) NOT NULL,
-  `resident_id` varchar(255) NOT NULL,
-  `nhts` varchar(255) NOT NULL,
-  `pregnant` varchar(255) NOT NULL,
-  `menopause` varchar(255) NOT NULL,
-  `achieving` varchar(255) NOT NULL,
-  `ofw` varchar(255) NOT NULL,
-  `fp_method` varchar(255) NOT NULL,
-  `desire_limit` varchar(255) NOT NULL,
-  `desire_space` varchar(255) NOT NULL,
-  `remarks` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `wra`
---
-
-INSERT INTO `wra` (`a_i`, `resident_id`, `nhts`, `pregnant`, `menopause`, `achieving`, `ofw`, `fp_method`, `desire_limit`, `desire_space`, `remarks`) VALUES
-(62, '16455182440138', 'NTHS', 'YES', 'YES', 'YES', 'YES', 'FP Method', 'YES', 'YES', ''),
-(63, '54278971251733', 'NTHS', 'YES', 'YES', 'YES', 'YES', 'FP Method', 'YES', 'YES', '');
 
 --
 -- Indexes for dumped tables
@@ -669,9 +615,9 @@ ALTER TABLE `precint`
   ADD PRIMARY KEY (`a_i`);
 
 --
--- Indexes for table `purok`
+-- Indexes for table `zone`
 --
-ALTER TABLE `purok`
+ALTER TABLE `zone`
   ADD PRIMARY KEY (`a_i`);
 
 --
@@ -691,18 +637,6 @@ ALTER TABLE `residence_status`
 --
 ALTER TABLE `users`
   ADD UNIQUE KEY `a_i` (`a_i`);
-
---
--- Indexes for table `vaccine`
---
-ALTER TABLE `vaccine`
-  ADD PRIMARY KEY (`a_i`);
-
---
--- Indexes for table `wra`
---
-ALTER TABLE `wra`
-  ADD PRIMARY KEY (`a_i`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -751,9 +685,9 @@ ALTER TABLE `precint`
   MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `purok`
+-- AUTO_INCREMENT for table `zone`
 --
-ALTER TABLE `purok`
+ALTER TABLE `zone`
   MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
@@ -774,17 +708,7 @@ ALTER TABLE `residence_status`
 ALTER TABLE `users`
   MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
---
--- AUTO_INCREMENT for table `vaccine`
---
-ALTER TABLE `vaccine`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
---
--- AUTO_INCREMENT for table `wra`
---
-ALTER TABLE `wra`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

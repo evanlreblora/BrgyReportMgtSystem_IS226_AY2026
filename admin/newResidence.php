@@ -501,8 +501,8 @@ try{
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group ">
-                              <label >Purok</label>
-                              <select name="add_purok" id="add_purok" class="form-control">
+                              <label >Zone Code</label>
+                              <select name="add_zone" id="add_zone" class="form-control">
                                 <option value=""></option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>

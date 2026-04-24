@@ -187,9 +187,9 @@ $is_approved = '';
 $wra = '';
 $fourps = '';
 $precint_id = '';
-$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`single_parent`,`senior`,`purok_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`single_parent`,`senior`,`zone_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$add_single_parent,$senior,$add_purok,$is_approved,$wra,$fourps,$precint_id,$date_added);
+$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$add_single_parent,$senior,$add_zone,$is_approved,$wra,$fourps,$precint_id,$date_added);
 if(!$stmt_residence_status->execute()){
   die(json_encode(['error' => $stmt_residence_status->error]));
 }
