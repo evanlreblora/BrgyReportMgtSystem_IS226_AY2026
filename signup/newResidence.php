@@ -150,7 +150,7 @@ $sql = "INSERT INTO `residence_information`(
   ) 
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql) or die ($con->error);
-$stmt->bind_param('ssssssssssssssssssssssssss',
+$stmt->bind_param('sssssssssssssssssssssssss',
   $number,
   $add_first_name,
   $add_middle_name,
@@ -178,13 +178,21 @@ $stmt->bind_param('ssssssssssssssssssssssssss',
   $new_image_name,
   $new_image_path
 );
-$stmt->execute();
+if(!$stmt->execute()){
+  die(json_encode(['error' => $stmt->error]));
+}
 $stmt->close();
 
-$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`single_parent`,`senior`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?)";
+$is_approved = '';
+$wra = '';
+$fourps = '';
+$precint_id = '';
+$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`single_parent`,`senior`,`purok_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('sssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$add_single_parent,$senior,$date_added);
-$stmt_residence_status->execute();
+$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$add_single_parent,$senior,$add_purok,$is_approved,$wra,$fourps,$precint_id,$date_added);
+if(!$stmt_residence_status->execute()){
+  die(json_encode(['error' => $stmt_residence_status->error]));
+}
 $stmt_residence_status->close();
 
 
@@ -196,7 +204,9 @@ $date_activity = $now = date("j-n-Y g:i A");
   $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
   $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
   $stmt_activity_log->bind_param('sss',$admin,$date_activity,$status_activity_log);
-  $stmt_activity_log->execute();
+  if(!$stmt_activity_log->execute()){
+    die(json_encode(['error' => $stmt_activity_log->error]));
+  }
   $stmt_activity_log->close();
 
 }catch(Exception $e){

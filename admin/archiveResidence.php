@@ -493,7 +493,7 @@ input:checked + .slider .off{
               <li class="nav-item">
                 <a href="archiveResidence.php" class="nav-link active">
                   <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Archive Residence</p>
+                  <p>Inactive Residence</p>
                 </a>
               </li>
             </ul>
@@ -588,7 +588,7 @@ input:checked + .slider .off{
     <div class="card">
       <div class="card-body">
           <fieldset>
-            <legend>NUMBER OF ARCHIVE RESIDENCE <span id="total"></span></legend>
+            <legend>NUMBER OF INACTICE RESIDENCE <span id="total"></span></legend>
           
                   <div class="row mb-2">
                     <div class="col-sm-4">

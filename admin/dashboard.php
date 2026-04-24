@@ -266,7 +266,7 @@ try{
             </div>
             <!-- Message End -->
           </a>
-          <div class="mb-4"><input type="checkbox" value="1" class="mr-1"><span>Dark Mode</span></div>         
+      
           <div class="dropdown-divider"></div>
           <a href="../logout.php" class="dropdown-item dropdown-footer">LOGOUT</a>
         </div>
@@ -364,7 +364,7 @@ try{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="archiveResidence" class="nav-link ">
+                <a href="archiveResidence.php" class="nav-link ">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>Inactive Residence</p>
                 </a>
@@ -436,7 +436,7 @@ try{
               </p>
             </a>
           </li>
-
+ 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

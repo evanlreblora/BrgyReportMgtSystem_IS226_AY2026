@@ -1,4 +1,4 @@
-  <footer class="main-footer text-white" style="background-color: #6594B1">
+  <footer class="main-footer text-white" style="background-color: #333">
     <div class="float-right d-none d-sm-block">
 <?php
     // Create a DateTime object with the desired timezone (GMT+7)

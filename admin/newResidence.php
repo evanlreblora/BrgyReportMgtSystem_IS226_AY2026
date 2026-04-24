@@ -72,7 +72,7 @@ try{
   <link rel="stylesheet" href="../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="../assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/phone code/intlTelInput.min.css">
+  <link rel="stylesheet" href="../assets/plugins/phonecode/intlTelInput.min.css">
   
  <style>
     #image_residence{
@@ -500,6 +500,19 @@ try{
                             </div>
                           </div>
                           <div class="col-sm-6">
+                            <div class="form-group ">
+                              <label >Purok</label>
+                              <select name="add_purok" id="add_purok" class="form-control">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
                             <div class="form-group">
                               <label>House Number</label>
                               <input type="text" class="form-control" id="add_house_number" name="add_house_number" >
@@ -625,7 +638,7 @@ try{
 <script src="../assets/plugins/chart.js/Chart.min.js"></script>
 <script src="../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="../assets/plugins/jquery-validation/additional-methods.min.js"></script>
-<script src="../assets/plugins/phone code/intlTelInput.js"></script>
+<script src="../assets/plugins/phonecode/intlTelInput.js"></script>
 
 <script>
   $(document).ready(function(){

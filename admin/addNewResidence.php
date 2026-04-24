@@ -40,6 +40,7 @@ $add_birth_place = $con->real_escape_string($_POST['add_birth_place']);
 $add_municipality = $con->real_escape_string($_POST['add_municipality']);
 $add_zip = $con->real_escape_string($_POST['add_zip']);
 $add_barangay = $con->real_escape_string($_POST['add_barangay']);
+$add_purok = $con->real_escape_string($_POST['add_purok']);
 $add_house_number = $con->real_escape_string($_POST['add_house_number']);
 $add_street = $con->real_escape_string($_POST['add_street']);
 $add_fathers_name = $con->real_escape_string($_POST['add_fathers_name']);
@@ -83,7 +84,7 @@ if($add_age_date == '0'){
 
 $sql = "INSERT INTO `residence_information`( `residence_id`,`first_name`, `middle_name`, `last_name`, `age`, `suffix`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`,`image`,`image_path`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql) or die ($con->error);
-$stmt->bind_param('ssssssssssssssssssssssssss',
+$stmt->bind_param('sssssssssssssssssssssssss',
   $number,
   $add_first_name,
   $add_middle_name,
@@ -111,20 +112,30 @@ $stmt->bind_param('ssssssssssssssssssssssssss',
   $new_image_name,
   $new_image_path
 );
-$stmt->execute();
+if(!$stmt->execute()){
+  die(json_encode(['error' => $stmt->error]));
+}
 $stmt->close();
 
-$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?)";
+$is_approved = '';
+$wra = '';
+$fourps = '';
+$precint_id = '';
+$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`,`purok_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('sssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$date_added);
-$stmt_residence_status->execute();
+$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$add_purok,$is_approved,$wra,$fourps,$precint_id,$date_added);
+if(!$stmt_residence_status->execute()){
+  die(json_encode(['error' => $stmt_residence_status->error]));
+}
 $stmt_residence_status->close();
 
 
 $sql_add_user = "INSERT INTO `users`(`id`, `first_name`, `middle_name`, `last_name`, `username`, `password`, `user_type`, `contact_number`,`image`,`image_path`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 $stmt_user = $con->prepare($sql_add_user) or die ($con->error);
 $stmt_user->bind_param('ssssssssss',$number,$add_first_name,$add_middle_name,$add_last_name,$number,$password,$user_type,$add_contact_number,$new_image_name,$new_image_path);
-$stmt_user->execute();
+if(!$stmt_user->execute()){
+  die(json_encode(['error' => $stmt_user->error]));
+}
 $stmt_user->close();
 
 
@@ -137,7 +148,9 @@ $date_activity = $now = date("j-n-Y g:i A");
   $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
   $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
   $stmt_activity_log->bind_param('sss',$admin,$date_activity,$status_activity_log);
-  $stmt_activity_log->execute();
+  if(!$stmt_activity_log->execute()){
+    die(json_encode(['error' => $stmt_activity_log->error]));
+  }
   $stmt_activity_log->close();
   
 
