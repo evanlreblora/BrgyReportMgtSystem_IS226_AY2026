@@ -329,9 +329,9 @@ try{
           <br>
         
           <ul>
-              <li class="mx-5"><a href="myInfo.php" class="round green"><i class="fas fa-user" style="font-size: 50px;"></i><span class="round"><br> MY INFO</span></a></li>
-              <li class="mx-5"><a href="certificate.php" class="round red"><i class="fas fa-certificate" style="font-size: 50px;"></i><span class="round"><br> CERTIFICATE </span></a></li>
-              <li class="mx-5"><a href="myRecord.php" class="round yellow"><i class="fas fa-book-open" style="font-size: 50px;"></i> <span class="round"><br> BLOTTER</span></a></li>
+              <li class="mx-5">MY INFO<a href="myInfo.php" class="round green"><i class="fas fa-user" style="font-size: 50px;"></i><span class="round"></span></a></li>
+              <li class="mx-5">CERTIFICATE <a href="certificate.php" class="round red"><i class="fas fa-certificate" style="font-size: 50px;"></i><span class="round"></span></a></li>
+              <li class="mx-5">INCIDENT</I><a href="myRecord.php" class="round yellow"><i class="fas fa-book-open" style="font-size: 50px;"></i> <span class="round"></span></a></li>
             </ul> 
 
       </div>
