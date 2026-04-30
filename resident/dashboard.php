@@ -96,7 +96,7 @@ try{
       max-width:500px;
     }
     .content-wrapper{
-      /* background-image: url('../assets/logo/cover.jpg'); */
+      background-image: url('../assets/logo/cover.jpg');
       background-repeat:no-repeat;
       background-size:contain;
       background-size: cover;

@@ -98,7 +98,7 @@ $sql = "SELECT * FROM `barangay_information`";
       max-width:500px;
     }
     .content-wrapper{
-     
+      background-image: url('assets/logo/cover.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       width: 100%;
