@@ -82,7 +82,7 @@ try{
     $query_senior = $con->query($sql_senior) or die ($con->error);
     $count_senior = $query_senior->num_rows;
 
-    $sql_blotter ="SELECT date_added as yyyy, count(blotter_id) as gago from blotter_record group by date_added order by yyyy";
+    $sql_blotter ="SELECT date_added as yyyy, count(blotter_id) as gago from incident_record group by date_added order by yyyy";
     $result_blotter = $con->query($sql_blotter) or die ($con->error);
     $count_blotter_result = $result_blotter->num_rows;
     if($count_blotter_result > 0){
@@ -112,12 +112,12 @@ try{
     
     }
 
-    $sql_total_blotter = "SELECT blotter_id FROM blotter_record";
+    $sql_total_blotter = "SELECT blotter_id FROM incident_record";
     $stmt_total_blotter = $con->prepare($sql_total_blotter) or die ($con->error);
     $stmt_total_blotter->execute();
     $result_total_blotter = $stmt_total_blotter->get_result();
     $count_blotter = $result_total_blotter->num_rows;
-    $total_blotter_record = $count_blotter;
+    $total_incident_record = $count_blotter;
 
   $sql_count_official =  "SELECT COUNT(official_id) AS total_official FROM official_status";
   $stmt_total_official = $con->prepare($sql_count_official) or die ($con->error);
@@ -204,6 +204,15 @@ try{
   #official_body  .scrollOfficial::-webkit-scrollbar-thumb:window-inactive {
       background: #6c757d; 
     }
+
+    /* Highlight today's date */
+.day.active.today {
+    background-color: #ffcc00;   /* bright yellow background */
+    color: #000;                 /* black text for contrast */
+    font-weight: bold;           /* make it stand out */
+    border-radius: 90%;          /* circular highlight */
+}
+
   </style>
 </head>
 <body class="hold-transition dark-mode sidebar-mini   layout-footer-fixed">
@@ -314,35 +323,6 @@ try{
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newOfficial.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>New Official</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -371,20 +351,72 @@ try{
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
           
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="blotterRecord.php" class="nav-link">
+              <i class="nav-icon fas fa-clipboard"></i>
+              <p>
+                Incident Record
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="report.php" class="nav-link">
+              <i class="nav-icon fas fa-bookmark"></i>
+              <p>
+                Reports
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                        <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
-                Users
+                User Management
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -404,38 +436,35 @@ try{
 
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="position.php" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
-              <p>
-                Position
-              </p>
-            </a>
+
+              <li class="nav-item">
+                <a href="incidentInfo.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Incident Info
+                  </p>
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a href="position.php" class="nav-link">
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>
+                    Position
+                  </p>
+                </a>
+              </li>       
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Location
+                  </p>
+                </a>
+              </li>
+
+            </ul>
           </li>
-          <li class="nav-item">
-            <a href="blotterRecord.php" class="nav-link">
-              <i class="nav-icon fas fa-clipboard"></i>
-              <p>
-                Blotter Record
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="report.php" class="nav-link">
-              <i class="nav-icon fas fa-bookmark"></i>
-              <p>
-                Reports
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="settings.php" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Settings
-              </p>
-            </a>
-          </li>
+
  
         </ul>
       </nav>
@@ -552,7 +581,7 @@ try{
                       <!-- small box -->
                       <div class="small-box bg-indigo">
                         <div class="inner">
-                          <h3><?= number_format($total_blotter_record ?? 0) ?><sup style="font-size: 20px"></sup></h3>
+                          <h3><?= number_format($total_incident_record ?? 0) ?><sup style="font-size: 20px"></sup></h3>
 
                           <p>BLOTTER</p>
                         </div>
@@ -754,8 +783,73 @@ try{
                               <!-- /.card-header -->
                               <div class="card-body pt-0">
                                 <!--The calendar -->
-                                <div id="calendar" style="width: 100%"><div class="bootstrap-datetimepicker-widget usetwentyfour"><ul class="list-unstyled"><li class="show"><div class="datepicker"><div class="datepicker-days" style=""><table class="table table-sm"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Month"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Month">March 2026</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Month"></span></th></tr><tr><th class="dow">Su</th><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th></tr></thead><tbody><tr><td data-action="selectDay" data-day="03/01/2026" class="day weekend">1</td><td data-action="selectDay" data-day="03/02/2026" class="day">2</td><td data-action="selectDay" data-day="03/03/2026" class="day">3</td><td data-action="selectDay" data-day="03/04/2026" class="day">4</td><td data-action="selectDay" data-day="03/05/2026" class="day">5</td><td data-action="selectDay" data-day="03/06/2026" class="day">6</td><td data-action="selectDay" data-day="03/07/2026" class="day weekend">7</td></tr><tr><td data-action="selectDay" data-day="03/08/2026" class="day weekend">8</td><td data-action="selectDay" data-day="03/09/2026" class="day">9</td><td data-action="selectDay" data-day="03/10/2026" class="day">10</td><td data-action="selectDay" data-day="03/11/2026" class="day">11</td><td data-action="selectDay" data-day="03/12/2026" class="day">12</td><td data-action="selectDay" data-day="03/13/2026" class="day">13</td><td data-action="selectDay" data-day="03/14/2026" class="day weekend">14</td></tr><tr><td data-action="selectDay" data-day="03/15/2026" class="day weekend">15</td><td data-action="selectDay" data-day="03/16/2026" class="day">16</td><td data-action="selectDay" data-day="03/17/2026" class="day">17</td><td data-action="selectDay" data-day="03/18/2026" class="day">18</td><td data-action="selectDay" data-day="03/19/2026" class="day">19</td><td data-action="selectDay" data-day="03/20/2026" class="day">20</td><td data-action="selectDay" data-day="03/21/2026" class="day weekend">21</td></tr><tr><td data-action="selectDay" data-day="03/22/2026" class="day active today weekend">22</td><td data-action="selectDay" data-day="03/23/2026" class="day">23</td><td data-action="selectDay" data-day="03/24/2026" class="day">24</td><td data-action="selectDay" data-day="03/25/2026" class="day">25</td><td data-action="selectDay" data-day="03/26/2026" class="day">26</td><td data-action="selectDay" data-day="03/27/2026" class="day">27</td><td data-action="selectDay" data-day="03/28/2026" class="day weekend">28</td></tr><tr><td data-action="selectDay" data-day="03/29/2026" class="day weekend">29</td><td data-action="selectDay" data-day="03/30/2026" class="day">30</td><td data-action="selectDay" data-day="03/31/2026" class="day">31</td><td data-action="selectDay" data-day="04/01/2026" class="day new">1</td><td data-action="selectDay" data-day="04/02/2026" class="day new">2</td><td data-action="selectDay" data-day="04/03/2026" class="day new">3</td><td data-action="selectDay" data-day="04/04/2026" class="day new weekend">4</td></tr><tr><td data-action="selectDay" data-day="04/05/2026" class="day new weekend">5</td><td data-action="selectDay" data-day="04/06/2026" class="day new">6</td><td data-action="selectDay" data-day="04/07/2026" class="day new">7</td><td data-action="selectDay" data-day="04/08/2026" class="day new">8</td><td data-action="selectDay" data-day="04/09/2026" class="day new">9</td><td data-action="selectDay" data-day="04/10/2026" class="day new">10</td><td data-action="selectDay" data-day="04/11/2026" class="day new weekend">11</td></tr></tbody></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Year"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Year">2026</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Year"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectMonth" class="month">Jan</span><span data-action="selectMonth" class="month">Feb</span><span data-action="selectMonth" class="month active">Mar</span><span data-action="selectMonth" class="month">Apr</span><span data-action="selectMonth" class="month">May</span><span data-action="selectMonth" class="month">Jun</span><span data-action="selectMonth" class="month">Jul</span><span data-action="selectMonth" class="month">Aug</span><span data-action="selectMonth" class="month">Sep</span><span data-action="selectMonth" class="month">Oct</span><span data-action="selectMonth" class="month">Nov</span><span data-action="selectMonth" class="month">Dec</span></td></tr></tbody></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Decade"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Decade">2020-2029</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Decade"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectYear" class="year old">2019</span><span data-action="selectYear" class="year">2020</span><span data-action="selectYear" class="year">2021</span><span data-action="selectYear" class="year">2022</span><span data-action="selectYear" class="year">2023</span><span data-action="selectYear" class="year">2024</span><span data-action="selectYear" class="year">2025</span><span data-action="selectYear" class="year active">2026</span><span data-action="selectYear" class="year">2027</span><span data-action="selectYear" class="year">2028</span><span data-action="selectYear" class="year">2029</span><span data-action="selectYear" class="year old">2030</span></td></tr></tbody></table></div><div class="datepicker-decades" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Century"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5">2000-2090</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Century"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectDecade" class="decade old" data-selection="2006">1990</span><span data-action="selectDecade" class="decade" data-selection="2006">2000</span><span data-action="selectDecade" class="decade" data-selection="2016">2010</span><span data-action="selectDecade" class="decade active" data-selection="2026">2020</span><span data-action="selectDecade" class="decade" data-selection="2036">2030</span><span data-action="selectDecade" class="decade" data-selection="2046">2040</span><span data-action="selectDecade" class="decade" data-selection="2056">2050</span><span data-action="selectDecade" class="decade" data-selection="2066">2060</span><span data-action="selectDecade" class="decade" data-selection="2076">2070</span><span data-action="selectDecade" class="decade" data-selection="2086">2080</span><span data-action="selectDecade" class="decade" data-selection="2096">2090</span><span data-action="selectDecade" class="decade old" data-selection="2106">2100</span></td></tr></tbody></table></div></div></li><li class="picker-switch accordion-toggle"></li></ul></div></div>
-                              </div>
+                                <!-- <div id="calendar" style="width: 100%"><div class="bootstrap-datetimepicker-widget usetwentyfour"><ul class="list-unstyled"><li class="show"><div class="datepicker"><div class="datepicker-days" style=""><table class="table table-sm"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Month"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Month">March 2026</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Month"></span></th></tr><tr><th class="dow">Su</th><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th></tr></thead><tbody><tr><td data-action="selectDay" data-day="03/01/2026" class="day weekend">1</td><td data-action="selectDay" data-day="03/02/2026" class="day">2</td><td data-action="selectDay" data-day="03/03/2026" class="day">3</td><td data-action="selectDay" data-day="03/04/2026" class="day">4</td><td data-action="selectDay" data-day="03/05/2026" class="day">5</td><td data-action="selectDay" data-day="03/06/2026" class="day">6</td><td data-action="selectDay" data-day="03/07/2026" class="day weekend">7</td></tr><tr><td data-action="selectDay" data-day="03/08/2026" class="day weekend">8</td><td data-action="selectDay" data-day="03/09/2026" class="day">9</td><td data-action="selectDay" data-day="03/10/2026" class="day">10</td><td data-action="selectDay" data-day="03/11/2026" class="day">11</td><td data-action="selectDay" data-day="03/12/2026" class="day">12</td><td data-action="selectDay" data-day="03/13/2026" class="day">13</td><td data-action="selectDay" data-day="03/14/2026" class="day weekend">14</td></tr><tr><td data-action="selectDay" data-day="03/15/2026" class="day weekend">15</td><td data-action="selectDay" data-day="03/16/2026" class="day">16</td><td data-action="selectDay" data-day="03/17/2026" class="day">17</td><td data-action="selectDay" data-day="03/18/2026" class="day">18</td><td data-action="selectDay" data-day="03/19/2026" class="day">19</td><td data-action="selectDay" data-day="03/20/2026" class="day">20</td><td data-action="selectDay" data-day="03/21/2026" class="day weekend">21</td></tr><tr><td data-action="selectDay" data-day="03/22/2026" class="day active today weekend">22</td><td data-action="selectDay" data-day="03/23/2026" class="day">23</td><td data-action="selectDay" data-day="03/24/2026" class="day">24</td><td data-action="selectDay" data-day="03/25/2026" class="day">25</td><td data-action="selectDay" data-day="03/26/2026" class="day">26</td><td data-action="selectDay" data-day="03/27/2026" class="day">27</td><td data-action="selectDay" data-day="03/28/2026" class="day weekend">28</td></tr><tr><td data-action="selectDay" data-day="03/29/2026" class="day weekend">29</td><td data-action="selectDay" data-day="03/30/2026" class="day">30</td><td data-action="selectDay" data-day="03/31/2026" class="day">31</td><td data-action="selectDay" data-day="04/01/2026" class="day new">1</td><td data-action="selectDay" data-day="04/02/2026" class="day new">2</td><td data-action="selectDay" data-day="04/03/2026" class="day new">3</td><td data-action="selectDay" data-day="04/04/2026" class="day new weekend">4</td></tr><tr><td data-action="selectDay" data-day="04/05/2026" class="day new weekend">5</td><td data-action="selectDay" data-day="04/06/2026" class="day new">6</td><td data-action="selectDay" data-day="04/07/2026" class="day new">7</td><td data-action="selectDay" data-day="04/08/2026" class="day new">8</td><td data-action="selectDay" data-day="04/09/2026" class="day new">9</td><td data-action="selectDay" data-day="04/10/2026" class="day new">10</td><td data-action="selectDay" data-day="04/11/2026" class="day new weekend">11</td></tr></tbody></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Year"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Year">2026</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Year"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectMonth" class="month">Jan</span><span data-action="selectMonth" class="month">Feb</span><span data-action="selectMonth" class="month active">Mar</span><span data-action="selectMonth" class="month">Apr</span><span data-action="selectMonth" class="month">May</span><span data-action="selectMonth" class="month">Jun</span><span data-action="selectMonth" class="month">Jul</span><span data-action="selectMonth" class="month">Aug</span><span data-action="selectMonth" class="month">Sep</span><span data-action="selectMonth" class="month">Oct</span><span data-action="selectMonth" class="month">Nov</span><span data-action="selectMonth" class="month">Dec</span></td></tr></tbody></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Decade"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Decade">2020-2029</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Decade"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectYear" class="year old">2019</span><span data-action="selectYear" class="year">2020</span><span data-action="selectYear" class="year">2021</span><span data-action="selectYear" class="year">2022</span><span data-action="selectYear" class="year">2023</span><span data-action="selectYear" class="year">2024</span><span data-action="selectYear" class="year">2025</span><span data-action="selectYear" class="year active">2026</span><span data-action="selectYear" class="year">2027</span><span data-action="selectYear" class="year">2028</span><span data-action="selectYear" class="year">2029</span><span data-action="selectYear" class="year old">2030</span></td></tr></tbody></table></div><div class="datepicker-decades" style="display: none;"><table class="table-condensed"><thead><tr><th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Century"></span></th><th class="picker-switch" data-action="pickerSwitch" colspan="5">2000-2090</th><th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Century"></span></th></tr></thead><tbody><tr><td colspan="7"><span data-action="selectDecade" class="decade old" data-selection="2006">1990</span><span data-action="selectDecade" class="decade" data-selection="2006">2000</span><span data-action="selectDecade" class="decade" data-selection="2016">2010</span><span data-action="selectDecade" class="decade active" data-selection="2026">2020</span><span data-action="selectDecade" class="decade" data-selection="2036">2030</span><span data-action="selectDecade" class="decade" data-selection="2046">2040</span><span data-action="selectDecade" class="decade" data-selection="2056">2050</span><span data-action="selectDecade" class="decade" data-selection="2066">2060</span><span data-action="selectDecade" class="decade" data-selection="2076">2070</span><span data-action="selectDecade" class="decade" data-selection="2086">2080</span><span data-action="selectDecade" class="decade" data-selection="2096">2090</span><span data-action="selectDecade" class="decade old" data-selection="2106">2100</span></td></tr></tbody></table></div></div></li><li class="picker-switch accordion-toggle"></li></ul></div></div> -->
+                              
+                              <?php
+                              // Get today's date
+                              $today = date("m/d/Y");
+
+                              // Handle navigation (prev/next month)
+                              $month = isset($_GET['month']) ? (int)$_GET['month'] : date("n");
+                              $year  = isset($_GET['year']) ? (int)$_GET['year'] : date("Y");
+
+                              // Normalize month/year
+                              if ($month < 1) { $month = 12; $year--; }
+                              if ($month > 12) { $month = 1; $year++; }
+
+                              // First day of the month
+                              $firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
+
+                              // Number of days in the month
+                              $daysInMonth = date("t", $firstDayOfMonth);
+
+                              // Day of week the month starts on (0=Sunday)
+                              $startDay = date("w", $firstDayOfMonth);
+
+                              // Header with navigation
+                              echo '<table class="table table-sm">';
+                              echo '<thead><tr>';
+                              echo '<th class="prev"><a href="?month='.($month-1).'&year='.$year.'">&laquo;</a></th>';
+                              echo '<th colspan="5" class="picker-switch">'.date("F Y", $firstDayOfMonth).'</th>';
+                              echo '<th class="next"><a href="?month='.($month+1).'&year='.$year.'">&raquo;</a></th>';
+                              echo '</tr><tr>';
+                              echo '<th class="dow">Su</th><th class="dow">Mo</th><th class="dow">Tu</th><th class="dow">We</th><th class="dow">Th</th><th class="dow">Fr</th><th class="dow">Sa</th>';
+                              echo '</tr></thead><tbody><tr>';
+
+                              // Empty cells before first day
+                              for ($i = 0; $i < $startDay; $i++) {
+                                  echo '<td></td>';
+                              }
+
+                              // Print days of the month
+                              for ($day = 1; $day <= $daysInMonth; $day++) {
+                                  $dateString = date("m/d/Y", mktime(0, 0, 0, $month, $day, $year));
+                                  $class = "day";
+
+                                  // Highlight today
+                                  if ($dateString === $today) {
+                                      $class .= " active today";
+                                  }
+
+                                  // Weekend styling
+                                  $weekday = date("w", mktime(0, 0, 0, $month, $day, $year));
+                                  if ($weekday == 0 || $weekday == 6) {
+                                      $class .= " weekend";
+                                  }
+
+                                  echo '<td data-action="selectDay" data-day="'.$dateString.'" class="'.$class.'">'.$day.'</td>';
+
+                                  // New row on Saturday
+                                  if ($weekday == 6 && $day != $daysInMonth) {
+                                      echo '</tr><tr>';
+                                  }
+                              }
+
+                              echo '</tr></tbody></table>';
+                              ?>
+                            </div>  
+
+                              
                               <!-- /.card-body -->
                             </div>
 

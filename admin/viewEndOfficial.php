@@ -216,12 +216,7 @@ if(isset($_REQUEST['request'])){
                   <p>List of Official</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link active">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
+ 
             </ul>
           </li>
           <li class="nav-item">
@@ -257,7 +252,7 @@ if(isset($_REQUEST['request'])){
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -312,7 +307,7 @@ if(isset($_REQUEST['request'])){
             <a href="blotterRecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
-                Blotter Record
+                Incident Record
               </p>
             </a>
           </li>
@@ -324,7 +319,22 @@ if(isset($_REQUEST['request'])){
               </p>
             </a>
           </li>
- 
+          <li class="nav-item">
+            <a href="settings.php" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="backupRestore.php" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                Backup/Restore
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -354,7 +354,7 @@ fieldset {
               <thead>
                 <tr>
                   <th class="d-none">Color</th>
-                  <th>Blotter Number</th>
+                  <th>Incident Number</th>
                   <th>Status</th>
                   <th>Remarks</th>
                   <th>Incident</th>

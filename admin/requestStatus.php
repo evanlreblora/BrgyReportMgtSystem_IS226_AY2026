@@ -18,7 +18,7 @@ try{
   $status = 'ACCEPTED';
 
 
-  $sql_update_request = "UPDATE certificate_request SET date_issued = ?, date_expired = ?, status = ?, purpose = ?,  message = ? WHERE id = ? AND residence_id = ?";
+  $sql_update_request = "UPDATE clearance_request SET date_issued = ?, date_expired = ?, status = ?, purpose = ?,  message = ? WHERE id = ? AND residence_id = ?";
   $stmt_update_request = $con->prepare($sql_update_request) or die ($con->error);
   $stmt_update_request->bind_param('sssssss',$edit_date_issued,$edit_date_expired,$status,$purpose,$message,$certificate_id,$residence_id);
   $stmt_update_request->execute();

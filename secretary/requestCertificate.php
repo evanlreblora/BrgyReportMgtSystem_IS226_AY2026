@@ -353,12 +353,7 @@ try{
                   <p>List of Official</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
+ 
             </ul>
           </li>
           <li class="nav-item">
@@ -395,7 +390,7 @@ try{
             <a href="requestCertificate.php" class="nav-link bg-indigo">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
               </p>
             </a>
           </li>
@@ -422,7 +417,7 @@ try{
             <a href="blotterRecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
-                Blotter Record
+                Incident Record
               </p>
             </a>
           </li>
@@ -457,7 +452,7 @@ try{
               <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="certificate-tabs" data-toggle="pill" href="#certificate-tabs" role="tab" aria-controls="certificate-tabs" aria-selected="true">Certificate <span class="badge badge-success bg-lime" id="total"></span></a>
+                    <a class="nav-link active" id="certificate-tabs" data-toggle="pill" href="#certificate-tabs" role="tab" aria-controls="certificate-tabs" aria-selected="true">Clearance <span class="badge badge-success bg-lime" id="total"></span></a>
                   </li>
                 </ul>
               </div>
@@ -491,7 +486,7 @@ try{
                                 <option value="">Date Request</option>
                                     <?php 
                                     $blank_request = '';
-                                    $sql_date_request = "SELECT date_request FROM certificate_request WHERE  date_request != ? GROUP BY date_request";
+                                    $sql_date_request = "SELECT date_request FROM clearance_request WHERE  date_request != ? GROUP BY date_request";
                                     $stmt_date_request = $con->prepare($sql_date_request) or die ($con->error);
                                     $stmt_date_request->bind_param('s',$blank_request);
                                     $stmt_date_request->execute();
@@ -509,7 +504,7 @@ try{
                                         <option value="">Date Issued</option>
                                               <?php 
                                               $blank_issued = '';
-                                              $sql_date_issued = "SELECT date_issued FROM certificate_request WHERE  date_issued != ? GROUP BY date_issued";
+                                              $sql_date_issued = "SELECT date_issued FROM clearance_request WHERE  date_issued != ? GROUP BY date_issued";
                                               $stmt_date_issued = $con->prepare($sql_date_issued) or die ($con->error);
                                               $stmt_date_issued->bind_param('s',$blank_issued);
                                               $stmt_date_issued->execute();
@@ -526,7 +521,7 @@ try{
                                       <option value="">Date Expired</option>
                                           <?php 
                                           $blank_expired = '';
-                                          $sql_date_expired = "SELECT date_expired FROM certificate_request WHERE date_expired != ? GROUP BY date_expired";
+                                          $sql_date_expired = "SELECT date_expired FROM clearance_request WHERE date_expired != ? GROUP BY date_expired";
                                           $stmt_date_expired = $con->prepare($sql_date_expired) or die ($con->error);
                                           $stmt_date_expired->bind_param('s',$blank_expired);
                                           $stmt_date_expired->execute();
@@ -543,7 +538,7 @@ try{
                                     <option value="">Status</option>
                                           <?php 
                                         
-                                          $sql_status = "SELECT status FROM certificate_request GROUP BY status";
+                                          $sql_status = "SELECT status FROM clearance_request GROUP BY status";
                                           $stmt_status = $con->prepare($sql_status) or die ($con->error);
                                           $stmt_status->execute();
                                           $result_status = $stmt_status->get_result();

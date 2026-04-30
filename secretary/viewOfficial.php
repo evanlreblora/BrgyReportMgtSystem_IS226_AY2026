@@ -211,12 +211,7 @@ if(isset($_REQUEST['request'])){
                   <p>List of Official</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
+ 
             </ul>
           </li>
           <li class="nav-item">
@@ -253,7 +248,7 @@ if(isset($_REQUEST['request'])){
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
               </p>
             </a>
           </li>
@@ -280,7 +275,7 @@ if(isset($_REQUEST['request'])){
             <a href="blotterRecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
-                Blotter Record
+                Incident Record
               </p>
             </a>
           </li>

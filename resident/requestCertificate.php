@@ -17,7 +17,7 @@ try{
   $status = 'PENDING';
   $date_request = $date->format("m/d/Y");
 
-  $sql_residency = "INSERT INTO `certificate_request`(`id`, `residence_id`,  `purpose`, `date_request`,`date_issued`, `date_expired`, `status`) VALUES (?,?,?,?,?,?,?)";
+  $sql_residency = "INSERT INTO `clearance_request`(`id`, `residence_id`,  `purpose`, `date_request`,`date_issued`, `date_expired`, `status`) VALUES (?,?,?,?,?,?,?)";
   $stmt = $con->prepare($sql_residency) or die ($con->error);
   $stmt->bind_param('sssssss',$uniqid,$user_id,$purpose,$date_request,$date_issued,$date_expire,$status);
   $stmt->execute();

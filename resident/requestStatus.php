@@ -15,7 +15,7 @@ try{
 
 
 
-  $sql_update_request = "UPDATE certificate_request SET purpose = ? WHERE id = ? AND residence_id = ?";
+  $sql_update_request = "UPDATE clearance_request SET purpose = ? WHERE id = ? AND residence_id = ?";
   $stmt_update_request = $con->prepare($sql_update_request) or die ($con->error);
   $stmt_update_request->bind_param('sss',$purpose,$certificate_id,$residence_id);
   $stmt_update_request->execute();

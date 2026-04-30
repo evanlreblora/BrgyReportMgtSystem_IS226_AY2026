@@ -143,7 +143,7 @@ $(document).ready(function(){
 
                   
                       $.ajax({
-                          url: 'recoverNewPassword.php',
+                          url: 'recorverNewPassword..php',
                           type: 'POST',
                           data: $(form).serialize(),
                           cache: false,

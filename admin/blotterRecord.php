@@ -356,12 +356,7 @@ try{
                   <p>List of Official</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
+ 
             </ul>
           </li>
           <li class="nav-item">
@@ -397,7 +392,7 @@ try{
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
               </p>
             </a>
           </li>
@@ -436,7 +431,7 @@ try{
             <a href="blotterRecord.php" class="nav-link bg-indigo">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
-                Blotter Record
+                Incident Record
               </p>
             </a>
           </li>
@@ -490,7 +485,7 @@ try{
            
             <div class="card">
               <div class="card-header border-transparent">
-                <h3 class="card-title">Lis of Records</h3>
+                <h3 class="card-title">List of Incident Records</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool bg-black btn-flat" id="addRecord" data-toggle="modal" data-target="#blotterRecordModal">
                     <i class="fas fa-plus"></i> New Record
@@ -503,7 +498,7 @@ try{
                   <thead>
                     <tr>
                       <th><input type="checkbox" id="select_all"></th>
-                      <th>Blotter Number</th>
+                      <th>Incident Number</th>
                       <th>Status</th>
                       <th>Remarks</th>
                       <th>Incident</th>
@@ -1183,7 +1178,7 @@ $(document).ready(function() {
               
                   Swal.fire({
                     title: '<strong class="text-success">SUCESS</strong>',
-                    text: "Deleted Blotter Record Successfully",
+                    text: "Deleted Incident Record Successfully",
                     type: 'success',
                     timer: 1500,
                     width: '400px',

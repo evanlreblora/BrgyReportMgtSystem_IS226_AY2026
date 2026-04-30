@@ -356,7 +356,7 @@ width: 100%;
                                           <option value="">Date Request</option>
                                               <?php 
                                               $blank_request = '';
-                                              $sql_date_request = "SELECT date_request FROM certificate_request WHERE residence_id = ? AND date_request != ? GROUP BY date_request";
+                                              $sql_date_request = "SELECT date_request FROM clearance_request WHERE residence_id = ? AND date_request != ? GROUP BY date_request";
                                               $stmt_date_request = $con->prepare($sql_date_request) or die ($con->error);
                                               $stmt_date_request->bind_param('ss',$user_id,$blank_request);
                                               $stmt_date_request->execute();
@@ -373,7 +373,7 @@ width: 100%;
                                                 <option value="">Date Issued</option>
                                               <?php 
                                               $blank_issued = '';
-                                              $sql_date_issued = "SELECT date_issued FROM certificate_request WHERE residence_id = ? AND date_issued != ? GROUP BY date_issued";
+                                              $sql_date_issued = "SELECT date_issued FROM clearance_request WHERE residence_id = ? AND date_issued != ? GROUP BY date_issued";
                                               $stmt_date_issued = $con->prepare($sql_date_issued) or die ($con->error);
                                               $stmt_date_issued->bind_param('ss',$user_id,$blank_issued);
                                               $stmt_date_issued->execute();
@@ -390,7 +390,7 @@ width: 100%;
                                                 <option value="">Date Expired</option>
                                               <?php 
                                               $blank_expired = '';
-                                              $sql_date_expired = "SELECT date_expired FROM certificate_request WHERE residence_id = ? AND date_expired != ? GROUP BY date_expired";
+                                              $sql_date_expired = "SELECT date_expired FROM clearance_request WHERE residence_id = ? AND date_expired != ? GROUP BY date_expired";
                                               $stmt_date_expired = $con->prepare($sql_date_expired) or die ($con->error);
                                               $stmt_date_expired->bind_param('ss',$user_id,$blank_expired);
                                               $stmt_date_expired->execute();
@@ -407,7 +407,7 @@ width: 100%;
                                                 <option value="">Status</option>
                                               <?php 
                                             
-                                              $sql_status = "SELECT status FROM certificate_request WHERE residence_id = ? GROUP BY status";
+                                              $sql_status = "SELECT status FROM clearance_request WHERE residence_id = ? GROUP BY status";
                                               $stmt_status = $con->prepare($sql_status) or die ($con->error);
                                               $stmt_status->bind_param('s',$user_id);
                                               $stmt_status->execute();

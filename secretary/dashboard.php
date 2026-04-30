@@ -82,7 +82,7 @@ try{
     $query_senior = $con->query($sql_senior) or die ($con->error);
     $count_senior = $query_senior->num_rows;
 
-    $sql_blotter ="SELECT date_added as yyyy, count(blotter_id) as gago from blotter_record group by date_added order by yyyy";
+    $sql_blotter ="SELECT date_added as yyyy, count(blotter_id) as gago from incident_record group by date_added order by yyyy";
     $result_blotter = $con->query($sql_blotter) or die ($con->error);
     $count_blotter_result = $result_blotter->num_rows;
     if($count_blotter_result > 0){
@@ -112,12 +112,12 @@ try{
     
     }
 
-    $sql_total_blotter = "SELECT blotter_id FROM blotter_record";
+    $sql_total_blotter = "SELECT blotter_id FROM incident_record";
     $stmt_total_blotter = $con->prepare($sql_total_blotter) or die ($con->error);
     $stmt_total_blotter->execute();
     $result_total_blotter = $stmt_total_blotter->get_result();
     $count_blotter = $result_total_blotter->num_rows;
-    $total_blotter_record = $count_blotter;
+    $total_incident_record = $count_blotter;
 
   $sql_count_official =  "SELECT COUNT(official_id) AS total_official FROM official_status";
   $stmt_total_official = $con->prepare($sql_count_official) or die ($con->error);
@@ -328,12 +328,7 @@ try{
                   <p>List of Official</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
+ 
             </ul>
           </li>
           <li class="nav-item">
@@ -370,7 +365,7 @@ try{
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
               </p>
             </a>
           </li>
@@ -397,7 +392,7 @@ try{
             <a href="blotterRecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
-                Blotter Record
+                Incident Record
               </p>
             </a>
           </li>
@@ -527,7 +522,7 @@ try{
                       <!-- small box -->
                       <div class="small-box bg-indigo">
                         <div class="inner">
-                          <h3><?= number_format($total_blotter_record ?? 0) ?><sup style="font-size: 20px"></sup></h3>
+                          <h3><?= number_format($total_incident_record ?? 0) ?><sup style="font-size: 20px"></sup></h3>
 
                           <p>BLOTTER</p>
                         </div>

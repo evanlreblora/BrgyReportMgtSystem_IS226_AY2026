@@ -445,9 +445,9 @@ input:checked + .slider .off{
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link ">
+            <a href="dashboard.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -476,7 +476,7 @@ input:checked + .slider .off{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="archiveResidence.php" class="nav-link">
+                <a href="archiveResidence.php" class="nav-link ">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>Inactive Residence</p>
                 </a>
@@ -484,10 +484,10 @@ input:checked + .slider .off{
             </ul>
           </li>
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link bg-indigo">
+            <a href="#" class="nav-link bg-indigo" >
               <i class="nav-icon fas fa-users-cog"></i>
               <p>
-              Barangay Staff
+              Barangay Official
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -504,18 +504,20 @@ input:checked + .slider .off{
                   <p>List of Official</p>
                 </a>
               </li>
+ 
             </ul>
           </li>
+
+          
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
               </p>
             </a>
           </li>
 
- 
           <li class="nav-item">
             <a href="blotterRecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -524,11 +526,29 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="report.php" class="nav-link">
+              <i class="nav-icon fas fa-bookmark"></i>
+              <p>
+                Reports
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                        <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
-                Users Management
+                User Management
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -545,39 +565,39 @@ input:checked + .slider .off{
                   <p>Administrator</p>
                 </a>
               </li>
+
             </ul>
           </li>
-           <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Settings
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
+
               <li class="nav-item">
-                <a href="settings.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Location Settings</p>
+                <a href="incidentInfo.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Incident Info
+                  </p>
                 </a>
-              </li>
+              </li>   
               <li class="nav-item">
                 <a href="position.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Position</p>
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>
+                    Position
+                  </p>
+                </a>
+              </li>       
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Location
+                  </p>
                 </a>
               </li>
+
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="report.php" class="nav-link">
-              <i class="nav-icon fas fa-bookmark"></i>
-              <p>
-                Reports
-              </p>
-            </a>
-          </li>
+
+ 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

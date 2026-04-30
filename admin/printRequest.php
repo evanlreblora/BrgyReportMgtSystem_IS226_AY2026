@@ -28,10 +28,10 @@ try{
       $id = $con->real_escape_string(($_REQUEST['purpose']));
 
 
-      $sql = "SELECT certificate_request.certificate_type, certificate_request.purpose, residence_information.first_name, residence_information.middle_name, residence_information.last_name,
+      $sql = "SELECT clearance_request.certificate_type, clearance_request.purpose, residence_information.first_name, residence_information.middle_name, residence_information.last_name,
       residence_information.age, residence_information.civil_status,residence_information.gender
-      FROM certificate_request LEFT JOIN residence_information ON certificate_request.residence_id = residence_information.residence_id
-      WHERE id = '$id' AND certificate_request.residence_id = '$resident_id'";
+      FROM clearance_request LEFT JOIN residence_information ON clearance_request.residence_id = residence_information.residence_id
+      WHERE id = '$id' AND clearance_request.residence_id = '$resident_id'";
       $query = $con->query($sql) or die ($con->error);
       $row = $query->fetch_assoc();
 

@@ -39,7 +39,7 @@ try{
  
  
 
-  $sql_blotter_select = "SELECT * FROM blotter_complainant WHERE blotter_main = ?";
+  $sql_blotter_select = "SELECT * FROM incident_complainant WHERE blotter_main = ?";
   $stmt_blotter_select = $con->prepare($sql_blotter_select) or die ($con->error);
   $stmt_blotter_select->bind_param('s',$blotter_id);
   $stmt_blotter_select->execute();
@@ -65,7 +65,7 @@ try{
     if(!in_array($insertBlotterValue,$complainant_array)){
       
 
-      $sql_blotter_insert = "INSERT INTO blotter_complainant (`id`,`blotter_main`,`complainant_id`) VALUES (?,?,?)";
+      $sql_blotter_insert = "INSERT INTO incident_complainant (`id`,`blotter_main`,`complainant_id`) VALUES (?,?,?)";
       $stmt_blotter_insert = $con->prepare($sql_blotter_insert) or die ($con->error);
       $stmt_blotter_insert->bind_param('sss',$id,$blotter_id,$insertBlotterValue);
       $stmt_blotter_insert->execute();
@@ -77,7 +77,7 @@ try{
   foreach($complainant_array as $fetch_blotter_select){
     if(!in_array($fetch_blotter_select, $complainant_blotter_id)){
      
-      $sql_blotter_delete = "DELETE FROM blotter_complainant WHERE blotter_main = ? AND complainant_id = ?";
+      $sql_blotter_delete = "DELETE FROM incident_complainant WHERE blotter_main = ? AND complainant_id = ?";
       $stmt_blotter_delete = $con->prepare($sql_blotter_delete) or die ($con->error);
       $stmt_blotter_delete->bind_param('ss',$blotter_id,$fetch_blotter_select);
       $stmt_blotter_delete->execute();
@@ -88,7 +88,7 @@ try{
 
 
   
-  $sql_blotter_select_person = "SELECT * FROM blotter_status WHERE blotter_main = ?";
+  $sql_blotter_select_person = "SELECT * FROM incident_status WHERE blotter_main = ?";
   $stmt_blotter_select_person = $con->prepare($sql_blotter_select_person) or die ($con->error);
   $stmt_blotter_select_person->bind_param('s',$blotter_id);
   $stmt_blotter_select_person->execute();
@@ -111,7 +111,7 @@ try{
     if(!in_array($insertBlotterValuePerson,$person_array)){
       
 
-      $sql_blotter_insert_person = "INSERT INTO blotter_status (`blotter_id`,`blotter_main`,`person_id`) VALUES (?,?,?)";
+      $sql_blotter_insert_person = "INSERT INTO incident_status (`blotter_id`,`blotter_main`,`person_id`) VALUES (?,?,?)";
       $stmt_blotter_insert_person = $con->prepare($sql_blotter_insert_person) or die ($con->error);
       $stmt_blotter_insert_person->bind_param('sss',$ids,$blotter_id,$insertBlotterValuePerson);
       $stmt_blotter_insert_person->execute();
@@ -123,7 +123,7 @@ try{
   foreach($person_array as $fetch_blotter_select_person){
     if(!in_array($fetch_blotter_select_person, $person_blotter_id)){
      
-      $sql_blotter_delete_person = "DELETE FROM blotter_status WHERE blotter_main = ? AND person_id = ?";
+      $sql_blotter_delete_person = "DELETE FROM incident_status WHERE blotter_main = ? AND person_id = ?";
       $stmt_blotter_delete_person = $con->prepare($sql_blotter_delete_person) or die ($con->error);
       $stmt_blotter_delete_person->bind_param('ss',$blotter_id,$fetch_blotter_select_person);
       $stmt_blotter_delete_person->execute();
@@ -134,7 +134,7 @@ try{
  
  
 
-  $sql_update_record = "UPDATE `blotter_record` SET 
+  $sql_update_record = "UPDATE `incident_record` SET 
   `complainant_not_residence`= ?,
   `statement`= ? ,
   `respodent`= ?,

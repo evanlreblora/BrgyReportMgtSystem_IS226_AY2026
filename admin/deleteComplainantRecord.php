@@ -12,7 +12,7 @@ try{
     $complainant_id = $con->real_escape_string($_REQUEST['complainant_id']);
     $blank = '';
 
-    $sql_delete_complainant_record = "UPDATE blotter_complainant SET complainant_id = ? WHERE blotter_main = ? AND  complainant_id = ?";
+    $sql_delete_complainant_record = "UPDATE incident_complainant SET complainant_id = ? WHERE blotter_main = ? AND  complainant_id = ?";
     $stmt_delete_complainant_record = $con->prepare($sql_delete_complainant_record) or die ($con->error);
     $stmt_delete_complainant_record->bind_param('sss',$blank,$blotter_id,$complainant_id);
     $stmt_delete_complainant_record->execute();

@@ -213,12 +213,7 @@ try{
                   <p>List of Official</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="officialEndTerm.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Official End Term</p>
-                </a>
-              </li>
+ 
             </ul>
           </li>
           <li class="nav-item menu-open">
@@ -254,7 +249,7 @@ try{
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
-                Certificate
+                Clearance
               </p>
             </a>
           </li>
@@ -293,7 +288,7 @@ try{
             <a href="blotterRecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
-                Blotter Record
+                Incident Record
               </p>
             </a>
           </li>
@@ -499,9 +494,10 @@ try{
                               <input type="text" class="form-control" id="add_barangay" name="add_barangay" >
                             </div>
                           </div>
+                          
                           <div class="col-sm-6">
                             <div class="form-group ">
-                              <label >Zone Code</label>
+                              <label >Zone</label>
                               <select name="add_zone" id="add_zone" class="form-control">
                                 <option value=""></option>
                                 <option value="1">1</option>
@@ -512,6 +508,10 @@ try{
                               </select>
                             </div>
                           </div>
+
+
+
+
                           <div class="col-sm-6">
                             <div class="form-group">
                               <label>House Number</label>
@@ -666,7 +666,10 @@ try{
               data: new FormData(form),
               processData: false,
               contentType: false,
-              success:function(data){
+              success:function(data)
+               {
+                console.log(data);
+                debugger;            
                 Swal.fire({
                   title: '<strong class="text-success">SUCCESS</strong>',
                   type: 'success',
@@ -677,7 +680,8 @@ try{
                   showConfirmButton: false,
                   timer: 2000,
                 }).then(()=>{
-                  window.location.reload();
+                  // window.location.reload();
+                  window.location.href = "allresidence.php";
                 })
               }
             }).fail(function(){

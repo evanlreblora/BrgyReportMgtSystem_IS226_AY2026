@@ -246,7 +246,7 @@ try{
             <a href="myRecord.php" class="nav-link">
               <i class="nav-icon fas fa-server"></i>            
               <p>
-                Blotter Record
+                Incident Record
               </p>
             </a>
           </li>

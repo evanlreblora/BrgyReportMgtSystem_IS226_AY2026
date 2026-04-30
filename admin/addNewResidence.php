@@ -20,10 +20,11 @@ if(isset($_POST['add_pwd_info'])){
   $add_pwd_check = '';
 }
 
-
+$add_zone = $con->real_escape_string($_POST['add_zone']);
 $add_pwd = $con->real_escape_string($_POST['add_pwd']);
 $add_single_parent = $con->real_escape_string($_POST['add_single_parent']);
 $add_voters = $con->real_escape_string($_POST['add_voters']);
+
 $add_first_name = $con->real_escape_string($_POST['add_first_name']);
 $add_middle_name = $con->real_escape_string($_POST['add_middle_name']);
 $add_last_name = $con->real_escape_string($_POST['add_last_name']);
@@ -40,7 +41,7 @@ $add_birth_place = $con->real_escape_string($_POST['add_birth_place']);
 $add_municipality = $con->real_escape_string($_POST['add_municipality']);
 $add_zip = $con->real_escape_string($_POST['add_zip']);
 $add_barangay = $con->real_escape_string($_POST['add_barangay']);
-$add_zone = $con->real_escape_string($_POST['add_zone']);
+
 $add_house_number = $con->real_escape_string($_POST['add_house_number']);
 $add_street = $con->real_escape_string($_POST['add_street']);
 $add_fathers_name = $con->real_escape_string($_POST['add_fathers_name']);
@@ -82,9 +83,9 @@ if($add_age_date == '0'){
 
 
 
-$sql = "INSERT INTO `residence_information`( `residence_id`,`first_name`, `middle_name`, `last_name`, `age`, `suffix`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`,`image`,`image_path`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$sql = "INSERT INTO `residence_information`( `residence_id`,`first_name`, `middle_name`, `last_name`, `age`, `suffix`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`,`zone_id`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`,`image`,`image_path`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql) or die ($con->error);
-$stmt->bind_param('sssssssssssssssssssssssss',
+$stmt->bind_param('sssssssssssssssssssssssssss',
   $number,
   $add_first_name,
   $add_middle_name,
@@ -103,6 +104,7 @@ $stmt->bind_param('sssssssssssssssssssssssss',
   $add_municipality,
   $add_zip,
   $add_barangay,
+  $add_zone,
   $add_house_number,
   $add_street,
   $add_fathers_name,
@@ -121,9 +123,9 @@ $is_approved = '';
 $wra = '';
 $fourps = '';
 $precint_id = '';
-$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`,`zone_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`senior`,`single_parent`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$add_zone,$is_approved,$wra,$fourps,$precint_id,$date_added);
+$stmt_residence_status->bind_param('sssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$senior,$add_single_parent,$is_approved,$wra,$fourps,$precint_id,$date_added);
 if(!$stmt_residence_status->execute()){
   die(json_encode(['error' => $stmt_residence_status->error]));
 }

@@ -37,7 +37,7 @@ try{
     
 
     $status_reject_request = "REJECTED";
-    $sql_reject_request = "UPDATE certificate_request SET status = ?, message = ? WHERE id = ? AND residence_id = ?";
+    $sql_reject_request = "UPDATE clearance_request SET status = ?, message = ? WHERE id = ? AND residence_id = ?";
     $stmt_reject_request = $con->prepare($sql_reject_request) or die ($con->error);
     $stmt_reject_request->bind_param('ssss',$status_reject_request,$message,$certificate_id,$residence_id);
     $stmt_reject_request->execute();

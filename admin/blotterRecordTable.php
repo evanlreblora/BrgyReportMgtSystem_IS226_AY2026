@@ -9,7 +9,7 @@ try{
 
 
 
-  $sql_blooter_check = "SELECT * FROM blotter_record ";
+  $sql_blooter_check = "SELECT * FROM incident_record ";
   if(isset($_REQUEST['search']['value'])){
     $sql_blooter_check .= " WHERE status LIKE '%" . $_REQUEST['search']['value'] . "%' ";
     $sql_blooter_check .= " OR blotter_id LIKE '%" . $_REQUEST['search']['value'] . "%' ";

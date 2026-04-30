@@ -12,10 +12,10 @@ try{
     $residence_id = $con->real_escape_string($_REQUEST['residence_id']);
     $certificate_id = $con->real_escape_string($_REQUEST['certificate_id']);
 
-    $sql_request_status = "SELECT certificate_request.*, residence_information.first_name, residence_information.middle_name, residence_information.last_name,
+    $sql_request_status = "SELECT clearance_request.*, residence_information.first_name, residence_information.middle_name, residence_information.last_name,
     residence_information.image, residence_information.image_path, residence_information.address,  residence_information.gender, residence_information.age,  residence_information.contact_number
-    FROM certificate_request INNER JOIN residence_information ON certificate_request.residence_id = residence_information.residence_id WHERE certificate_request.id = ?
-    AND certificate_request.residence_id = ?";
+    FROM clearance_request INNER JOIN residence_information ON clearance_request.residence_id = residence_information.residence_id WHERE clearance_request.id = ?
+    AND clearance_request.residence_id = ?";
     $stmt_request_status = $con->prepare($sql_request_status) or die ($con->error);
     $stmt_request_status->bind_param('ss',$certificate_id,$residence_id);
     $stmt_request_status->execute();

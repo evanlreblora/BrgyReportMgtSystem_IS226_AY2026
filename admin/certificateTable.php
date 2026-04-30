@@ -40,10 +40,10 @@ try{
 
 
     
-    $sql_residencey = "SELECT certificate_request.*, residence_information.first_name, residence_information.middle_name,residence_information.last_name,residence_information.residence_id
-    FROM certificate_request LEFT JOIN residence_information ON  certificate_request.residence_id = residence_information.residence_id WHERE 1=1" .$where; 
+    $sql_residencey = "SELECT clearance_request.*, residence_information.first_name, residence_information.middle_name,residence_information.last_name,residence_information.residence_id
+    FROM clearance_request LEFT JOIN residence_information ON  clearance_request.residence_id = residence_information.residence_id WHERE 1=1" .$where; 
     if(isset($_REQUEST['search']['value'])){
-      $sql_residencey .= " AND (certificate_request.residence_id LIKE '%" .$_REQUEST['search']['value']. "%' ";
+      $sql_residencey .= " AND (clearance_request.residence_id LIKE '%" .$_REQUEST['search']['value']. "%' ";
       $sql_residencey .= " OR last_name LIKE '%" .$_REQUEST['search']['value']. "%' ";
       $sql_residencey .= " OR purpose LIKE '%" .$_REQUEST['search']['value']. "%' ";
       $sql_residencey .= " OR first_name LIKE '%" .$_REQUEST['search']['value']. "%' )";

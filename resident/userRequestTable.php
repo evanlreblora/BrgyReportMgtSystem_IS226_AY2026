@@ -15,19 +15,19 @@ try{
 
   $whereClause = [];
   if(!empty($date_request)){
-    $whereClause[] = "certificate_request.date_request='$date_request'";
+    $whereClause[] = "clearance_request.date_request='$date_request'";
   }
 
   if(!empty($date_issued)){
-    $whereClause[] = "certificate_request.date_issued='$date_issued'";
+    $whereClause[] = "clearance_request.date_issued='$date_issued'";
   }
 
   if(!empty($date_expired)){
-    $whereClause[] = "certificate_request.date_expired='$date_expired'";
+    $whereClause[] = "clearance_request.date_expired='$date_expired'";
   }
 
   if(!empty($status)){
-    $whereClause[] = "certificate_request.status='$status'";
+    $whereClause[] = "clearance_request.status='$status'";
   }
 
   $where = '';
@@ -39,7 +39,7 @@ try{
 
 
   
-  $sql_user_request = "SELECT * FROM certificate_request WHERE residence_id = '$user_id'".$where;
+  $sql_user_request = "SELECT * FROM clearance_request WHERE residence_id = '$user_id'".$where;
   if(isset($_REQUEST['search']['value'])){
     $sql_user_request .= "AND (purpose LIKE '%" . $_REQUEST['search']['value']. "%' ";
     $sql_user_request .= "OR purpose LIKE '%" . $_REQUEST['search']['value']. "%' )";

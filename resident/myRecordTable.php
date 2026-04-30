@@ -7,9 +7,9 @@ try{
 
   $edit_residence_id = $con->real_escape_string($_REQUEST['edit_residence_id']);
 
-  $sql_blooter_check = "SELECT blotter_record.*, blotter_status.*, blotter_complainant.*, blotter_record.blotter_id AS gago FROM `blotter_record` 
-  INNER JOIN blotter_complainant ON blotter_record.blotter_id = blotter_complainant.blotter_main 
-  INNER JOIN blotter_status ON blotter_record.blotter_id = blotter_status.blotter_main WHERE person_id = ? OR complainant_id =  ? GROUP BY blotter_record.blotter_id";
+  $sql_blooter_check = "SELECT incident_record.*, incident_status.*, incident_complainant.*, incident_record.blotter_id AS gago FROM `incident_record` 
+  INNER JOIN incident_complainant ON incident_record.blotter_id = incident_complainant.blotter_main 
+  INNER JOIN incident_status ON incident_record.blotter_id = incident_status.blotter_main WHERE person_id = ? OR complainant_id =  ? GROUP BY incident_record.blotter_id";
   $query_blotter_check = $con->prepare($sql_blooter_check) or die ($con->error);
   $query_blotter_check->bind_param('ss',$edit_residence_id,$edit_residence_id);
   $query_blotter_check->execute();
