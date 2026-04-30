@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Apr 30, 2026 at 06:50 AM
+-- Generation Time: Apr 30, 2026 at 10:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -175,7 +175,10 @@ INSERT INTO `activity_log` (`id`, `message`, `date`, `status`) VALUES
 (1383, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM ACTIVE TO INACTIVE', '30-4-2026 6:44 AM', 'update'),
 (1384, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM INACTIVE TO ACTIVE', '30-4-2026 6:44 AM', 'update'),
 (1385, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM ACTIVE TO INACTIVE', '30-4-2026 6:44 AM', 'update'),
-(1386, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM INACTIVE TO ACTIVE', '30-4-2026 6:49 AM', 'update');
+(1386, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM INACTIVE TO ACTIVE', '30-4-2026 6:49 AM', 'update'),
+(1387, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM ACTIVE TO INACTIVE', '30-4-2026 9:59 AM', 'update'),
+(1388, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM INACTIVE TO ACTIVE', '30-4-2026 9:59 AM', 'update'),
+(1389, 'ADMIN: UPDATED RESIDENT LAST NAME-  3924402791161 |  FROM sdasdasd TO sdasdasdvgv', '30-4-2026 10:00 AM', 'update');
 
 -- --------------------------------------------------------
 
@@ -356,6 +359,7 @@ CREATE TABLE `incident_complainant` (
 
 INSERT INTO `incident_complainant` (`id`, `blotter_main`, `complainant_id`) VALUES
 ('1207845377307', '2147088204548172', '24956588345933'),
+('132281347269f31027a8daa926113d2670a6a921e7e125cf3b44c35', '<br />\r\n<b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\\xampp-8\\htdocs\\brgyreportmgtsystem\\admin\\viewRecordsModal.php</b> on line <b>53</b><br />\r\n', '20260000089'),
 ('158658479884887', '2518801136852798', '24301084988720'),
 ('212253843699436', '2658237517722424', '24301084988720');
 
@@ -407,7 +411,7 @@ INSERT INTO `incident_info` (`incident_id`, `incident_code`, `incident_type`, `i
 (8, 'INC0008', 'Illegal Gambling', 'Illegal Gambling', 'Location, Time, Complaint details', 'Visit on the location, evidence check', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (9, 'INC0009', 'Public Disturbance', 'Public Disturbance', 'Location, Time, Complaint details', 'Evidence and visit on location', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (10, 'INC0010', 'Health Related Incident', 'Health Related Incident', 'Get information of the disease, verified by local health center', 'check list from health center', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
-(11, 'INC0011', 'Others', 'Others', 'Depending on the report', '', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
+(11, 'INC0011', 'Others', 'Others', 'Depending on the report', '', 'INACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (111, 'INC0001', 'Fire Outbreak', 'Fire Outbreakfas232344', 'Record for Date', 'nonne', 'ACTIVE', '2026-04-27 16:17:39.000000', 'Admin', '', ''),
 (511, 'hfhsdfh', '', 'agasa', '', '', 'ACTIVE', '0000-00-00 00:00:00.000000', '', '', ''),
 (8111, 'gasfas', '', 'safasf', '', '', 'ACTIVE', '0000-00-00 00:00:00.000000', '', '', '');
@@ -661,6 +665,7 @@ CREATE TABLE `incident_status` (
 
 INSERT INTO `incident_status` (`blotter_id`, `blotter_main`, `person_id`) VALUES
 ('194939222083180', '2147088204548172', ''),
+('1bfb13ea3477f7d64f10bac5306ab79330487980169f31027a93fc', '<br />\r\n<b>Warning</b>:  Trying to access array offset on value of type null in <b>C:\\xampp-8\\htdocs\\brgyreportmgtsystem\\admin\\viewRecordsModal.php</b> on line <b>53</b><br />\r\n', '20260000020'),
 ('369877915252804', '2518801136852798', '24956588345933'),
 ('390284140912512', '2658237517722424', '24956588345933'),
 ('INCTR00001', '', ''),
@@ -927,14 +932,14 @@ CREATE TABLE `official_status` (
 --
 
 INSERT INTO `official_status` (`a_i`, `official_id`, `position`, `purok_id`, `senior`, `term_from`, `term_to`, `pwd`, `pwd_info`, `status`, `voters`, `single_parent`, `date_added`, `date_undeleted`) VALUES
-(61, 'OFC100001050', '811981911875128801142022163118246', '', 'NO', '2026-03-03', '2026-04-01', 'NO', 'INACTIVE', 'ACTIVE', 'YES', 'NO', '03/23/2026 01:02 PM', 'none'),
-(62, 'OFC100001050', '619131249471207208162022141229307', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'INACTIVE', 'ACTIVE', 'NO', '4/12/26 14:22', 'none', ''),
-(63, 'OFC100001051', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'INACTIVE', 'ACTIVE', 'NO', '4/12/26 14:22', 'none', ''),
-(64, 'OFC100001052', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'INACTIVE', 'ACTIVE', 'NO', '4/12/26 14:22', 'none', ''),
-(65, 'OFC100001053', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'INACTIVE', 'ACTIVE', 'NO', '4/12/26 14:22', 'none', ''),
-(66, 'OFC100001054', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'INACTIVE', 'ACTIVE', 'NO', '4/12/26 14:22', 'none', ''),
-(67, 'OFC100001055', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'INACTIVE', 'ACTIVE', 'NO', '4/12/26 14:22', 'none', ''),
-(68, 'OFC100001056', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'INACTIVE', 'ACTIVE', 'NO', '4/12/26 14:22', 'none', '');
+(61, 'OFC100001050', '811981911875128801142022163118246', '', 'NO', '2026-03-03', '2026-04-01', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '03/23/2026 01:02 PM', 'none'),
+(62, 'OFC100001050', '619131249471207208162022141229307', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '4/12/26 14:22', ''),
+(63, 'OFC100001051', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '4/12/26 14:22', ''),
+(64, 'OFC100001052', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '4/12/26 14:22', ''),
+(65, 'OFC100001053', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '4/12/26 14:22', ''),
+(66, 'OFC100001054', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '4/12/26 14:22', ''),
+(67, 'OFC100001055', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '4/12/26 14:22', ''),
+(68, 'OFC100001056', '268778674891281501142022025704271', '', 'NO', '5/1/2019', '4/30/2020', 'NO', 'NO', 'ACTIVE', 'YES', 'NO', '4/12/26 14:22', '');
 
 -- --------------------------------------------------------
 
@@ -1014,17 +1019,17 @@ CREATE TABLE `residence_information` (
 
 INSERT INTO `residence_information` (`a_i`, `residence_id`, `first_name`, `middle_name`, `last_name`, `age`, `suffix`, `alias`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`, `zone_id`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`, `occupation`, `employer_name`, `family_relation`, `national_number`, `sss_number`, `tin_number`, `gsis_number`, `pagibig_number`, `philhealth_number`, `bloodtype`, `image`, `image_path`) VALUES
 (182, '24956588345933', 'Evan', 'Llegado', 'Reblora', '49', '', '', 'Male', 'Married', 'catholic', 'filipino', '12312312312', 'evan.reblora@gmail.com', '6791', '1976-11-11', 'Los banos', 'Los banos', '4030', 'san antonio', '', '6791', 'bangkal', 'asdasd', 'asdasd', 'asdas', '123123123', '', '', '', '', '', '', '', '', '', '', '', ''),
-(183, '24301084988720', 'Zoey Alyana', 'q', 'Reblora', '', '', '', 'Female', 'Single', 'catholic', 'fil', '12312312312', 'evan.reblora@gmail.com', '6791', '2026-03-06', 'fasfa', 'gadgasdg', '21321', 'asdasd', '', 'asdasda', 'asdasd', 'asfasfas', 'fasfas', 'fasfasf', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(184, '7845627397547', 'Evanlhjkl', '', 'Reblora', '', 'hjklh', '', 'Male', 'Married', 'hjklhjk', 'lhjklhj', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-29', 'uyjkljklhjkl', 'hkjlhjkl', '856858', 'klhjklhjk', '1', '123123', '7', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(185, '41188505331447', 'Evanlhjkl', 'asdasd', 'Reblora', '', 'asdasd', '', 'Male', 'Single', 'asdasd', 'sdasda', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-01', 'asdasd', 'asdasd', '123123', 'asda', '2', 'dasdasd', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(186, '36445072116160', 'sdasdasdasd', 'adsasd', 'sadasd', '', 'asdasd', '', 'Female', 'Married', 'asdasd', 'sadasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-29', 'asdasd', 'asdasd', '123123', 'asdas', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(187, '42667846377806', 'sdasdasdasd', 'adsasd', 'sadasd', '', 'asdasd', '', 'Female', 'Married', 'asdasd', 'sadasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-29', 'asdasd', 'asdasd', '123123', 'asdas', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(188, '34671135097236', 'asdasdasfasasfg', 'adsasd', 'sadasd', '', '', '', 'Male', 'Married', 'sdasd', 'asdasdasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-03-31', 'asdasd', 'sadasd', '123123', 'asdasd', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(189, '16108157999844', 'asdasdasfasasfg', 'adsasd', 'sadasd', '', '', '', 'Male', 'Married', 'sdasd', 'asdasdasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-03-31', 'asdasd', 'sadasd', '123123', 'asdasd', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(190, '3924402791161', 'asdasdasd', 'asdasdasdasda', 'sdasdasd', '', 'asdasdasd', '', 'Female', 'Single', 'asdasdasd', 'asdasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-15', 'asdasdasd', 'asdasd', '123123', 'asdasd', '2', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(183, '24301084988720', 'Zoey Alyana', 'q', 'Reblora', '23', '', '', 'Female', 'Single', 'catholic', 'fil', '12312312312', 'evan.reblora@gmail.com', '6791', '2026-03-06', 'fasfa', 'gadgasdg', '21321', 'asdasd', '', 'asdasda', 'asdasd', 'asfasfas', 'fasfas', 'fasfasf', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(184, '7845627397547', 'Evanlhjkl', '', 'Reblora', '44', 'hjklh', '', 'Male', 'Married', 'hjklhjk', 'lhjklhj', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-29', 'uyjkljklhjkl', 'hkjlhjkl', '856858', 'klhjklhjk', '1', '123123', '7', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(185, '41188505331447', 'Evanlhjkl', 'asdasd', 'Reblora', '23', 'asdasd', '', 'Male', 'Single', 'asdasd', 'sdasda', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-01', 'asdasd', 'asdasd', '123123', 'asda', '2', 'dasdasd', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(186, '36445072116160', 'sdasdasdasd', 'adsasd', 'sadasd', '53', 'asdasd', '', 'Female', 'Married', 'asdasd', 'sadasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-29', 'asdasd', 'asdasd', '123123', 'asdas', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(187, '42667846377806', 'sdasdasdasd', 'adsasd', 'sadasd', '22', 'asdasd', '', 'Female', 'Married', 'asdasd', 'sadasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-29', 'asdasd', 'asdasd', '123123', 'asdas', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(188, '34671135097236', 'asdasdasfasasfg', 'adsasd', 'sadasd', '11', '', '', 'Male', 'Married', 'sdasd', 'asdasdasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-03-31', 'asdasd', 'sadasd', '123123', 'asdasd', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(189, '16108157999844', 'asdasdasfasasfg', 'adsasd', 'sadasd', '36', '', '', 'Male', 'Married', 'sdasd', 'asdasdasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-03-31', 'asdasd', 'sadasd', '123123', 'asdasd', '3', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(190, '3924402791161', 'asdasdasd', 'asdasdasdasda', 'sdasdasdvgv', '0', 'asdasdasd', '', 'Female', 'Single', 'asdasdasd', 'asdasd', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-15', ' asdasdasd', 'asdasd', '123123', 'asdasd', '2', '123123', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (291, '20260000001', 'Juan', 'Delos Reyes', 'Cruz', '28', 'Jr.', 'Jojo', 'Male', 'Single', 'Catholic', 'Filipino', '9171234567', 'juan.cruz@example.com', '12 Rizal St., Sampaloc, Manila', '05/12/98', 'Manila', 'Manila', '1008', 'Sampaloc', '10001', 'none', 'Rizal Street', 'Manuel Cruz', 'Teresa Delos Reyes', '—', '—', 'Teacher', 'Manila High', 'Son', 'N-000001', 'SSS-000001', 'TIN-000001', 'GSIS-000001', 'PAGIBIG-000001', 'PH-000001', 'O+', '', ''),
 (292, '20260000001', 'Juan', 'Delos Reyes', 'Cruz', '28', 'Jr.', 'Jojo', 'Male', 'Single', 'Catholic', 'Filipino', '9171234567', 'juan.cruz@example.com', '12 Rizal St., Sampaloc, Manila', '05/12/98', 'Manila', 'Manila', '1008', 'Sampaloc', '10001', 'none', 'Rizal Street', 'Manuel Cruz', 'Teresa Delos Reyes', '—', '—', 'Teacher', 'Manila High', 'Son', 'N-000001', 'SSS-000001', 'TIN-000001', 'GSIS-000001', 'PAGIBIG-000001', 'PH-000001', 'O+', '', ''),
-(293, '20260000001', 'Juan', 'Delos Reyes', 'Cruz', '28', 'Jr.', 'Jojo', 'Male', 'Single', 'Catholic', 'Filipino', '9171234567', 'juan.cruz@example.com', '12 Rizal St., Sampaloc, Manila', '05/12/98', 'Manila', 'Manila', '1008', 'Sampaloc', '10001', 'none', 'Rizal Street', 'Manuel Cruz', 'Teresa Delos Reyes', '—', '—', 'Teacher', 'Manila High', 'Son', 'N-000001', 'SSS-000001', 'TIN-000001', 'GSIS-000001', 'PAGIBIG-000001', 'PH-000001', 'O+', '', ''),
+(293, '20260000001', 'Juana', 'Delos Reyes', 'Cruz', '28', 'Jr.', 'Jojo', 'Male', 'Single', 'Catholic', 'Filipino', '9171234567', 'juan.cruz@example.com', '12 Rizal St., Sampaloc, Manila', '05/12/98', 'Manila', 'Manila', '1008', 'Sampaloc', '10001', 'none', 'Rizal Street', 'Manuel Cruz', 'Teresa Delos Reyes', '—', '—', 'Teacher', 'Manila High', 'Son', 'N-000001', 'SSS-000001', 'TIN-000001', 'GSIS-000001', 'PAGIBIG-000001', 'PH-000001', 'O+', '', ''),
 (294, '20260000002', 'Maria', 'Lourdes', 'Santos', '34', '', 'Mai', 'Female', 'Married', 'Catholic', 'Filipino', '9172345678', 'maria.santos@example.com', '45 Mabini St., Ermita, Manila', '07/20/92', 'Manila', 'Manila', '1000', 'Ermita', '10001', 'none', 'Mabini Street', 'Jose Santos', 'Clara Lourdes', '—', '—', 'Nurse', 'PGH Hospital', 'Daughter', 'N-000002', 'SSS-000002', 'TIN-000002', 'GSIS-000002', 'PAGIBIG-000002', 'PH-000002', 'A+', '', ''),
 (295, '20260000003', 'Jose', 'Mariano', 'Reyes', '45', 'Sr.', 'Pepe', 'Male', 'Married', 'Muslim', 'Filipino', '9173456789', 'jose.reyes@example.com', '78 Quezon Ave., Quiapo, Manila', '03/15/80', 'Manila', 'Manila', '1001', 'Quiapo', '10002', 'none', 'Quezon Avenue', 'Ramon Reyes', 'Lucia Mariano', '—', '—', 'Farmer', 'Self‑employed', 'Son', 'N-000003', 'SSS-000003', 'TIN-000003', 'GSIS-000003', 'PAGIBIG-000003', 'PH-000003', 'B+', '', ''),
 (296, '20260000004', 'Ana', 'Gabriela', 'Lopez', '22', 'III', 'Annie', 'Female', 'Single', 'Baptist', 'Filipino', '9174567890', 'ana.lopez@example.com', '33 Bonifacio Rd., Tondo, Manila', '09/10/04', 'Manila', 'Manila', '1012', 'Tondo', '10003', 'none', 'Bonifacio Road', 'Carlos Lopez', 'Elena Gabriela', 'Maria Lopez', '9171230004', 'Student', 'Bicol Univ', 'Daughter', 'N-000004', 'SSS-000004', 'TIN-000004', 'GSIS-000004', 'PAGIBIG-000004', 'PH-000004', 'AB+', '', ''),
@@ -1302,7 +1307,7 @@ INSERT INTO `users` (`a_i`, `id`, `first_name`, `middle_name`, `last_name`, `use
 (210, '42667846377806', 'sdasdasdasd', 'adsasd', 'sadasd', '42667846377806', '04292026205541194', 'resident', '09566643437', '', ''),
 (211, '34671135097236', 'asdasdasfasasfg', 'adsasd', 'sadasd', '34671135097236', '04292026205609103', 'resident', '09566643437', '', ''),
 (212, '16108157999844', 'asdasdasfasasfg', 'adsasd', 'sadasd', '16108157999844', '04292026205623990', 'resident', '09566643437', '', ''),
-(213, '3924402791161', 'asdasdasd', 'asdasdasdasda', 'sdasdasd', '3924402791161', '04292026205653102', 'resident', '09566643437', '', '');
+(213, '3924402791161', 'asdasdasd', 'asdasdasdasda', 'sdasdasdvgv', '3924402791161', '04292026205653102', 'resident', '09566643437', '', '');
 
 -- --------------------------------------------------------
 
@@ -1466,7 +1471,7 @@ ALTER TABLE `zone_info`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1387;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1390;
 
 --
 -- AUTO_INCREMENT for table `backup`
