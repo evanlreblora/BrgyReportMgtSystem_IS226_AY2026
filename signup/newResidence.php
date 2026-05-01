@@ -121,38 +121,9 @@ if($add_age_date == '0'){
 
 
 
-$sql = "INSERT INTO `residence_information`(
-  `residence_id`, 
-  `first_name`, 
-  `middle_name`, 
-  `last_name`, 
-  `age`, 
-  `suffix`, 
-  `gender`, 
-  `civil_status`, 
-  `religion`, 
-  `nationality`, 
-  `contact_number`, 
-  `email_address`, 
-  `address`, 
-  `birth_date`, 
-  `birth_place`, 
-  `municipality`, 
-  `zip`, 
-  `barangay`, 
-  `zone_id`, 
-  `house_number`, 
-  `street`, 
-  `fathers_name`, 
-  `mothers_name`, 
-  `guardian`, 
-  `guardian_contact`,
-  `image`,
-  `image_path`
-  ) 
-VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$sql = "INSERT INTO `residence_information`( `residence_id`,`first_name`, `middle_name`, `last_name`, `age`, `suffix`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`,`zone_id`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`,`image`,`image_path`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql) or die ($con->error);
-$stmt->bind_param('sssssssssssssssssssssssss',
+$stmt->bind_param('sssssssssssssssssssssssssss',
   $number,
   $add_first_name,
   $add_middle_name,
@@ -190,9 +161,9 @@ $is_approved = '';
 $wra = '';
 $fourps = '';
 $precint_id = '';
-$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`single_parent`,`senior`,`purok_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$sql_residence_status = "INSERT INTO `residence_status` (`residence_id`, `status`, `voters`,`archive`,`pwd`,`pwd_info`,`single_parent`,`senior`,`zone_id`,`is_approved`,`wra`,`4ps`,`precint_id`, `date_added`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt_residence_status = $con->prepare($sql_residence_status) or die ($con->error);
-$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$add_single_parent,$senior,$add_purok,$is_approved,$wra,$fourps,$precint_id,$date_added);
+$stmt_residence_status->bind_param('ssssssssssssss',$number,$add_status,$add_voters,$archive,$add_pwd,$add_pwd_check,$add_single_parent,$senior,$add_zone,$is_approved,$wra,$fourps,$precint_id,$date_added);
 if(!$stmt_residence_status->execute()){
   die(json_encode(['error' => $stmt_residence_status->error]));
 }

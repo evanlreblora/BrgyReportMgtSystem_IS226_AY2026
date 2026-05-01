@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3307
--- Generation Time: Apr 30, 2026 at 10:24 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost
+-- Generation Time: May 01, 2026 at 10:42 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -178,7 +178,35 @@ INSERT INTO `activity_log` (`id`, `message`, `date`, `status`) VALUES
 (1386, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM INACTIVE TO ACTIVE', '30-4-2026 6:49 AM', 'update'),
 (1387, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM ACTIVE TO INACTIVE', '30-4-2026 9:59 AM', 'update'),
 (1388, 'ADMIN: UPDATED OFFICIAL STATUS  -  OFC100001050 |  FROM INACTIVE TO ACTIVE', '30-4-2026 9:59 AM', 'update'),
-(1389, 'ADMIN: UPDATED RESIDENT LAST NAME-  3924402791161 |  FROM sdasdasd TO sdasdasdvgv', '30-4-2026 10:00 AM', 'update');
+(1389, 'ADMIN: UPDATED RESIDENT LAST NAME-  3924402791161 |  FROM sdasdasd TO sdasdasdvgv', '30-4-2026 10:00 AM', 'update'),
+(1390, 'ADMIN: Admin Admin | LOGOUT', '1-5-2026 3:16 AM', 'logout'),
+(1391, 'RESIDENT: Evan Reblora | LOGIN', '1-5-2026 9:17 AM', 'login'),
+(1392, 'RESIDENT: Evan Reblora | LOGOUT', '1-5-2026 3:18 AM', 'logout'),
+(1393, 'ADMIN: Admin Admin | LOGIN', '1-5-2026 9:18 AM', 'login'),
+(1394, 'ADMIN: Admin Admin | LOGOUT', '1-5-2026 3:19 AM', 'logout'),
+(1395, 'ADMIN: Admin Admin | LOGIN', '1-5-2026 9:51 AM', 'login'),
+(1396, 'ADMIN: Admin Admin | LOGOUT', '1-5-2026 3:51 AM', 'logout'),
+(1397, 'RESIDENT: Evan Reblora | LOGIN', '1-5-2026 9:51 AM', 'login'),
+(1398, 'RESIDENT - 24956588345933: Evan Reblora | REQUEST CERTIFICATE - TEST', '1-5-2026 9:52 AM', 'create'),
+(1399, 'RESIDENT: Evan Reblora | LOGOUT', '1-5-2026 3:58 AM', 'logout'),
+(1400, 'ADMIN: Admin Admin | LOGIN', '1-5-2026 9:58 AM', 'login'),
+(1401, 'ADMIN: Admin Admin | LOGOUT', '1-5-2026 4:23 AM', 'logout'),
+(1402, 'RESIDENT: rileyzoeyyuri rileyzoeyyuri | LOGIN', '1-5-2026 3:14 PM', 'login'),
+(1403, 'RESIDENT: rileyzoeyyuri rileyzoeyyuri | LOGOUT', '1-5-2026 9:14 AM', 'logout'),
+(1404, 'RESIDENT: rileyzoeyyuri rileyzoeyyuri | LOGIN', '1-5-2026 4:09 PM', 'login'),
+(1405, 'RESIDENT: rileyzoeyyuri rileyzoeyyuri | LOGOUT', '1-5-2026 10:09 AM', 'logout'),
+(1406, 'RESIDENT: zoeyzoey zoeyzoey | LOGIN', '1-5-2026 4:09 PM', 'login'),
+(1407, 'RESIDENT: zoeyzoey zoeyzoey | LOGOUT', '1-5-2026 10:12 AM', 'logout'),
+(1408, 'ADMIN: Admin Admin | LOGIN', '1-5-2026 4:12 PM', 'login'),
+(1409, 'ADMIN: Admin Admin | LOGOUT', '1-5-2026 10:23 AM', 'logout'),
+(1410, 'RESIDENT: zoeyzoey zoeyzoey | LOGIN', '1-5-2026 4:23 PM', 'login'),
+(1411, 'RESIDENT: zoeyzoey zoeyzoey | LOGOUT', '1-5-2026 10:29 AM', 'logout'),
+(1412, 'RESIDENT: REGISTER RESIDENT - 31081982211755 |  tatebangis tatebangis tatebangis', '1-5-2026 4:37 PM', 'create'),
+(1413, 'RESIDENT: bagsiwbagsiw bagsiwbagsiw | LOGIN', '1-5-2026 4:40 PM', 'login'),
+(1414, 'RESIDENT: bagsiwbagsiw bagsiwbagsiw | LOGOUT', '1-5-2026 10:40 AM', 'logout'),
+(1415, 'RESIDENT: tatebangis tatebangis | LOGIN', '1-5-2026 4:40 PM', 'login'),
+(1416, 'RESIDENT: tatebangis tatebangis - 31081982211755 | UPDATED RESIDENT EMAIL ADDRESS - 31081982211755 |  FROM tatebangis TO tatebangis@fas.com', '1-5-2026 10:41 AM', 'update'),
+(1417, 'RESIDENT: tatebangis tatebangis - 31081982211755 | UPDATED RESIDENT GUARDIAN - 31081982211755 |  FROM  TO dadi', '1-5-2026 10:41 AM', 'update');
 
 -- --------------------------------------------------------
 
@@ -297,7 +325,8 @@ CREATE TABLE `clearance_request` (
 
 INSERT INTO `clearance_request` (`a_i`, `id`, `residence_id`, `certificate_type`, `purpose`, `message`, `date_issued`, `date_request`, `date_expired`, `status`) VALUES
 (64, '65880691503212026164929462189554539069be5b9970dd2', '24956588345933', 'none', 'CERT', 'none', '2026-03-21', '03/21/2026', '2026-03-22', 'ACCEPTED'),
-(65, '10407702060404202619465274480831137569d0fa2cb5b7a', '24956588345933', 'none', 'CERT', 'none', '2026-04-04', '04/04/2026', '2026-04-30', 'ACCEPTED');
+(65, '10407702060404202619465274480831137569d0fa2cb5b7a', '24956588345933', 'none', 'CERT', 'none', '2026-04-04', '04/04/2026', '2026-04-30', 'ACCEPTED'),
+(66, '81940255005012026095214577193553406869f4074e8d0e6', '24956588345933', 'none', 'test', 'none', '', '05/01/2026', '', 'PENDING');
 
 -- --------------------------------------------------------
 
@@ -979,7 +1008,7 @@ CREATE TABLE `residence_information` (
   `last_name` varchar(255) NOT NULL DEFAULT 'none',
   `age` varchar(11) NOT NULL,
   `suffix` varchar(255) NOT NULL DEFAULT 'none',
-  `alias` varchar(255) NOT NULL,
+  `alias` varchar(255) NOT NULL DEFAULT 'none',
   `gender` varchar(255) NOT NULL DEFAULT 'none',
   `civil_status` varchar(36) NOT NULL DEFAULT 'none',
   `religion` varchar(36) NOT NULL DEFAULT 'none',
@@ -999,16 +1028,16 @@ CREATE TABLE `residence_information` (
   `mothers_name` varchar(255) NOT NULL DEFAULT 'none',
   `guardian` varchar(69) NOT NULL DEFAULT 'none',
   `guardian_contact` varchar(69) NOT NULL DEFAULT 'none',
-  `occupation` varchar(255) NOT NULL,
-  `employer_name` varchar(255) NOT NULL,
-  `family_relation` varchar(255) NOT NULL,
-  `national_number` varchar(255) NOT NULL,
-  `sss_number` varchar(255) NOT NULL,
-  `tin_number` varchar(255) NOT NULL,
-  `gsis_number` varchar(255) NOT NULL,
-  `pagibig_number` varchar(255) NOT NULL,
-  `philhealth_number` varchar(255) NOT NULL,
-  `bloodtype` varchar(255) NOT NULL,
+  `occupation` varchar(255) NOT NULL DEFAULT 'none',
+  `employer_name` varchar(255) NOT NULL DEFAULT 'none',
+  `family_relation` varchar(255) NOT NULL DEFAULT 'none',
+  `national_number` varchar(255) NOT NULL DEFAULT 'none',
+  `sss_number` varchar(255) NOT NULL DEFAULT 'none',
+  `tin_number` varchar(255) NOT NULL DEFAULT 'none',
+  `gsis_number` varchar(255) NOT NULL DEFAULT 'none',
+  `pagibig_number` varchar(255) NOT NULL DEFAULT 'none',
+  `philhealth_number` varchar(255) NOT NULL DEFAULT 'none',
+  `bloodtype` varchar(255) NOT NULL DEFAULT 'none',
   `image` varchar(255) NOT NULL DEFAULT 'none',
   `image_path` varchar(255) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1129,7 +1158,11 @@ INSERT INTO `residence_information` (`a_i`, `residence_id`, `first_name`, `middl
 INSERT INTO `residence_information` (`a_i`, `residence_id`, `first_name`, `middle_name`, `last_name`, `age`, `suffix`, `alias`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`, `zone_id`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`, `occupation`, `employer_name`, `family_relation`, `national_number`, `sss_number`, `tin_number`, `gsis_number`, `pagibig_number`, `philhealth_number`, `bloodtype`, `image`, `image_path`) VALUES
 (390, '20260000098', 'Celestina', 'Rosario', 'Marquez', '41', '', 'Tina', 'Female', 'Married', 'Catholic', 'Filipino', '9181234598', 'celestina.marquez@example.com', '12 Rizal St., Sampaloc, Manila', '03/14/85', 'Manila', 'Manila', '1008', 'Sampaloc', '10013', 'none', 'Rizal Street', 'Ramon Marquez', 'Rosario Lopez', '—', '—', 'Teacher', 'Manila High', 'Mother', 'N-000098', 'SSS-000098', 'TIN-000098', 'GSIS-000098', 'PAGIBIG-000098', 'PH-000098', 'O+', '', ''),
 (391, '20260000099', 'Alberto', 'Vicente', 'Soriano', '56', 'Sr.', 'Bert', 'Male', 'Married', 'Iglesia ni Cristo', 'Filipino', '9182345699', 'alberto.soriano@example.com', '45 Mabini St., Ermita, Manila', '07/19/70', 'Manila', 'Manila', '1000', 'Ermita', '10014', 'none', 'Mabini Street', 'Vicente Soriano', 'Teresa Cruz', '—', '—', 'Driver', 'LTFRB', 'Father', 'N-000099', 'SSS-000099', 'TIN-000099', 'GSIS-000099', 'PAGIBIG-000099', 'PH-000099', 'A+', '', ''),
-(392, '20260000100', 'Juliana', 'Felisa', 'Robles', '28', '', 'Julie', 'Female', 'Single', 'Evangelical', 'Filipino', '9183456100', 'juliana.robles@example.com', '78 Quezon Ave., Quiapo, Manila', '05/22/98', 'Manila', 'Manila', '1001', 'Quiapo', '10015', 'none', 'Quezon Avenue', 'Alberto Robles', 'Felisa Ramos', '—', '—', 'Clerk', 'City Hall', 'Daughter', 'N-000100', 'SSS-000100', 'TIN-000100', 'GSIS-000100', 'PAGIBIG-000100', 'PH-000100', 'B+', '', '');
+(392, '20260000100', 'Juliana', 'Felisa', 'Robles', '28', '', 'Julie', 'Female', 'Single', 'Evangelical', 'Filipino', '9183456100', 'juliana.robles@example.com', '78 Quezon Ave., Quiapo, Manila', '05/22/98', 'Manila', 'Manila', '1001', 'Quiapo', '10015', 'none', 'Quezon Avenue', 'Alberto Robles', 'Felisa Ramos', '—', '—', 'Clerk', 'City Hall', 'Daughter', 'N-000100', 'SSS-000100', 'TIN-000100', 'GSIS-000100', 'PAGIBIG-000100', 'PH-000100', 'B+', '', ''),
+(393, '45297412732214', 'zoeyzoey', 'zoeyzoey', 'zoeyzoey', '', '', 'none', 'Male', 'Single', 'zoeyzoey', 'zoeyzoey', '12312312313', 'zoeyzoey', 'zoeyzoey', '2026-05-01', 'zoeyzoey', 'zoeyzoey', '1', 'zoeyzoey', '1', 'zoeyzoey', '', '', '', '', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', ''),
+(394, '29251090282699', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', '', 'bagsiwbagsiw', 'none', 'Male', 'Single', 'bagsiwbagsiw', 'bagsiwbagsiw', '12312312312', 'bagsiwbagsiw', 'bagsiwbagsiw', '2026-05-01', 'bagsiw', 'bagsiwbagsiw', '12123', 'bagsiwbagsiw', '1', 'bagsiwbagsiw', 'bagsiw', '', '', '', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', ''),
+(395, '38451659238862', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', '', 'tatetatetatetate', 'none', 'Male', 'Single', 'tatetatetatetate', 'tatetatetatetate', '21312312312', 'tatetatetatetate', 'tatetatetatetate', '2026-05-01', 'tatetate', 'tatetatetatetate', '123123', 'tatetatetatetate', '2', 'tatetatetatetate', '', '', '', '', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', ''),
+(396, '31081982211755', 'tatebangis', 'tatebangistatebangis', 'tatebangis', '0', 'tatebangis', 'none', 'Female', 'Single', 'tatebangis', 'tatebangis', '12312313123', 'tatebangis@fas.com', 'tatebangis', '2026-05-01', ' tatebangis', 'tatebangis', '12312', 'tatebangis', '2', 'tatebangis', '123123', '', '', 'dadi', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', '');
 
 -- --------------------------------------------------------
 
@@ -1141,16 +1174,16 @@ CREATE TABLE `residence_status` (
   `a_i` int(11) NOT NULL,
   `residence_id` varchar(255) NOT NULL,
   `status` varchar(69) NOT NULL DEFAULT 'none',
-  `is_approved` varchar(255) NOT NULL,
+  `is_approved` varchar(255) NOT NULL DEFAULT 'YES',
   `voters` varchar(69) NOT NULL DEFAULT 'none',
   `pwd` varchar(69) NOT NULL DEFAULT 'none',
   `pwd_info` varchar(255) NOT NULL DEFAULT 'none',
   `senior` varchar(69) NOT NULL DEFAULT 'none',
   `single_parent` varchar(69) NOT NULL DEFAULT 'none',
-  `wra` varchar(255) NOT NULL,
-  `4ps` varchar(255) NOT NULL,
-  `zone_id` varchar(255) NOT NULL,
-  `precint_id` varchar(255) NOT NULL,
+  `wra` varchar(255) NOT NULL DEFAULT 'none',
+  `4ps` varchar(255) NOT NULL DEFAULT 'none',
+  `zone_id` varchar(255) NOT NULL DEFAULT 'none',
+  `precint_id` varchar(255) NOT NULL DEFAULT 'none',
   `archive` varchar(69) NOT NULL DEFAULT 'none',
   `date_added` varchar(69) NOT NULL DEFAULT 'none',
   `date_archive` varchar(69) NOT NULL DEFAULT 'none',
@@ -1270,7 +1303,8 @@ INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, 
 (287, '20260000097', 'ACTIVE', 'YES', 'NO', 'NO', '', 'NO', 'NO', 'YES', '1000', '10013', '107', 'NO', '04/01/26 13:33', 'none', 'none'),
 (288, '20260000098', 'INACTIVE', 'YES', 'NO', 'YES', 'Autism Spectrum Disorder', 'NO', 'NO', 'YES', '', '10014', '108', 'NO', '04/01/26 13:33', 'none', 'none'),
 (289, '20260000099', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', '', '800', '10015', '109', 'NO', '04/01/26 13:33', 'none', 'none'),
-(290, '20260000100', 'ACTIVE', 'YES', 'NO', 'NO', '', 'NO', 'YES', 'YES', '1000', '10001', '110', 'NO', '04/01/26 13:33', 'none', 'none');
+(290, '20260000100', 'ACTIVE', 'YES', 'NO', 'NO', '', 'NO', 'YES', 'YES', '1000', '10001', '110', 'NO', '04/01/26 13:33', 'none', 'none'),
+(291, '31081982211755', 'ACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '2', '', 'NO', '05/01/2026 04:37 PM', 'none', 'none');
 
 -- --------------------------------------------------------
 
@@ -1307,7 +1341,20 @@ INSERT INTO `users` (`a_i`, `id`, `first_name`, `middle_name`, `last_name`, `use
 (210, '42667846377806', 'sdasdasdasd', 'adsasd', 'sadasd', '42667846377806', '04292026205541194', 'resident', '09566643437', '', ''),
 (211, '34671135097236', 'asdasdasfasasfg', 'adsasd', 'sadasd', '34671135097236', '04292026205609103', 'resident', '09566643437', '', ''),
 (212, '16108157999844', 'asdasdasfasasfg', 'adsasd', 'sadasd', '16108157999844', '04292026205623990', 'resident', '09566643437', '', ''),
-(213, '3924402791161', 'asdasdasd', 'asdasdasdasda', 'sdasdasdvgv', '3924402791161', '04292026205653102', 'resident', '09566643437', '', '');
+(213, '3924402791161', 'asdasdasd', 'asdasdasdasda', 'sdasdasdvgv', '3924402791161', '04292026205653102', 'resident', '09566643437', '', ''),
+(214, '6239300344794', 'rileasdasd', 'asdasd', 'asdasd', 'urthcrystals21', 'Mika&Ego1107', 'resident', '12312312312', '', ''),
+(215, '1234964632978', 'rileyzoeyyuri', 'rileyzoeyyuri', 'rileyzoeyyuri', 'rileyzoeyyuri', 'rileyzoeyyuri', 'resident', '11312312312', '', ''),
+(216, '24319878302205', 'rileyzoeyyuri', 'rileyzoeyyuri', 'rileyzoeyyuri', 'rileyzoeyyuri0', 'rileyzoeyyuri', 'resident', '23123123123', '', ''),
+(217, '30940735356666', 'zoeygirl', 'zoeygirl', 'zoeygirl', 'zoeygirl', 'zoeygirl', 'resident', '12312312312', '', ''),
+(218, '8343689301562', 'yuriboy', 'yuriboy', 'yuriboy', 'yuriboy1', 'yuriboy1', 'resident', '12312312312', '', ''),
+(219, '45459807045046', 'yuriboy', 'yuriboy', 'yuriboy', 'yuriboy21', 'yuriboy12', 'resident', '12312312312', '', ''),
+(220, '42271917233700', 'yuriboyyuriboy', 'yuriboy', 'yuriboy', 'yuriboy12', 'yuriboy12', 'resident', '12312312312', '', ''),
+(221, '3990682543071', 'bangis', 'bangis', 'bangis', 'bangisbangis', 'bangisbangis', 'resident', '12312312312', '', ''),
+(222, '2627341191671', 'bagwis', 'vbagwis', 'bagwis', 'bagwisbagwis', 'bagwisbagwis', 'resident', '12312312213', '', ''),
+(223, '45297412732214', 'zoeyzoey', 'zoeyzoey', 'zoeyzoey', 'zoeyzoeyzoeyzoey', 'zoeyzoeyzoeyzoey', 'resident', '12312312313', '', ''),
+(224, '29251090282699', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', 'resident', '12312312312', '', ''),
+(225, '38451659238862', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', 'resident', '21312312312', '', ''),
+(226, '31081982211755', 'tatebangis', 'tatebangistatebangis', 'tatebangis', 'tatebangistatebangis', 'tatebangistatebangis', 'resident', '12312313123', '', '');
 
 -- --------------------------------------------------------
 
@@ -1471,7 +1518,7 @@ ALTER TABLE `zone_info`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1390;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1418;
 
 --
 -- AUTO_INCREMENT for table `backup`
@@ -1501,7 +1548,7 @@ ALTER TABLE `clearance_info`
 -- AUTO_INCREMENT for table `clearance_request`
 --
 ALTER TABLE `clearance_request`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `house_holds`
@@ -1537,19 +1584,19 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `residence_information`
 --
 ALTER TABLE `residence_information`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=393;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=397;
 
 --
 -- AUTO_INCREMENT for table `residence_status`
 --
 ALTER TABLE `residence_status`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
 
 --
 -- AUTO_INCREMENT for table `zone_info`
