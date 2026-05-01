@@ -28,6 +28,7 @@ if(isset($_POST['add_pwd_info'])){
 }
 $add_single_parent = $con->real_escape_string($_POST['add_single_parent']);
 
+$add_zone = $con->real_escape_string($_POST['add_zone']);
 $add_pwd = $con->real_escape_string($_POST['add_pwd']);
 $add_voters = $con->real_escape_string($_POST['add_voters']);
 $add_first_name = $con->real_escape_string($_POST['add_first_name']);
@@ -139,6 +140,7 @@ $sql = "INSERT INTO `residence_information`(
   `municipality`, 
   `zip`, 
   `barangay`, 
+  `zone_id`, 
   `house_number`, 
   `street`, 
   `fathers_name`, 
@@ -148,7 +150,7 @@ $sql = "INSERT INTO `residence_information`(
   `image`,
   `image_path`
   ) 
-VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $con->prepare($sql) or die ($con->error);
 $stmt->bind_param('sssssssssssssssssssssssss',
   $number,
@@ -169,6 +171,7 @@ $stmt->bind_param('sssssssssssssssssssssssss',
   $add_municipality,
   $add_zip,
   $add_barangay,
+  $add_zone,
   $add_house_number,
   $add_street,
   $add_fathers_name,

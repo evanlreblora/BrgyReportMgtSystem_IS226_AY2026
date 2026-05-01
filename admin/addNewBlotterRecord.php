@@ -98,7 +98,7 @@ try{
 
     date_default_timezone_set('Asia/Manila');
     $date = new DateTime();
-    $blotter_id = "INC" . rand(1000, 9999),4;
+     $blotter_id = rand($date->format("mdYHIsv"),3);
    
 
     $sql_incident_status = "INSERT INTO `incident_status`(`blotter_id`,`blotter_main`,`person_id`) VALUES (?,?,?)";

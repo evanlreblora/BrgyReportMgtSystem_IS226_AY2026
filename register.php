@@ -61,7 +61,7 @@ $sql = "SELECT * FROM `barangay_information`";
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="assets/plugins/bs-stepper/css/bs-stepper.min.css">
-  <link rel="stylesheet" href="assets/plugins/phone code/intlTelInput.min.css">
+  
   <link rel="stylesheet" href="assets/plugins/sweetalert2/css/sweetalert2.min.css">
   <link rel="stylesheet" href="assets/plugins/step-wizard/css/smart_wizard_all.min.css">
 
@@ -347,6 +347,19 @@ $sql = "SELECT * FROM `barangay_information`";
                     </div>
                   </div>
                   <div class="col-sm-6">
+                  <div class="form-group ">
+                    <label >Zone</label>
+                    <select name="add_zone" id="add_zone" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>                 
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>House Number</label>
                       <input type="text" class="form-control" id="add_house_number" name="add_house_number" >
@@ -506,7 +519,7 @@ $sql = "SELECT * FROM `barangay_information`";
 <script src="assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 <script src="assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="assets/plugins/jquery-validation/additional-methods.min.js"></script>
-<script src="assets/plugins/phone code/intlTelInput.js"></script>
+ 
 <script src="assets/plugins/sweetalert2/js/sweetalert2.all.min.js"></script>
 <script src="assets/plugins/step-wizard/js/jquery.smartWizard.min.js"></script>
 <script>
