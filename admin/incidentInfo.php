@@ -401,7 +401,7 @@ while($row = $result->fetch_assoc()){
             </a>
           </li>
           <li class="nav-item">
-            <a href="blotterRecord.php" class="nav-link">
+            <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
                 Incident Record

@@ -332,7 +332,7 @@ try{
             }
 
             $.ajax({
-              url: 'editBlotterRecord.php',
+              url: 'editincidentrecord.php',
               type: 'POST',
               data: $(form).serialize(),
               cache: false,

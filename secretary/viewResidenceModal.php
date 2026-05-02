@@ -636,7 +636,7 @@ function blotterPersonTable(){
       
     ],
     ajax:{
-      url: 'blotterPersonTable.php',
+      url: 'incidentPersonTable.php',
       type: 'POST',
       data:{
         edit_residence_id:edit_residence_id

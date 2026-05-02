@@ -428,7 +428,7 @@ try{
             </a>
           </li>
           <li class="nav-item">
-            <a href="blotterRecord.php" class="nav-link bg-indigo">
+            <a href="incidentrecord.php" class="nav-link bg-indigo">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
                 Incident Record
@@ -817,7 +817,7 @@ try{
         autoWidth: false,
         responsive: true,
         ajax:{
-          url: 'blotterRecordTable.php',
+          url: 'incidentRecordTable.php',
           type: 'POST',
         },
         columnDefs:[
@@ -930,7 +930,7 @@ try{
             }
 
             $.ajax({
-              url: 'addNewBlotterRecord.php',
+              url: 'addNewincidentrecord.php',
               type: 'POST',
               data: $(form).serialize(),
               cache: false,
@@ -1171,7 +1171,7 @@ $(document).ready(function() {
          
             $.ajax({
               type: "POST",
-              url: "deleteBlotterRecord.php",
+              url: "deleteincidentrecord.php",
               cache:false,
               data: 'id='+selected_values,
               success: function(data) {
