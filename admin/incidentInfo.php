@@ -197,6 +197,102 @@ while($row = $result->fetch_assoc()){
       table-layout: auto;
      width: 100% !important; 
     }
+
+    
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 75px;
+      height: 28px;
+    } 
+
+.switch input {
+  display:none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ca2222;
+  -webkit-transition: .4s;
+  transition: .4s;
+  
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #000;
+  -webkit-transition: .4s;
+  transition: .4s;
+
+}
+
+input:checked + .slider {
+  background-color: #2ab934;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(46px);
+  -ms-transform: translateX(46px);
+  transform: translateX(46px);
+}
+
+
+/*------ ADDED CSS ---------*/
+.on
+{
+  display: none;
+  
+}
+.off{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 62%;
+  font-size: 8px;
+  font-family: Verdana, sans-serif;
+}
+
+.on{
+
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 40%;
+  font-size: 8px;
+  font-family: Verdana, sans-serif;
+}
+
+  input:checked+ .slider .on{
+  display: block;
+  }
+
+input:checked + .slider .off{
+
+  display: none;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
   </style>
 
  
@@ -286,8 +382,6 @@ while($row = $result->fetch_assoc()){
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
@@ -298,41 +392,17 @@ while($row = $result->fetch_assoc()){
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newOfficial.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>New Official</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
-  
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Residence
@@ -347,7 +417,7 @@ while($row = $result->fetch_assoc()){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="allResidence.php" class="nav-link ">
+                <a href="allResidence.php" class="nav-link">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>All Residence</p>
                 </a>
@@ -360,6 +430,32 @@ while($row = $result->fetch_assoc()){
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link  active ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
+          
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
@@ -368,38 +464,7 @@ while($row = $result->fetch_assoc()){
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="userAdministrator.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Administrator</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="position.php" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
-              <p>
-                Position
-              </p>
-            </a>
-          </li>
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -416,26 +481,74 @@ while($row = $result->fetch_assoc()){
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="incidentInfo.php" class="nav-link  bg-indigo">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Incident Info
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="settings.php" class="nav-link">
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link   bg-indigo ">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 Settings
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li> 
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-shield"></i>
+              <p>
+                User Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="usersResident.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Resident</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="userAdministrator.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Administrator</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+              <li class="nav-item">
+                <a href="incidentInfo.php" class="nav-link active">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Incident Info
+                  </p>
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a href="position.php" class="nav-link">
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>
+                    Position
+                  </p>
+                </a>
+              </li>       
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Location
+                  </p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+ 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
-    </div>
+    </div> 
     <!-- /.sidebar -->
   </aside>
 

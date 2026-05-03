@@ -419,8 +419,6 @@ input:checked + .slider .off{
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
@@ -431,7 +429,7 @@ input:checked + .slider .off{
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -439,6 +437,35 @@ input:checked + .slider .off{
                 Dashboard
               </p>
             </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link bg-indigo ">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Residence
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newResidence.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Residence</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allResidence.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>All Residence</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="archiveResidence.php" class="nav-link  active ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Inactive Residence</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -464,35 +491,8 @@ input:checked + .slider .off{
  
             </ul>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link bg-indigo ">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Residence
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newResidence.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>New Residence</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="allResidence.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>All Residence</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="archiveResidence.php" class="nav-link active">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Inactive Residence</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+
+          
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
@@ -501,45 +501,7 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="position.php" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Position
-              </p>
-            </a>
-          </li> -->
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="userAdministrator.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Administrator</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="position.php" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
-              <p>
-                Position
-              </p>
-            </a>
-          </li>
+
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -556,19 +518,74 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="settings.php" class="nav-link">
+
+          <li class="nav-item ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 Settings
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+                        <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-shield"></i>
+              <p>
+                User Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="usersResident.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Resident</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="userAdministrator.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Administrator</p>
+                </a>
+              </li>
+
+            </ul>
           </li>
+
+              <li class="nav-item">
+                <a href="incidentInfo.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Incident Info
+                  </p>
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a href="position.php" class="nav-link">
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>
+                    Position
+                  </p>
+                </a>
+              </li>       
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Location
+                  </p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
  
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
-    </div>
+    </div> 
     <!-- /.sidebar -->
   </aside>
 

@@ -169,54 +169,18 @@ try{
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
-    
-
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
-        </div>
-        <div class="info text-center">
-          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
-        </div>
-      </div>
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newOfficial.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>New Official</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
-  
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Residence
@@ -231,7 +195,7 @@ try{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="allResidence.php" class="nav-link ">
+                <a href="allResidence.php" class="nav-link">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>All Residence</p>
                 </a>
@@ -244,6 +208,32 @@ try{
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link  active ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
+          
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
@@ -252,37 +242,7 @@ try{
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="userAdministrator.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Administrator</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="position.php" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
-              <p>
-                Position
-              </p>
-            </a>
-          </li>
+
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -299,19 +259,72 @@ try{
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="settings.php" class="nav-link bg-indigo">
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link   bg-indigo ">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 Settings
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-shield"></i>
+              <p>
+                User Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="usersResident.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Resident</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="userAdministrator.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Administrator</p>
+                </a>
+              </li>
+
+            </ul>
           </li>
+
+              <li class="nav-item">
+                <a href="incidentInfo.php" class="nav-link ">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Incident Info
+                  </p>
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a href="position.php" class="nav-link ">
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>
+                    Position
+                  </p>
+                </a>
+              </li>       
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link active">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Location
+                  </p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
  
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
-    </div>
     <!-- /.sidebar -->
   </aside>
 

@@ -301,8 +301,6 @@ try{
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
@@ -583,7 +581,7 @@ try{
                         <div class="inner">
                           <h3><?= number_format($total_incident_record ?? 0) ?><sup style="font-size: 20px"></sup></h3>
 
-                          <p>BLOTTER</p>
+                          <p>INCIDENTS</p>
                         </div>
                         <div class="icon">
                           <i class="fas fa-book"></i>
