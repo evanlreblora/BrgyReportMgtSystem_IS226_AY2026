@@ -622,7 +622,7 @@ input:checked + .slider .off{
         </div> -->
       <div class="card-body">
           <fieldset>
-            <legend>NUMBER OF OFFICIAL <span id="total"></span></legend>
+            <legend> </span></legend>
               <div class="table-responsive mt-2">
                 <table class="table table-striped table-hover " id="officialTable" style="width: 100%;">
                   <thead class="bg-black text-uppercase">
