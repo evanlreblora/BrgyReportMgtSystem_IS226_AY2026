@@ -14,10 +14,10 @@ try{
     $stmt_user->execute();
     $result_user = $stmt_user->get_result();
     $row_user = $result_user->fetch_assoc();
-    $first_name_user = $row_user['first_name'];
-    $last_name_user = $row_user['last_name'];
-    $user_type = $row_user['user_type'];
-    $user_image = $row_user['image'];
+    $first_name_user = $row_user['first_name']?? '';
+    $last_name_user = $row_user['last_name']?? '';
+    $user_type = $row_user['user_type'] ?? '';
+    $user_image = $row_user['image'] ?? '';
 
 
 
@@ -133,13 +133,13 @@ try{
         }
 
       $table .= '<tr>
-      <td>'.ucfirst($row_report['last_name']).' '.ucfirst($row_report['first_name']).'  '.$middle_name.' </td>
-              <td>'.$row_report['age'].'</td>
-              <td>'.$row_report['pwd_info'].'</td>
-              <td>'.$row_report['single_parent'].'</td>
-              <td>'.$row_report['voters'].'</td>
-              <td>'.$row_report['status'].'</td>
-              <td>'.$row_report['senior'].'</td>
+      <td>'.ucfirst($row_report['last_name']?? '').' '.ucfirst($row_report['first_name']?? '').'  '.$middle_name.' </td>
+              <td>'.$row_report['age']?? ''.'</td>
+              <td>'.$row_report['pwd_info']?? ''.'</td>
+              <td>'.$row_report['single_parent']?? ''.'</td>
+              <td>'.$row_report['voters']?? ''.'</td>
+              <td>'.$row_report['status']?? ''.'</td>
+              <td>'.$row_report['senior'] ?? ''.'</td>
           </tr>';
       }
 
@@ -158,7 +158,6 @@ try{
 }catch(Exception $e){
   echo $e->getMessage();
 }
-
 
 
 
@@ -428,46 +427,26 @@ try{
     </a>
 
     <!-- Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-             
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
- 
-            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link ">
@@ -498,8 +477,33 @@ try{
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
           
-          <li class="nav-item ">
+          <li class="nav-item">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
@@ -507,25 +511,7 @@ try{
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
-       
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -534,17 +520,16 @@ try{
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="report.php" class="nav-link  bg-indigo">
+          <li class="nav-item bg-indigo">
+            <a href="report.php" class="nav-link">
               <i class="nav-icon fas fa-bookmark"></i>
               <p>
                 Reports
               </p>
             </a>
           </li>
-         
- 
-         
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -576,7 +561,7 @@ try{
       <div class="container-fluid">
 
           
-      <div class="card">
+            <div class="card">
               <div class="card-header border-transparent">
                 <h3 class="card-title">Resident Report</h3>
               </div>
@@ -751,6 +736,7 @@ try{
     </div>
   </footer>
 </div>
+
 
 
 

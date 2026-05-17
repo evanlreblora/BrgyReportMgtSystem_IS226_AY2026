@@ -433,45 +433,24 @@ input:checked + .slider .off{
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-             
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
- 
-            </ul>
           </li>
           <li class="nav-item menu-open">
             <a href="#" class="nav-link bg-indigo ">
@@ -502,6 +481,31 @@ input:checked + .slider .off{
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
           
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
@@ -511,25 +515,7 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
-       
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -546,13 +532,14 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-         
+
+
+
  
-         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
-    </div>
+    </div> 
     <!-- /.sidebar -->
   </aside>
 
@@ -568,7 +555,7 @@ input:checked + .slider .off{
       <div class="card-body">
           <fieldset>
             <legend>NUMBER OF RESIDENCE <span id="total"></span></legend>
-            <div class="row">
+              <div class="row">
                 <div class="col-sm-4">
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -681,7 +668,6 @@ input:checked + .slider .off{
                 </div>
                 
               </div>
-                
                 
               
             <table class="table table-striped table-hover " id="allResidenceTable">
@@ -903,14 +889,14 @@ input:checked + .slider .off{
         var first_name = $("#first_name").val();
         var middle_name = $("#middle_name").val();
         var last_name = $("#last_name").val();
-        var single_parent = $("#single_parent").val();
         var resident_id = $("#resident_id").val();
+        var single_parent = $("#single_parent").val();
         var allResidenceTable = $("#allResidenceTable").DataTable({
           processing: true,
           serverSide: true,
           responsive: true,
           searching: false,
-          scrollY: '665',
+          scrollY: '680',
           ajax:{
             url: 'allResidenceTable.php',
             type: 'POST',
@@ -923,8 +909,8 @@ input:checked + .slider .off{
               first_name:first_name,
               middle_name:middle_name,
               last_name:last_name,
-              single_parent:single_parent,
               resident_id:resident_id,
+              single_parent:single_parent
             },
           },
           dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'f>>" +
@@ -941,7 +927,7 @@ input:checked + .slider .off{
               className: "text-center",
             },
             {
-              targets: 7,
+              targets: 5,
               className: "text-center",
             },
             {
@@ -949,7 +935,7 @@ input:checked + .slider .off{
               className: "text-center",
             },
             {
-              targets: 5,
+              targets: 7,
               className: "text-center",
             },
           ],
@@ -993,6 +979,7 @@ input:checked + .slider .off{
       var last_name = $("#last_name").val();
       var resident_id = $("#resident_id").val();
       var single_parent = $("#single_parent").val();
+      
       if(status != '' || voters != '' || age != '' || first_name != '' ||  middle_name != '' || last_name != '' || pwd != '' || senior != '' || resident_id != '' || single_parent != ''){
         $("#allResidenceTable").DataTable().destroy();
         filterData();

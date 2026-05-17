@@ -181,22 +181,22 @@ if(isset($_REQUEST['request'])){
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link  bg-indigo">
+          <li class="nav-item menu-open" >
+            <a href="#" class="nav-link bg-indigo">
               <i class="nav-icon fas fa-users-cog"></i>
               <p>
               Barangay Official
@@ -204,7 +204,12 @@ if(isset($_REQUEST['request'])){
               </p>
             </a>
             <ul class="nav nav-treeview">
-             
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="allOfficial.php" class="nav-link active">
                   <i class="fas fa-circle nav-icon text-red"></i>
@@ -215,7 +220,7 @@ if(isset($_REQUEST['request'])){
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Residence
@@ -230,7 +235,7 @@ if(isset($_REQUEST['request'])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="allResidence.php" class="nav-link ">
+                <a href="allResidence.php" class="nav-link">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>All Residence</p>
                 </a>
@@ -243,7 +248,6 @@ if(isset($_REQUEST['request'])){
               </li>
             </ul>
           </li>
-          
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
@@ -267,10 +271,23 @@ if(isset($_REQUEST['request'])){
                   <p>Resident</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="userAdministrator.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Administrator</p>
+                </a>
+              </li>
 
             </ul>
           </li>
-       
+          <li class="nav-item">
+            <a href="position.php" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Position
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -287,9 +304,15 @@ if(isset($_REQUEST['request'])){
               </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="settings.php" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+              </p>
+            </a>
+          </li>
  
-         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -349,9 +372,43 @@ if(isset($_REQUEST['request'])){
                   <div class="col-sm-12">
                     <input type="hidden" name="official_id" value="<?= $official_id ?>">
                   </div>
-                 
-                  
-                 
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Position</label>
+                        <select name="edit_position" id="edit_position" class="form-control form-control-sm text-uppercase">
+                      
+                          <?php 
+                          
+                          $sql_position = "SELECT position_id, position FROM position";
+                          $stmt = $con->prepare($sql_position) or die ($con->error);
+                          $stmt->execute();
+                          $result_position = $stmt->get_result();
+                          while($row_position = $result_position->fetch_assoc()){
+                         
+                            echo ' <option value="'.$row_position['position_id'].'" '.($row_position['position_id'] == $row_official['position'] ? 'selected': '').'>'.$row_position['position'].'</option>';
+                          }
+                          
+                          ?>
+                        
+                        
+                        </select>
+                        <input type="hidden" id="edit_position_check" value="false">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group ">
+                      <label >Start</label>
+                      <input type="date" class="form-control" id="edit_term_from" name="edit_term_from" value="<?php echo strftime('%Y-%m-%d',strtotime($row_official['term_from'])); ?>">
+                      <input type="hidden" id="edit_term_from_check" value="false">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group ">
+                      <label >End</label>
+                      <input type="date" class="form-control" id="edit_term_to" name="edit_term_to" value="<?php echo strftime('%Y-%m-%d',strtotime($row_official['term_to'])); ?>">
+                      <input type="hidden" id="edit_term_to_check" value="false">
+                    </div>
+                  </div>
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label>Voters</label>
@@ -362,7 +419,7 @@ if(isset($_REQUEST['request'])){
                       <input type="hidden" value="false" id="edit_voters_check">
                     </div>
                   </div>
-                 
+                  
 
                   <div class="col-sm-12">
                     <div class="form-group ">
@@ -378,32 +435,32 @@ if(isset($_REQUEST['request'])){
                       <input type="hidden" id="edit_birth_place_check" value="false">
                     </div>
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Pwd</label>
-                      <select name="edit_pwd" id="edit_pwd" class="form-control">
-                        <option value="NO" <?= $row_official['pwd'] == 'NO'? 'selected': ''; ?>>NO</option>
-                        <option value="YES" <?= $row_official['pwd'] == 'YES'? 'selected': ''; ?>>YES</option>
-                      </select>
-                      <input type="hidden" id="edit_pwd_check" value="false">
-                    </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Pwd</label>
+                    <select name="edit_pwd" id="edit_pwd" class="form-control">
+                      <option value="NO" <?= $row_official['pwd'] == 'NO'? 'selected': ''; ?>>NO</option>
+                      <option value="YES" <?= $row_official['pwd'] == 'YES'? 'selected': ''; ?>>YES</option>
+                    </select>
+                    <input type="hidden" id="edit_pwd_check" value="false">
                   </div>
-                  <div class="col-sm-12" id="pwd_check" style="display: <?= $row_official['pwd'] == 'NO' ?  'none': ''; ?>;" >
-                    <div class="form-group ">
-                      <label >TYPE OF PWD</label>
-                        <input type="text" class="form-control" id="edit_pwd_info" name="edit_pwd_info" value="<?= $row_official['pwd_info'] ?>" <?= $row_official['pwd'] == 'NO' ?  'disabled': ''; ?>>
-                        <input type="hidden" id="edit_pwd_info_check" value="false">
-                    </div>
+                </div>
+                <div class="col-sm-12" id="pwd_check" style="display: <?= $row_official['pwd'] == 'NO' ?  'none': ''; ?>;">
+                  <div class="form-group ">
+                    <label >TYPE OF PWD</label>
+                      <input type="text" class="form-control" id="edit_pwd_info" name="edit_pwd_info" value="<?= $row_official['pwd_info'] ?>" <?= $row_official['pwd'] == 'NO' ?  'disabled': ''; ?>>
+                      <input type="hidden" id="edit_pwd_info_check" value="false">
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Single Parent</label>
-                      <select name="edit_single_parent" id="edit_single_parent" class="form-control">
-                        <option value="NO" <?= $row_official['single_parent'] == 'NO'? 'selected': ''; ?>>NO</option>
-                        <option value="YES" <?= $row_official['single_parent'] == 'YES'? 'selected': ''; ?>>YES</option>
-                      </select>
-                      <input type="hidden" id="edit_single_parent_check" value="false">
-                    </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Single Parent</label>
+                    <select name="edit_single_parent" id="edit_single_parent" class="form-control">
+                      <option value="NO" <?= $row_official['single_parent'] == 'NO'? 'selected': ''; ?>>NO</option>
+                      <option value="YES" <?= $row_official['single_parent'] == 'YES'? 'selected': ''; ?>>YES</option>
+                    </select>
+                    <input type="hidden" id="edit_single_parent_check" value="false">
                   </div>
                 </div>
 
@@ -678,7 +735,6 @@ if(isset($_REQUEST['request'])){
   $(document).ready(function(){
     $(function () {
 
-      
       $("#edit_pwd").change(function(){
       var pwd_check = $(this).val();
 
@@ -694,7 +750,9 @@ if(isset($_REQUEST['request'])){
 
             var edit_first_name = $("#edit_first_name").val();
             var edit_last_name = $("#edit_last_name").val();
-   
+            var edit_position = $("#edit_position").val();
+            var edit_term_from = $("#edit_term_from").val();
+            var edit_term_to = $("#edit_term_to").val();
             var edit_voters = $("#edit_voters").val();
             var edit_pwd = $("#edit_pwd").val();
             var edit_birth_date = $("#edit_birth_date").val();
@@ -717,8 +775,6 @@ if(isset($_REQUEST['request'])){
             var edit_guardian = $("#edit_guardian").val();
             var edit_guardian_contact = $("#edit_guardian_contact").val();
             var edit_pwd_info = $("#edit_pwd_info").val();
-            var edit_single_parent = $("#edit_single_parent").val();
-            
             
             
               $("#edit_first_name").change(function(){
@@ -736,36 +792,6 @@ if(isset($_REQUEST['request'])){
 
             })
 
-
-            $("#edit_pwd_info").change(function(){
-
-                var newPwdInfo = $(this).val();
-
-                if(!(newPwdInfo == edit_pwd_info )){
-
-                $("#edit_pwd_info_check").val('true');
-
-                }else{
-
-                  $("#edit_pwd_info_check").val('false');
-                }
-
-              })
-
-              $("#edit_single_parent").change(function(){
-
-                var newSingleParent = $(this).val();
-
-                if(!(newSingleParent == edit_single_parent )){
-
-                $("#edit_single_parent_check").val('true');
-
-                }else{
-
-                  $("#edit_single_parent_check").val('false');
-                }
-
-              })
           
             
             $("#edit_last_name").change(function(){
@@ -783,11 +809,50 @@ if(isset($_REQUEST['request'])){
 
           })
 
-       
+          $("#edit_position").change(function(){
 
-       
+            var newPosition = $(this).val();
 
-    
+            if(!(newPosition == edit_position )){
+
+            $("#edit_position_check").val('true');
+
+            }else{
+
+              $("#edit_position_check").val('false');
+            }
+
+          })
+
+          $("#edit_term_from").change(function(){
+
+          var newTerm = $(this).val();
+
+          if(!(newTerm == edit_term_from )){
+
+          $("#edit_term_from_check").val('true');
+
+          }else{
+
+            $("#edit_term_from_check").val('false');
+          }
+
+        })
+
+        $("#edit_term_to").change(function(){
+
+            var newTo = $(this).val();
+
+            if(!(newTo == edit_term_to )){
+
+            $("#edit_term_to_check").val('true');
+
+            }else{
+
+              $("#edit_term_to_check").val('false');
+            }
+
+          })
 
           $("#edit_voters").change(function(){
 
@@ -816,6 +881,21 @@ if(isset($_REQUEST['request'])){
 
               $("#edit_pwd_check").val('false');
             }
+
+          })
+
+          $("#edit_pwd_info").change(function(){
+
+          var newPwdInfo = $(this).val();
+
+          if(!(newPwdInfo == edit_pwd_info )){
+
+          $("#edit_pwd_info_check").val('true');
+
+          }else{
+
+            $("#edit_pwd_info_check").val('false');
+          }
 
           })
 
@@ -1144,8 +1224,9 @@ if(isset($_REQUEST['request'])){
             
                 formData.append("edit_first_name_check",$("#edit_first_name_check").val())
                 formData.append("edit_last_name_check",$("#edit_last_name_check").val())
-    
-         
+                formData.append("edit_position_check",$("#edit_position_check").val())
+                formData.append("edit_term_from_check",$("#edit_term_from_check").val())
+                formData.append("edit_term_to_check",$("#edit_term_to_check").val())
                 formData.append("edit_voters_check",$("#edit_voters_check").val())
                 formData.append("edit_pwd_check",$("#edit_pwd_check").val())
                 formData.append("edit_birth_date_check",$("#edit_birth_date_check").val())
@@ -1169,8 +1250,6 @@ if(isset($_REQUEST['request'])){
                 formData.append("edit_guardian_check",$("#edit_guardian_check").val())
                 formData.append("edit_guardian_contact_check",$("#edit_guardian_contact_check").val())
                 formData.append("edit_pwd_info_check",$("#edit_pwd_info_check").val())
-                formData.append("edit_single_parent_check",$("#edit_single_parent_check").val())
-
                   $.ajax({
                     url: 'editOfficial.php',
                     type: 'POST',
@@ -1178,7 +1257,19 @@ if(isset($_REQUEST['request'])){
                     processData: false,
                     contentType: false,
                     success:function(data){
-                  
+                      if(data == 'error'){
+
+                          Swal.fire({
+                            title: '<strong class="text-danger">ERROR</strong>',
+                            type: 'error',
+                            html: '<b>Position Limited<b>',
+                            width: '400px',
+                            confirmButtonColor: '#6610f2',
+                            allowOutsideClick: false,
+                          });
+
+
+                      }else{
                         Swal.fire({
                           title: '<strong class="text-success">SUCCESS</strong>',
                           type: 'success',
@@ -1192,7 +1283,7 @@ if(isset($_REQUEST['request'])){
                           window.location.reload();
                         })
 
-                      
+                      }
                     }
                   }).fail(function(){
                     Swal.fire({
@@ -1244,7 +1335,7 @@ if(isset($_REQUEST['request'])){
           },
           edit_pwd_info:{
             required: true,
-        
+          
           },
         },
         messages: {

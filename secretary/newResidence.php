@@ -72,7 +72,7 @@ try{
   <link rel="stylesheet" href="../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="../assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <link rel="stylesheet" href="../assets/plugins/phone code/intlTelInput.min.css">
+  <link rel="stylesheet" href="../assets/plugins/phonecode/intlTelInput.min.css">
   
  <style>
     #image_residence{
@@ -171,45 +171,24 @@ try{
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-             
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
- 
-            </ul>
           </li>
           <li class="nav-item menu-open">
             <a href="#" class="nav-link bg-indigo ">
@@ -227,7 +206,7 @@ try{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="allResidence.php" class="nav-link ">
+                <a href="allResidence.php" class="nav-link">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>All Residence</p>
                 </a>
@@ -240,6 +219,31 @@ try{
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
           
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
@@ -249,25 +253,7 @@ try{
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
-       
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -284,13 +270,16 @@ try{
               </p>
             </a>
           </li>
-         
+
+
+
  
-         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
-    </div>
+    </div>    
+
+ 
     <!-- /.sidebar -->
   </aside>
 
@@ -302,7 +291,7 @@ try{
     <section class="content mt-3">
       <div class="container-fluid">
 
-      <form id="newResidenceForm" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <form id="newResidenceForm" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="row mb-3">
           <div class="col-sm-4">
             <div class="card card-indigo card-outline h-100">
@@ -359,7 +348,7 @@ try{
                   <div class="col-sm-12" id="pwd_check" style="display: none;">
                     <div class="form-group ">
                       <label >TYPE OF PWD</label>
-                        <input type="text" class="form-control" id="add_pwd_info" name="add_pwd_info" disabled>
+                        <input type="text" class="form-control" id="add_pwd_info" name="add_pwd_info">
                     </div>
                   </div>
                   <div class="col-sm-12">
@@ -472,6 +461,24 @@ try{
                               <input type="text" class="form-control" id="add_barangay" name="add_barangay" >
                             </div>
                           </div>
+                          
+                          <div class="col-sm-6">
+                            <div class="form-group ">
+                              <label >Zone</label>
+                              <select name="add_zone" id="add_zone" class="form-control">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select>
+                            </div>
+                          </div>
+
+
+
+
                           <div class="col-sm-6">
                             <div class="form-group">
                               <label>House Number</label>
@@ -598,7 +605,7 @@ try{
 <script src="../assets/plugins/chart.js/Chart.min.js"></script>
 <script src="../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="../assets/plugins/jquery-validation/additional-methods.min.js"></script>
-<script src="../assets/plugins/phone code/intlTelInput.js"></script>
+<script src="../assets/plugins/phonecode/intlTelInput.js"></script>
 
 <script>
   $(document).ready(function(){
@@ -617,7 +624,6 @@ try{
     })
 
 
-
     $(function () {
         $.validator.setDefaults({
           submitHandler: function (form) {
@@ -627,7 +633,10 @@ try{
               data: new FormData(form),
               processData: false,
               contentType: false,
-              success:function(data){
+              success:function(data)
+               {
+                console.log(data);
+                debugger;            
                 Swal.fire({
                   title: '<strong class="text-success">SUCCESS</strong>',
                   type: 'success',
@@ -638,7 +647,8 @@ try{
                   showConfirmButton: false,
                   timer: 2000,
                 }).then(()=>{
-                  window.location.reload();
+                  // window.location.reload();
+                  window.location.href = "allresidence.php";
                 })
               }
             }).fail(function(){
@@ -674,22 +684,24 @@ try{
           add_address:{
             required: true,
           },
+          add_voters:{
+            required: true,
+          },
+          add_pwd:{
+            required: true,
+          },
           add_single_parent:{
             required: true,
           },
           add_pwd_info:{
             required: true,
           },
-          add_pwd:{
-            required: true,
-          },
-          add_voters:{
-            required: true,
-          },
           add_email_address:{
             email: true,
           },
+
         },
+        
         messages: {
           add_first_name: {
             required: "Please provide a First Name",
@@ -775,7 +787,7 @@ try{
     $("#add_image").change(function(){
       displayImge(this);
     })
- 
+   
 
 
     

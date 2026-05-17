@@ -437,14 +437,14 @@ input:checked + .slider .off{
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -452,7 +452,7 @@ input:checked + .slider .off{
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link  bg-indigo">
+            <a href="#" class="nav-link bg-indigo">
               <i class="nav-icon fas fa-users-cog"></i>
               <p>
               Barangay Official
@@ -460,7 +460,12 @@ input:checked + .slider .off{
               </p>
             </a>
             <ul class="nav nav-treeview">
-             
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="allOfficial.php" class="nav-link ">
                   <i class="fas fa-circle nav-icon text-red"></i>
@@ -492,14 +497,13 @@ input:checked + .slider .off{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="archiveResidence.php" class="nav-link ">
+                <a href="archiveResidence.php" class="nav-link">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>Inactive Residence</p>
                 </a>
               </li>
             </ul>
           </li>
-          
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
@@ -523,10 +527,22 @@ input:checked + .slider .off{
                   <p>Resident</p>
                 </a>
               </li>
-
+              <li class="nav-item">
+                <a href="userAdministrator.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Administrator</p>
+                </a>
+              </li>
             </ul>
           </li>
-       
+          <li class="nav-item">
+            <a href="position.php" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Position
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -543,9 +559,15 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="settings.php" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+              </p>
+            </a>
+          </li>
  
-         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -567,7 +589,7 @@ input:checked + .slider .off{
           <fieldset>
             <legend>NUMBER OF OFFICIAL <span id="total"></span></legend>
               <div class="table-responsive">
-              <table class="table table-striped table-hover " id="endOfficialTable" style="width: 100%;">
+                <table class="table table-striped table-hover " id="endOfficialTable" style="width: 100%;">
                   <thead class="bg-black text-uppercase">
                   <tr>
                     <th>Image</th>
@@ -680,7 +702,7 @@ input:checked + .slider .off{
 
 
     endOfficialTable()
-
+    deleteOfficial()
     $(document).on('change', '#position',function(){
       var position = $(this).val();
       $('#endOfficialTable').DataTable().destroy();
@@ -746,7 +768,7 @@ input:checked + .slider .off{
            
           },
         ],
-        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>f>" +
+        dom: "<'row'<'col-sm-12 col-md-12'f><'col-sm-12 col-md-6'>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'d-flex flex-sm-row-reverse flex-column border-top '<'px-2 'p><'px-2'i> <'px-2'l> >",
             pagingType: "full_numbers",
@@ -766,6 +788,7 @@ input:checked + .slider .off{
                           '<option value="-1">All</option>'+
                           '</select></div>',
               info:  " _START_ - _END_ of _TOTAL_ ",
+              search: 'SEARCH:',
             },
             drawCallback:function(data)  {
               $('#total').text(data.json.total);
@@ -782,7 +805,73 @@ input:checked + .slider .off{
     
     }
 
- 
+    function deleteOfficial(){
+  $(document).on('click','.deleteOfficial',function(){
+    var official_id = $(this).attr('id');
+    Swal.fire({
+        title: '<strong class="text-danger">ARE YOU SURE?</strong>',
+        html: "<b>You want Undelete this Official?</b>",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        allowOutsideClick: false,
+        confirmButtonText: 'Yes, Undelete it!',
+        width: '400px',
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url: 'unDeleteOfficial.php',
+            type: 'POST',
+            data: {
+              official_id:official_id,
+            },
+            cache: false,
+            success:function(data){
+
+                if(data == 'error'){
+
+                  Swal.fire({
+                      title: '<strong class="text-danger">ERROR</strong>',
+                      type: 'error',
+                      html: '<b>Position Limited<b>',
+                      width: '400px',
+                      allowOutsideClick: false,
+                    })
+
+                }else{
+
+                  Swal.fire({
+                    title: '<strong class="text-success">Success</strong>',
+                    type: 'success',
+                    html: '<b>Delete Official has Successfully<b>',
+                    width: '400px',
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    timer: 2000
+                  }).then(()=>{
+                    $("#endOfficialTable").DataTable().ajax.reload();
+                  })
+
+                }
+
+
+             
+            }
+          }).fail(function(){
+            Swal.fire({
+              title: '<strong class="text-danger">Ooppss..</strong>',
+              type: 'error',
+              html: '<b>Something went wrong with ajax !<b>',
+              width: '400px',
+              confirmButtonColor: '#6610f2',
+            })
+          })
+        }
+      })
+
+  })
+}
 
     $(document).on('click', '.pop',function() {
 			$('.imagepreview').attr('src', $(this).find('img').attr('src'));

@@ -181,14 +181,14 @@ if(isset($_REQUEST['request'])){
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -203,10 +203,15 @@ if(isset($_REQUEST['request'])){
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-             
+            <ul class="nav nav-treeview ">
               <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link ">
+                <a href="newOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>List of Official</p>
                 </a>
@@ -243,14 +248,28 @@ if(isset($_REQUEST['request'])){
               </li>
             </ul>
           </li>
-          
           <li class="nav-item ">
-            <a href="requestCertificate.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
                 Clearance
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="requestCertificate.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Request Certificate</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allCertificate.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>All Certificate</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item ">
             <a href="#" class="nav-link">
@@ -267,10 +286,23 @@ if(isset($_REQUEST['request'])){
                   <p>Resident</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="userAdministrator.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Administrator</p>
+                </a>
+              </li>
 
             </ul>
           </li>
-       
+          <li class="nav-item">
+            <a href="position.php" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Position
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -287,9 +319,22 @@ if(isset($_REQUEST['request'])){
               </p>
             </a>
           </li>
-         
- 
-         
+          <li class="nav-item">
+            <a href="settings.php" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="backupRestore.php" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                Backup/Restore
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -397,7 +442,7 @@ if(isset($_REQUEST['request'])){
                       <input type="hidden" value="false" id="edit_voters_check">
                     </div>
                   </div>
-                 
+                  
 
                   <div class="col-sm-12">
                     <div class="form-group ">
@@ -415,33 +460,32 @@ if(isset($_REQUEST['request'])){
                   </div>
                 </div>
                 <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Pwd</label>
-                      <select name="edit_pwd" id="edit_pwd" class="form-control">
-                        <option value="NO" <?= $row_official['pwd'] == 'NO'? 'selected': ''; ?>>NO</option>
-                        <option value="YES" <?= $row_official['pwd'] == 'YES'? 'selected': ''; ?>>YES</option>
-                      </select>
-                      <input type="hidden" id="edit_pwd_check" value="false">
-                    </div>
+                  <div class="form-group">
+                    <label>Pwd</label>
+                    <select name="edit_pwd" id="edit_pwd" class="form-control">
+                      <option value="NO" <?= $row_official['pwd'] == 'NO'? 'selected': ''; ?>>NO</option>
+                      <option value="YES" <?= $row_official['pwd'] == 'YES'? 'selected': ''; ?>>YES</option>
+                    </select>
+                    <input type="hidden" id="edit_pwd_check" value="false">
                   </div>
-
-                  <div class="col-sm-12" style="display: <?= $row_official['pwd'] == 'NO'?  'none': '' ; ?>">
-                    <div class="form-group">
-                      <label>Pwd Type</label>
-                      <input type="text" class="form-control" id="edit_pwd_info" name="edit_pwd_info" value="<?= $row_official['pwd_info'] ?>" >
-                
-                    </div>
+                </div>
+                <div class="col-sm-12" id="pwd_check" style="display: <?= $row_official['pwd'] == 'NO' ?  'none': ''; ?>;">
+                  <div class="form-group ">
+                    <label >TYPE OF PWD</label>
+                      <input type="text" class="form-control" id="edit_pwd_info" name="edit_pwd_info" value="<?= $row_official['pwd_info'] ?>"<?= $row_official['pwd'] == 'NO' ?  'disabled': ''; ?>>
+                      <input type="hidden" id="edit_pwd_info_check" value="false">
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                      <label>Single Parent</label>
-                      <select name="edit_single_parent" id="edit_single_parent" class="form-control">
-                        <option value="NO" <?= $row_official['single_parent'] == 'NO'? 'selected': ''; ?>>NO</option>
-                        <option value="YES" <?= $row_official['single_parent'] == 'YES'? 'selected': ''; ?>>YES</option>
-                      </select>
-                      <input type="hidden" id="edit_single_parent_check" value="false">
-                    </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label>Single Parent</label>
+                    <select name="edit_single_parent" id="edit_single_parent" class="form-control">
+                      <option value="NO" <?= $row_official['single_parent'] == 'NO'? 'selected': ''; ?>>NO</option>
+                      <option value="YES" <?= $row_official['single_parent'] == 'YES'? 'selected': ''; ?>>YES</option>
+                    </select>
+                    <input type="hidden" id="edit_single_parent_check" value="false">
                   </div>
+                </div>
 
 
 
@@ -641,7 +685,9 @@ if(isset($_REQUEST['request'])){
                   </div>
                 </div>
               </div>
-            
+              <div class="card-footer">
+                <button type="submit"  class="btn btn-success px-4 elevation-3"> <i class="fas fa-edit"></i> UPDATE</button>
+              </div> 
               <!-- /.card -->
             </div>
 
@@ -700,7 +746,720 @@ if(isset($_REQUEST['request'])){
 <script src="../assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <script src="../assets/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 <script src="../assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $(function () {
 
+
+      $("#edit_pwd").change(function(){
+      var pwd_check = $(this).val();
+
+      if(pwd_check == 'YES'){
+        $("#pwd_check").css('display', 'block');
+        $("#edit_pwd_info").prop('disabled', false);
+      }else{
+        $("#pwd_check").css('display', 'none');
+        $("#edit_pwd_info").prop('disabled', true);
+      }
+
+    })
+
+
+
+      var edit_first_name = $("#edit_first_name").val();
+            var edit_last_name = $("#edit_last_name").val();
+            var edit_position = $("#edit_position").val();
+            var edit_term_from = $("#edit_term_from").val();
+            var edit_term_to = $("#edit_term_to").val();
+            var edit_voters = $("#edit_voters").val();
+            var edit_pwd = $("#edit_pwd").val();
+            var edit_birth_date = $("#edit_birth_date").val();
+            var edit_birth_place = $("#edit_birth_place").val();
+            var edit_middle_name = $("#edit_middle_name").val();
+            var edit_suffix = $("#edit_suffix").val();
+            var edit_gender = $("#edit_gender").val();
+            var edit_vivil_status = $("#edit_vivil_status").val();
+            var edit_nationality = $("#edit_nationality").val();
+            var edit_municipality = $("#edit_municipality").val();
+            var edit_zip = $("#edit_zip").val();
+            var edit_barangay = $("#edit_barangay").val();
+            var edit_house_number = $("#edit_house_number").val();
+            var edit_street = $("#edit_street").val();
+            var edit_address = $("#edit_address").val();
+            var edit_email_address = $("#edit_email_address").val();
+            var edit_contact_number = $("#edit_contact_number").val();
+            var edit_fathers_name = $("#edit_fathers_name").val();
+            var edit_mothers_name = $("#edit_mothers_name").val();
+            var edit_guardian = $("#edit_guardian").val();
+            var edit_guardian_contact = $("#edit_guardian_contact").val();
+            var edit_pwd_info = $("#edit_pwd_info").val();
+            var edit_single_parent = $("#edit_single_parent").val();
+            
+            
+              $("#edit_first_name").change(function(){
+
+                var newFirstName = $(this).val();
+
+              if(!(newFirstName == edit_first_name )){
+
+                $("#edit_first_name_check").val('true');
+              
+              }else{
+
+                  $("#edit_first_name_check").val('false');
+              }
+
+             })
+
+             $("#edit_single_parent").change(function(){
+
+              var newSingleParent = $(this).val();
+
+              if(!(newSingleParent == edit_single_parent )){
+
+              $("#edit_single_parent_check").val('true');
+
+              }else{
+
+                $("#edit_single_parent_check").val('false');
+              }
+
+              })
+
+              $("#edit_pwd_info").change(function(){
+
+                var newPwdInfo = $(this).val();
+
+                if(!(newPwdInfo == edit_pwd_info )){
+
+                $("#edit_pwd_info_check").val('true');
+
+                }else{
+
+                  $("#edit_pwd_info_check").val('false');
+                }
+
+              })
+
+          
+            
+            $("#edit_last_name").change(function(){
+
+              var newLastName = $(this).val();
+
+            if(!(newLastName == edit_last_name )){
+
+              $("#edit_last_name_check").val('true');
+            
+            }else{
+
+                $("#edit_last_name_check").val('false');
+            }
+
+          })
+
+          $("#edit_position").change(function(){
+
+            var newPosition = $(this).val();
+
+            if(!(newPosition == edit_position )){
+
+            $("#edit_position_check").val('true');
+
+            }else{
+
+              $("#edit_position_check").val('false');
+            }
+
+          })
+
+          $("#edit_term_from").change(function(){
+
+          var newTerm = $(this).val();
+
+          if(!(newTerm == edit_term_from )){
+
+          $("#edit_term_from_check").val('true');
+
+          }else{
+
+            $("#edit_term_from_check").val('false');
+          }
+
+        })
+
+        $("#edit_term_to").change(function(){
+
+            var newTo = $(this).val();
+
+            if(!(newTo == edit_term_to )){
+
+            $("#edit_term_to_check").val('true');
+
+            }else{
+
+              $("#edit_term_to_check").val('false');
+            }
+
+          })
+
+          $("#edit_voters").change(function(){
+
+            var newVoters = $(this).val();
+
+            if(!(newVoters == edit_voters )){
+
+            $("#edit_voters_check").val('true');
+
+            }else{
+
+              $("#edit_voters_check").val('false');
+            }
+
+          })
+
+          $("#edit_pwd").change(function(){
+
+            var newPwd = $(this).val();
+
+            if(!(newPwd == edit_pwd )){
+
+            $("#edit_pwd_check").val('true');
+
+            }else{
+
+              $("#edit_pwd_check").val('false');
+            }
+
+          })
+
+          $("#edit_birth_date").change(function(){
+
+            var newBday = $(this).val();
+
+            if(!(newBday == edit_birth_date )){
+
+            $("#edit_birth_date_check").val('true');
+
+            }else{
+
+              $("#edit_birth_date_check").val('false');
+            }
+
+            })
+
+            $("#edit_birth_place").change(function(){
+
+              var newBplace = $(this).val();
+
+              if(!(newBplace == edit_birth_place )){
+
+              $("#edit_birth_place_check").val('true');
+
+              }else{
+
+                $("#edit_birth_place_check").val('false');
+              }
+
+            })
+
+            $("#edit_middle_name").change(function(){
+
+              var newMiddleName = $(this).val();
+
+              if(!(newMiddleName == edit_middle_name )){
+
+              $("#edit_middle_name_check").val('true');
+
+              }else{
+
+                $("#edit_middle_name_check").val('false');
+              }
+
+            })
+
+            $("#edit_suffix").change(function(){
+
+              var new_suffix = $(this).val();
+
+              if(!(new_suffix == edit_suffix )){
+
+              $("#edit_suffix_check").val('true');
+
+              }else{
+
+                $("#edit_suffix_check").val('false');
+              }
+
+              })
+
+              $("#edit_gender").change(function(){
+
+                var newGender = $(this).val();
+
+                if(!(newGender == edit_gender )){
+
+                $("#edit_gender_check").val('true');
+
+                }else{
+
+                  $("#edit_gender_check").val('false');
+                }
+
+                })
+
+                $("#edit_civil_status").change(function(){
+
+                  var newCivil = $(this).val();
+
+                  if(!(newCivil == edit_civil_status )){
+
+                  $("#edit_civil_status_check").val('true');
+
+                  }else{
+
+                    $("#edit_civil_status_check").val('false');
+                  }
+
+                 })
+
+
+                 $("#edit_religion").change(function(){
+
+                  var newReligion = $(this).val();
+
+                  if(!(newReligion == edit_religion )){
+
+                  $("#edit_religion_check").val('true');
+
+                  }else{
+
+                    $("#edit_religion_check").val('false');
+                  }
+
+                  })
+
+
+            $("#edit_nationality").change(function(){
+
+              var newNationality = $(this).val();
+
+              if(!(newNationality == edit_nationality )){
+
+              $("#edit_nationality_check").val('true');
+
+              }else{
+
+                $("#edit_nationality_check").val('false');
+              }
+
+            })
+
+            $("#edit_municipality").change(function(){
+
+              var newMunicipality = $(this).val();
+
+              if(!(newMunicipality == edit_municipality )){
+
+              $("#edit_municipality_check").val('true');
+
+              }else{
+
+                $("#edit_municipality_check").val('false');
+              }
+
+            })
+
+
+            
+            $("#edit_zip").change(function(){
+
+              var newZip = $(this).val();
+
+              if(!(newZip == edit_zip )){
+
+              $("#edit_zip_check").val('true');
+
+              }else{
+
+                $("#edit_zip_check").val('false');
+              }
+
+            })
+
+
+            $("#edit_barangay").change(function(){
+
+              var newBarangay = $(this).val();
+
+              if(!(newBarangay == edit_barangay )){
+
+              $("#edit_barangay_check").val('true');
+
+              }else{
+
+                $("#edit_barangay_check").val('false');
+              }
+
+            })
+
+            $("#edit_house_number").change(function(){
+
+              var newHnumber = $(this).val();
+
+              if(!(newHnumber == edit_house_number )){
+
+              $("#edit_house_number_check").val('true');
+
+              }else{
+
+                $("#edit_house_number_check").val('false');
+              }
+
+            })
+
+            $("#edit_street").change(function(){
+
+              var newStreet = $(this).val();
+
+              if(!(newStreet == edit_street )){
+
+              $("#edit_street_check").val('true');
+
+              }else{
+
+                $("#edit_street_check").val('false');
+              }
+
+            })
+
+            $("#edit_address").change(function(){
+
+              var newAddress = $(this).val();
+
+              if(!(newAddress == edit_address )){
+
+              $("#edit_address_check").val('true');
+
+              }else{
+
+                $("#edit_address_check").val('false');
+              }
+
+            })
+
+            $("#edit_email_address").change(function(){
+
+              var newEmail = $(this).val();
+
+              if(!(newEmail == edit_email_address )){
+
+              $("#edit_email_address_check").val('true');
+
+              }else{
+
+                $("#edit_email_address_check").val('false');
+              }
+
+            })
+
+            $("#edit_contact_number").change(function(){
+
+              var newNumber = $(this).val();
+
+              if(!(newNumber == edit_contact_number )){
+
+              $("#edit_contact_number_check").val('true');
+
+              }else{
+
+                $("#edit_contact_number_check").val('false');
+              }
+
+            })
+
+            $("#edit_fathers_name").change(function(){
+
+              var newtatay = $(this).val();
+
+              if(!(newtatay == edit_fathers_name )){
+
+              $("#edit_fathers_name_check").val('true');
+
+              }else{
+
+                $("#edit_fathers_name_check").val('false');
+              }
+
+            })
+
+            $("#edit_mothers_name").change(function(){
+
+              var newNanay = $(this).val();
+
+              if(!(newNanay == edit_mothers_name )){
+
+              $("#edit_mothers_name_check").val('true');
+
+              }else{
+
+                $("#edit_mothers_name_check").val('false');
+              }
+
+            })
+
+            $("#edit_guardian").change(function(){
+
+              var newGuardian = $(this).val();
+
+              if(!(newGuardian == edit_guardian )){
+
+              $("#edit_guardian_check").val('true');
+
+              }else{
+
+                $("#edit_guardian_check").val('false');
+              }
+
+              })
+
+              $("#edit_guardian_contact").change(function(){
+
+                var newGcontact = $(this).val();
+
+                if(!(newGcontact == edit_guardian_contact )){
+
+                $("#edit_guardian_contact_check").val('true');
+
+                }else{
+
+                  $("#edit_guardian_contact_check").val('false');
+                }
+
+              })
+
+        $.validator.setDefaults({
+          submitHandler: function (form) {
+
+            Swal.fire({
+              title: '<strong class="text-warning">Are you sure?</strong>',
+              html: "<b>You want edit this details?</b>",
+              type: 'info',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, edit it!',
+              allowOutsideClick: false,
+              width: '400px',
+            }).then((result) => {
+              if (result.value) {
+
+
+                var formData = new FormData(form)
+            
+                formData.append("edit_first_name_check",$("#edit_first_name_check").val())
+                formData.append("edit_last_name_check",$("#edit_last_name_check").val())
+                formData.append("edit_position_check",$("#edit_position_check").val())
+                formData.append("edit_term_from_check",$("#edit_term_from_check").val())
+                formData.append("edit_term_to_check",$("#edit_term_to_check").val())
+                formData.append("edit_voters_check",$("#edit_voters_check").val())
+                formData.append("edit_pwd_check",$("#edit_pwd_check").val())
+                formData.append("edit_birth_date_check",$("#edit_birth_date_check").val())
+                formData.append("edit_birth_place_check",$("#edit_birth_place_check").val())
+                formData.append("edit_middle_name_check",$("#edit_middle_name_check").val())
+                formData.append("edit_suffix_check",$("#edit_suffix_check").val())
+                formData.append("edit_gender_check",$("#edit_gender_check").val())
+                formData.append("edit_civil_status_check",$("#edit_civil_status_check").val())
+                formData.append("edit_religion_check",$("#edit_religion_check").val())
+                formData.append("edit_nationality_check",$("#edit_nationality_check").val())
+                formData.append("edit_municipality_check",$("#edit_municipality_check").val())
+                formData.append("edit_zip_check",$("#edit_zip_check").val())
+                formData.append("edit_barangay_check",$("#edit_barangay_check").val())
+                formData.append("edit_house_number_check",$("#edit_house_number_check").val())
+                formData.append("edit_street_check",$("#edit_street_check").val())
+                formData.append("edit_address_check",$("#edit_address_check").val())
+                formData.append("edit_email_address_check",$("#edit_email_address_check").val())
+                formData.append("edit_contact_number_check",$("#edit_contact_number_check").val())
+                formData.append("edit_fathers_name_check",$("#edit_fathers_name_check").val())
+                formData.append("edit_mothers_name_check",$("#edit_mothers_name_check").val())
+                formData.append("edit_guardian_check",$("#edit_guardian_check").val())
+                formData.append("edit_guardian_contact_check",$("#edit_guardian_contact_check").val())
+                formData.append("edit_pwd_info_check",$("#edit_pwd_info_check").val())
+                formData.append("edit_single_parent_check",$("#edit_single_parent_check").val())
+
+                  $.ajax({
+                    url: 'editEndOfficial.php',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success:function(data){
+                        Swal.fire({
+                          title: '<strong class="text-success">SUCCESS</strong>',
+                          type: 'success',
+                          html: '<b>Updated Official has Successfully<b>',
+                          width: '400px',
+                          confirmButtonColor: '#6610f2',
+                          allowOutsideClick: false,
+                          showConfirmButton: false,
+                          timer: 2000,
+                        }).then(()=>{
+                          window.location.reload();
+                        })
+
+                      
+                    }
+                  }).fail(function(){
+                    Swal.fire({
+                      title: '<strong class="text-danger">Ooppss..</strong>',
+                      type: 'error',
+                      html: '<b>Something went wrong with ajax !<b>',
+                      width: '400px',
+                      confirmButtonColor: '#6610f2',
+                    })
+                  })
+              }
+            })
+
+           
+          }
+        });
+      $('#editOfficialForm').validate({
+        ignore: "",
+        rules: {
+          edit_first_name: {
+            required: true,
+            minlength: 2
+          },
+          edit_last_name: {
+            required: true,
+            minlength: 2
+          },
+          edit_age: {
+            required: true,
+          },
+          edit_birth_date: {
+            required: true,
+          },
+          edit_address:{
+            required: true,
+          },
+          edit_email_address:{
+            email: true,
+          },
+          edit_term_from:{
+            required: true,
+          },
+          edit_term_to:{
+            required: true,
+          },
+          edit_contact_number:{
+            required: true,
+            minlength: 11
+          },
+          edit_pwd_info:{
+            required: true,
+      
+          },
+        },
+        messages: {
+          edit_first_name: {
+            required: "Please provide a First Name",
+            minlength: "First Name must be at least 2 characters long"
+          },
+          edit_last_name: {
+            required: "Please provide a Last Name",
+            minlength: "Last Name must be at least 2 characters long"
+          },
+          edit_age: {
+            required: "Please provide a age",
+          },
+          edit_birth_date: {
+            required: "Please provide a Birth Date",
+          },
+          edit_address: {
+            required: "Please provide a Address",
+          },
+          edit_term_from: {
+            required: "Please provide a Term Form",
+          },
+          edit_term_to: {
+            required: "Please provide a Term To",
+          },
+          edit_email_address:{
+            email:"Enter Valid Email!",
+            },
+            edit_contact_number: {
+            required: "Please provide a Contact Number",
+            minlength: "Input Exact Contact Number"
+          },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+          element.closest('.form-group-sm').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        }
+      });
+    })
+   
+
+    $("#edit_first_name, #edit_last_name").keyup(function(){
+      var edit_first_name = $("#edit_first_name").val();
+      var edit_last_name = $("#edit_last_name").val();
+      $("#keyup_first_name").text(edit_first_name);
+      $("#keyup_last_name").text(edit_last_name);
+    })
+
+    $("#image_official").click(function(){
+          $("#edit_image").click();
+      });
+
+    function displayImge(input){
+      if(input.files && input.files[0]){
+        var reader = new FileReader();
+        var edit_image = $("#edit_image").val().split('.').pop().toLowerCase();
+
+        if(edit_image != ''){
+          if(jQuery.inArray(edit_image,['gif','png','jpg','jpeg']) == -1){
+            Swal.fire({
+              title: '<strong class="text-danger">ERROR</strong>',
+              type: 'error',
+              html: '<b>Invalid Image File<b>',
+              width: '400px',
+              confirmButtonColor: '#6610f2',
+            })
+            $("#edit_image").val('');
+            $("#image_official").attr('src', '../assets/dist/img/blank_image.png');
+            return false;
+          }
+        }
+
+        reader.onload = function(e){
+          $("#image_official").attr('src',e.target.result);
+          $("#image_official").hide();
+          $("#image_official").fadeIn(650);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+
+      }
+    }  
+
+    $("#edit_image").change(function(){
+      displayImge(this);
+    })
+
+
+    
+  })
+</script>
 
 <script>
 // Restricts input for each element in the set of matched elements to the given inputFilter.

@@ -286,9 +286,10 @@ $(document).ready(function(){
 
      window.print();
      document.body.innerHTML = originalContents;
-     setTimeout(function(){ 
+       setTimeout(function(){ 
              window.close();
   }, 5000);
+   
   
 })
 </script>

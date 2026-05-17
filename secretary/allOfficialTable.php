@@ -25,13 +25,14 @@ try{
 
 
   
-  $sql = "SELECT  official_status.position, official_status.voters, official_status.status, official_status.pwd_info, official_status.single_parent,  official_information.official_id, official_information.first_name, official_information.middle_name, official_information.last_name, official_information.first_name,
-  image, official_information.image_path, position.color,   position.position as official_position FROM official_status
+  $sql = "SELECT  official_status.position, official_status.voters, official_status.status, official_status.pwd_info,official_status.single_parent, official_information.official_id, official_information.first_name, official_information.middle_name, official_information.last_name, official_information.first_name,
+  image, official_information.image_path, position.color, position.position as official_position FROM official_status
   INNER JOIN official_information ON official_status.official_id = official_information.official_id
   INNER JOIN position ON official_status.position = position.position_id" .$where;
   if($_REQUEST['search']['value']){
     $sql .= " AND (first_name LIKE '%" . $_REQUEST['search']['value']. "%' ";
     $sql .= " OR last_name LIKE '%" . $_REQUEST['search']['value']. "%' ";
+    $sql .= " OR official_information.official_id LIKE '%" . $_REQUEST['search']['value']. "%' ";
     $sql .= " OR status LIKE '%" . $_REQUEST['search']['value']. "%' )";
    
   }
@@ -125,7 +126,7 @@ try{
     $subdata[] = $voters;
     $subdata[] = $status;
     $subdata[] = '<a href="viewOfficial.php?request='.$row['official_id'].'" style="cursor: pointer;  color: yellow;  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;" class="fa fa-user-edit text-lg px-3 "></a>
-   ';
+    <i style="cursor: pointer;  color: red;  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;" class="fa fa-times text-lg px-2 deleteOfficial" id="'.$row['official_id'].'"></i>';
     $data[] = $subdata;
   }
 

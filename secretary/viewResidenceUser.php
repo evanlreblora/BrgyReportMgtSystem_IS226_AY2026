@@ -415,12 +415,12 @@ try{
   };
 }(jQuery));
 
-$("#edit_contact_number").inputFilter(function(value) {
+$("#contact_number").inputFilter(function(value) {
   return /^-?\d*$/.test(value); 
   
   });
 
-  $("#edit_first_name, #edit_middle_name, #edit_last_name").inputFilter(function(value) {
+  $("#first_name, #middle_name, #last_name").inputFilter(function(value) {
   return /^[a-z, ]*$/i.test(value); 
   });
   

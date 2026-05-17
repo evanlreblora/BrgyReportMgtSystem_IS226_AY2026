@@ -22,7 +22,6 @@ try{
 
 
   
-    
     $sql = "SELECT  official_end_status.position, official_end_status.voters, official_end_status.status, official_end_information.official_id, official_end_information.first_name, official_end_information.middle_name, official_end_information.last_name, official_end_information.first_name,
     image, official_end_information.image_path, official_end_status.single_parent, official_end_status.pwd_info, position.color,   position.position as official_position FROM official_end_status
     INNER JOIN official_end_information ON official_end_status.official_id = official_end_information.official_id
@@ -30,6 +29,7 @@ try{
   if($_REQUEST['search']['value']){
     $sql .= " AND (first_name LIKE '%" . $_REQUEST['search']['value']. "%' ";
     $sql .= " OR last_name LIKE '%" . $_REQUEST['search']['value']. "%' ";
+    $sql .= " OR official_end_information.official_id LIKE '%" . $_REQUEST['search']['value']. "%' ";
     $sql .= " OR status LIKE '%" . $_REQUEST['search']['value']. "%' )";
    
   }
@@ -96,7 +96,7 @@ try{
 
     if($row['status'] == 'ACTIVE'){
       $status = '<label class="switch">
-                      <input type="checkbox" class="editStatus" data-status="ACTIVE"  id="'.$row['official_id'].'"  disabled>
+                      <input type="checkbox" class="editStatus" data-status="ACTIVE"  id="'.$row['official_id'].'"  checked>
                     <div class="slider round">
                       <span class="on ">ACTIVE</span>
                       <span class="off ">INACTIVE</span>
@@ -104,7 +104,7 @@ try{
                 </label>';
   }else{
       $status = '<label class="switch">
-                      <input type="checkbox" class="editStatus" id="'.$row['official_id'].'" data-status="INACTIVE" disabled> 
+                      <input type="checkbox" class="editStatus" id="'.$row['official_id'].'" data-status="INACTIVE">
                     <div class="slider round">
                       <span class="off ">INACTIVE</span>
                       <span class="on ">ACTIVE</span>
@@ -122,9 +122,9 @@ try{
   $subdata[] = $single_parent;
   $subdata[] = $voters;
   $subdata[] = $status;
-    $subdata[] = '<a href="viewEndOfficial.php?request='.$row['official_id'].'" style="cursor: pointer;  color: yellow;  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;" class="fa fa-user-edit text-lg px-3 "></a>
-   ';
-    $data[] = $subdata;
+  $subdata[] = '<a href="viewEndOfficial.php?request='.$row['official_id'].'" style="cursor: pointer;  color: yellow;  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;" class="fa fa-user-edit text-lg px-3 "></a>
+  <i style="cursor: pointer;  color: red;  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;" class="fa fa-times text-lg px-2 deleteOfficial" id="'.$row['official_id'].'"></i>';
+  $data[] = $subdata;
   }
 
 

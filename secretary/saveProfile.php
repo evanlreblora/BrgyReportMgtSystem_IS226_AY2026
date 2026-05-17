@@ -48,6 +48,12 @@ try{
   $new_confirm_password = $con->real_escape_string($_POST['new_confirm_password']);
 
 
+
+  
+
+
+
+
   if(isset($image)){
 
 

@@ -3,30 +3,6 @@
 
 include_once '../connection.php';
 
-session_start();
-if(isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'secretary'){
-  
-  $user_id = $_SESSION['user_id'];
-  $sql_user = "SELECT * FROM `users` WHERE `id` = ? ";
-  $stmt_user = $con->prepare($sql_user) or die ($con->error);
-  $stmt_user->bind_param('s',$user_id);
-  $stmt_user->execute();
-  $result_user = $stmt_user->get_result();
-  $row_user = $result_user->fetch_assoc();
-  $first_name_user = $row_user['first_name'];
-  $last_name_user = $row_user['last_name'];
-  $user_type = $row_user['user_type'];
-  $user_image = $row_user['image'];
-
-
-
-
-}else{
- echo '<script>
-        window.location.href = "../login.php";
-      </script>';
-}
-
 
 
 try{
@@ -58,14 +34,14 @@ try{
     $last_name = $row_user['last_name'];
     $status_activity_log = 'updated';
   
-     
     $date_activity = $now = date("j-n-Y g:i A"); 
-    $message_activity =  'OFFICIAL: '.$first_name_user. ' '. $last_name_user. ' ' . $user_id. ' | '. 'RESIDENT '.$first_name.' '.$last_name. ' REQUEST CERTIFICATE ACCEPTED - ' .$residence_id. ' | PURPOSE ' .strtoupper($purpose). ' | MESSAGE ' .$message . ' | DATE ISSUED ' .$edit_date_issued .' | DATE EXPIRED '. $edit_date_expired;
+    $message_activity =  'ADMIN: '. 'RESIDENT REQUEST CERTIFICATE ACCEPTED - ' .$residence_id. ' | PURPOSE ' .strtoupper($purpose). ' | MESSAGE ' .$message . ' | DATE ISSUED ' .$edit_date_issued .' | DATE EXPIRED '. $edit_date_expired;
     $sql_system_logs= "INSERT INTO activity_log (`message`, `date`,`status`) VALUES (?,?,?)";
     $query_system_logs = $con->prepare($sql_system_logs) or die ($con->error);
     $query_system_logs->bind_param('sss',$message_activity,$date_activity,$status_activity_log);
     $query_system_logs->execute();
     $query_system_logs->close();
+
 
 
 

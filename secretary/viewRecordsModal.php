@@ -229,7 +229,36 @@ try{
                   <div class="col-sm-6">
                     <div class="form-group form-group-sm">
                       <label>Incident</label>
-                        <input name="edit_incident" id="edit_incident"  class=" form-control" value="<?= $row_record_blotter['type_of_incident']; ?>">
+                        <select name="edit_incident" id="edit_incident" class="form-control" style="width: 100%;">
+                          <option value=""></option>
+                          <?php
+                            $current_incident = $row_record_blotter['type_of_incident'] ?? '';
+                            $has_selected_incident = false;
+                            $sql_incident_info = "SELECT incident_description FROM incident_info WHERE status = 'ACTIVE' ORDER BY incident_description ASC";
+                            $query_incident_info = $con->prepare($sql_incident_info) or die ($con->error);
+                            $query_incident_info->execute();
+                            $result_incident_info = $query_incident_info->get_result();
+                            while($row_incident_info = $result_incident_info->fetch_assoc()){
+                              $incident_description = $row_incident_info['incident_description'] ?? '';
+                              if($incident_description == ''){
+                                continue;
+                              }
+                              $selected_incident = $incident_description == $current_incident ? 'selected' : '';
+                              if($selected_incident != ''){
+                                $has_selected_incident = true;
+                              }
+                              ?>
+                                <option value="<?= htmlspecialchars($incident_description, ENT_QUOTES, 'UTF-8') ?>" <?= $selected_incident ?>><?= htmlspecialchars($incident_description, ENT_QUOTES, 'UTF-8') ?></option>
+                              <?php
+                            }
+                            $query_incident_info->close();
+                            if($current_incident != '' && !$has_selected_incident){
+                              ?>
+                                <option value="<?= htmlspecialchars($current_incident, ENT_QUOTES, 'UTF-8') ?>" selected><?= htmlspecialchars($current_incident, ENT_QUOTES, 'UTF-8') ?></option>
+                              <?php
+                            }
+                          ?>
+                        </select>
                     </div>
                   </div>   
                   <div class="col-sm-6">
@@ -332,12 +361,12 @@ try{
             }
 
             $.ajax({
-              url: 'editBlotterRecord.php',
+              url: 'editincidentrecord.php',
               type: 'POST',
               data: $(form).serialize(),
               cache: false,
               success:function(){
-           
+                $("#viewBlotterRecordModal").modal('hide');
                 Swal.fire({
                   title: '<strong class="text-success">SUCCESS</strong>',
                   type: 'success',
@@ -348,7 +377,6 @@ try{
                   showConfirmButton: false,
                   timer: 2000,
                 }).then(()=>{
-                  $("#viewBlotterRecordModal").modal('hide');
                   $("#blotterRecordTable").DataTable().ajax.reload();
                  
                   $('#edit_complainant_residence').empty();
@@ -512,6 +540,18 @@ $(document).ready(function(){
               return $opt;
           }
       };
+
+    $('#edit_incident').select2({
+      theme: 'bootstrap4',
+      placeholder: 'Select Incident',
+      allowClear: true,
+      dropdownParent: $('#viewBlotterRecordModal'),
+      language: {
+        noResults: function () {
+          return "No Incident";
+        }
+      }
+    });
 </script>
 
 
@@ -543,4 +583,34 @@ $(document).ready(function(){
               return $opt;
           }
       };
+</script>
+<script>
+// Restricts input for each element in the set of matched elements to the given inputFilter.
+(function($) {
+  $.fn.inputFilter = function(inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  };
+}(jQuery));
+
+
+
+  $("#edit_complainant_not_residence, #edit_person_involevd_not_resident").inputFilter(function(value) {
+  return /^[a-z, ]*$/i.test(value); 
+  });
+  
+  $("#edit_complainant_statement, #edit_respodent,#edit_location_incident,#edit_person_statement").inputFilter(function(value) {
+  return /^[0-9a-z, ,-]*$/i.test(value); 
+  });
+
 </script>

@@ -192,7 +192,7 @@ try{
       var message = $("#message").val();
       var purpose = $("#purpose").val();
 
-      if(message == ''){
+      if(message == '' || message == 'none'){
 
         Swal.fire({
           title: '<strong class="text-danger">ERROR</strong>',
@@ -320,5 +320,36 @@ try{
     })
 
   })
+
+</script>
+
+<script>
+// Restricts input for each element in the set of matched elements to the given inputFilter.
+(function($) {
+  $.fn.inputFilter = function(inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  };
+}(jQuery));
+
+
+
+  $("#purpose").inputFilter(function(value) {
+  return /^[a-z]*$/i.test(value); 
+  });
+  
+  $("#message").inputFilter(function(value) {
+  return /^[0-9a-z, ,-]*$/i.test(value); 
+  });
 
 </script>

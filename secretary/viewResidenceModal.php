@@ -195,7 +195,7 @@ fieldset {
         <td colspan="3">
           <div class="d-flex justify-content-between">
             <div> FIRST NAME<br>
-              <input type="text"  class="editInfo form-control form-control-sm"  value="<?= $row_view_residence['first_name'] ?>" id="edit_first_name" name="edit_first_name" size="30"> 
+              <input type="text" class="editInfo form-control form-control-sm"  value="<?= $row_view_residence['first_name'] ?>" id="edit_first_name" name="edit_first_name" size="30"> 
               <input type="hidden" value="false" id="edit_first_name_check"> 
             </div>
             <div>MIDDLE NAME<br>
@@ -431,8 +431,10 @@ fieldset {
         </div>
       </div>
       <div class="modal-footer">
+        <button type="button" id="editDetailsBtn" class="btn btn-primary btn-flat elevation-5"><i class="fas fa-edit"></i> EDIT DETAILS</button>
+        <button type="submit" class="btn btn-success btn-flat elevation-5"><i class="fas fa-edit"></i> UPDATE DETAILS</button>
         <button type="button" id="closeModal" class="btn btn-secondary btn-flat elevation-5" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
-        <button type="submit" class="btn btn-primary btn-flat elevation-5"><i class="fas fa-edit"></i> EDIT DETAILS</button>
+        
       </div>
 
       </form>
@@ -444,6 +446,15 @@ fieldset {
 
 <script>
   $(document).ready(function(){
+    
+    // Disable all editable fields initially
+    $('#editResidenceForm input[type!="hidden"]:not(#edit_age), #editResidenceForm select').prop('disabled', true);
+    
+    // Enable fields when clicking EDIT DETAILS
+    $('#editDetailsBtn').on('click', function(){
+      $('#editResidenceForm input[type!="hidden"]:not(#edit_age), #editResidenceForm select').prop('disabled', false);
+      $('#edit_pwd').trigger('change'); // Apply PWD logic
+    });
     
     blotterPersonTable()
     deleteResidenceRecord();
@@ -1208,6 +1219,10 @@ function blotterPersonTable(){
                         $("#allResidenceTable").DataTable().ajax.reload();
                         $("#archiveResidenceTable").DataTable().ajax.reload();
                         
+                        // Disable fields again after update
+                        $('#editResidenceForm input[type!="hidden"], #editResidenceForm select').prop('disabled', true);
+                        $('#edit_pwd').trigger('change');
+                        
                       })
                     }
                 }).fail(function(){
@@ -1243,10 +1258,6 @@ function blotterPersonTable(){
           edit_contact_number:{
             required: true,
             minlength: 11
-          },
-          edit_pwd_info:{
-            required: true,
-            
           },
           edit_email_address:{
             email: true,

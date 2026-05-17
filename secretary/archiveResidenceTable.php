@@ -6,7 +6,7 @@ include_once '../connection.php';
 
 
 
-$archive_status = trim('YES');
+$archive_status = trim('INACTIVE');
 $first_name = $con->real_escape_string($_POST['first_name']);
 $middle_name = $con->real_escape_string($_POST['middle_name']);
 $last_name = $con->real_escape_string($_POST['last_name']);
@@ -49,7 +49,7 @@ residence_status.archive,
 residence_status.single_parent,
 residence_status.pwd_info,
 residence_status.date_added  
-FROM residence_information INNER JOIN residence_status ON residence_information.residence_id = residence_status.residence_id WHERE residence_status.archive = '$archive_status'" .$where;
+FROM residence_information INNER JOIN residence_status ON residence_information.residence_id = residence_status.residence_id WHERE residence_status.status = '$archive_status'" .$where;
 
 
 $query = $con->query($sql) or die ($con->error);

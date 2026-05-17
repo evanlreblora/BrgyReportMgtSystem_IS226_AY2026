@@ -440,7 +440,7 @@ input:checked + .slider .off{
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -453,25 +453,6 @@ input:checked + .slider .off{
                 Dashboard
               </p>
             </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link  bg-indigo">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-             
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link active">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
-  
-            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link ">
@@ -502,6 +483,31 @@ input:checked + .slider .off{
               </li>
             </ul>
           </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link bg-indigo" >
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link active">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
           
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
@@ -511,25 +517,7 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
-       
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -546,9 +534,10 @@ input:checked + .slider .off{
               </p>
             </a>
           </li>
-         
+
+
+
  
-         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -573,9 +562,9 @@ input:checked + .slider .off{
         </div> -->
       <div class="card-body">
           <fieldset>
-            <legend>NUMBER OF OFFICIAL <span id="total"></span></legend>
+            <legend> </span></legend>
               <div class="table-responsive mt-2">
-              <table class="table table-striped table-hover " id="officialTable" style="width: 100%;">
+                <table class="table table-striped table-hover " id="officialTable" style="width: 100%;">
                   <thead class="bg-black text-uppercase">
                   <tr>
                     <th>Image</th>
@@ -836,7 +825,57 @@ input:checked + .slider .off{
 
     editStatus();
 
- 
+    deleteOfficial()
+
+function deleteOfficial(){
+  $(document).on('click','.deleteOfficial',function(){
+    var official_id = $(this).attr('id');
+    Swal.fire({
+        title: '<strong class="text-danger">ARE YOU SURE?</strong>',
+        html: "You want delete this Official?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        allowOutsideClick: false,
+        confirmButtonText: 'Yes, delete it!',
+        width: '400px',
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url: 'deleteOfficial.php',
+            type: 'POST',
+            data: {
+              official_id:official_id,
+            },
+            cache: false,
+            success:function(data){
+              Swal.fire({
+                title: '<strong class="text-success">Success</strong>',
+                type: 'success',
+                html: '<b>Delete Official has Successfully<b>',
+                width: '400px',
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                timer: 2000
+              }).then(()=>{
+                $("#officialTable").DataTable().ajax.reload();
+              })
+            }
+          }).fail(function(){
+            Swal.fire({
+              title: '<strong class="text-danger">Ooppss..</strong>',
+              type: 'error',
+              html: '<b>Something went wrong with ajax !<b>',
+              width: '400px',
+              confirmButtonColor: '#6610f2',
+            })
+          })
+        }
+      })
+
+  })
+}
   
 
     function editStatus(){
@@ -919,9 +958,10 @@ input:checked + .slider .off{
             className: 'text-center',
            
           },
+         
           
         ],
-        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>f>" +
+        dom: "<'row'<'col-sm-12 col-md-12'f><'col-sm-12 col-md-6'>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'d-flex flex-sm-row-reverse flex-column border-top '<'px-2 'p><'px-2'i> <'px-2'l> >",
             pagingType: "full_numbers",

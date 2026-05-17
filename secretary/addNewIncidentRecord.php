@@ -2,33 +2,6 @@
 
 
 include_once '../connection.php';
-session_start();
-
- 
-  if(isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'secretary'){
-  
-    $user_id = $_SESSION['user_id'];
-    $sql_user = "SELECT * FROM `users` WHERE `id` = ? ";
-    $stmt_user = $con->prepare($sql_user) or die ($con->error);
-    $stmt_user->bind_param('s',$user_id);
-    $stmt_user->execute();
-    $result_user = $stmt_user->get_result();
-    $row_user = $result_user->fetch_assoc();
-    $first_name_user = $row_user['first_name'];
-    $last_name_user = $row_user['last_name'];
-    $user_type = $row_user['user_type'];
-    $user_image = $row_user['image'];
-  
-  
-
-
-  
-  
-  }else{
-   echo '<script>
-          window.location.href = "../login.php";
-        </script>';
-  }
 
 
 try{
@@ -103,16 +76,13 @@ try{
       $last_name_resident_complainant = $row_resident_complainant['last_name'];
   
       $date_activity = $now = date("j-n-Y g:i A");  
-      $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$user_id.' | '. 'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Complainant - ' . $first_name_resident_complainant .' '. $last_name_resident_complainant .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
-      $status_activity_log = 'create';
+      $admin = strtoupper('ADMIN').':' .' '. 'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Complainant - ' . $first_name_resident_complainant .' '. $last_name_resident_complainant .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
+      $status_activity_log = 'delete';
       $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
       $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
       $stmt_activity_log->bind_param('sss',$admin,$date_activity,$status_activity_log);
       $stmt_activity_log->execute();
       $stmt_activity_log->close();
-
-
-  
   
 
     }
@@ -128,7 +98,7 @@ try{
 
     date_default_timezone_set('Asia/Manila');
     $date = new DateTime();
-    $blotter_id = rand($date->format("mdYHIsv"),3);
+     $blotter_id = rand($date->format("mdYHIsv"),3);
    
 
     $sql_incident_status = "INSERT INTO `incident_status`(`blotter_id`,`blotter_main`,`person_id`) VALUES (?,?,?)";
@@ -150,7 +120,7 @@ try{
   
   
       $date_activity = $now = date("j-n-Y g:i A");  
-      $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$user_id.' | '.  'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Person Involved - ' . $first_name_resident_complainant .' '. $last_name_resident_complainant .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
+      $admin = strtoupper('ADMIN').':' .' '. 'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Person Involved - ' . $first_name_resident_complainant .' '. $last_name_resident_complainant .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
       $status_activity_log = 'delete';
       $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
       $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -206,7 +176,7 @@ try{
 
 
   $date_activity = $now = date("j-n-Y g:i A");  
-  $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$user_id.' | '.  'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Person Not Resident - ' . $person_involevd_not_resident  .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $person_statement .' | Respondent - ' . $respodent;
+  $admin = strtoupper('ADMIN').':' .' '. 'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Person Not Resident - ' . $person_involevd_not_resident  .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $person_statement .' | Respondent - ' . $respodent;
   $status_activity_log = 'delete';
   $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
   $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -216,7 +186,7 @@ try{
 
   
   $date_activity = $now = date("j-n-Y g:i A");  
-  $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$user_id.' | '.  'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Complainant Not Resident - ' . $complainant_not_residence  .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
+  $admin = strtoupper('ADMIN').':' .' '. 'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Complainant Not Resident - ' . $complainant_not_residence  .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
   $status_activity_log = 'delete';
   $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
   $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -227,7 +197,7 @@ try{
   if($resident == '' && $person == ''){
 
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$user_id.' | '.  'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Complainant Not Resident - ' . $complainant_not_residence  .' Complainant Statement - '.$complainant_statement.' Person Not Resident - '.$person_involevd_not_resident .' Person Statement - '. $person_statement .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
+    $admin = strtoupper('ADMIN').':' .' '. 'ADDED INCIDENT RECORD  - '.' ' .$blotter_id_main.' | Complainant Not Resident - ' . $complainant_not_residence  .' Complainant Statement - '.$complainant_statement.' Person Not Resident - '.$person_involevd_not_resident .' Person Statement - '. $person_statement .' | Incident - ' . $incident .' | Date Incident '. $date_of_incident .' | Location Incident '. $location_incident .' | Complainant Statement - '. $complainant_statement .' | Respondent - ' . $respodent;
     $status_activity_log = 'delete';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);

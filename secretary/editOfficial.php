@@ -23,6 +23,7 @@ try{
          </script>';
    }
 
+
    $edit_pwd = $con->real_escape_string($_POST['edit_pwd']);
 
    if($edit_pwd == 'YES'){
@@ -31,8 +32,12 @@ try{
     $edit_pwd_info = '';
    }
 
-   $edit_single_parent = $con->real_escape_string($_POST['edit_single_parent']);
+
 $official_id = $con->real_escape_string($_POST['official_id']);
+$edit_single_parent = $con->real_escape_string($_POST['edit_single_parent']);
+$edit_term_from = $con->real_escape_string($_POST['edit_term_from']);
+$edit_term_to = $con->real_escape_string($_POST['edit_term_to']);
+$edit_position = $con->real_escape_string($_POST['edit_position']);
 $edit_voters = $con->real_escape_string($_POST['edit_voters']);
 $edit_first_name = $con->real_escape_string($_POST['edit_first_name']);
 $edit_middle_name = $con->real_escape_string($_POST['edit_middle_name']);
@@ -94,9 +99,8 @@ $old_contact_number = $row_check_offical['contact_number'];
 $old_fathers_name = $row_check_offical['fathers_name'];
 $old_mothers_name = $row_check_offical['mothers_name'];
 $old_guardian = $row_check_offical['guardian'];
-$old_pwd_info = $row_check_offical['pwd_info'];
-$old_single_parent = $row_check_offical['single_parent'];
 $old_guardian_contact = $row_check_offical['guardian_contact'];
+$old_pwd_info = $row_check_offical['pwd_info'];
 $old_position = strtoupper($row_check_offical['position_row']);
 
 
@@ -138,6 +142,25 @@ if(isset($edit_image)){
 
 
 
+$sql_position = "SELECT COUNT(position) AS official_position FROM official_status WHERE position = ? AND official_id != ? ";
+$stmt_position = $con->prepare($sql_position) or die ($con->error);
+$stmt_position->bind_param('ss',$edit_position,$official_id);
+$stmt_position->execute();
+$result_position = $stmt_position->get_result();
+$row_position = $result_position->fetch_assoc();
+
+
+$sql_position_limit = "SELECT position_limit, position FROM position WHERE position_id = ?";
+$stmt_position_limit = $con->prepare($sql_position_limit) or die ($con->error);
+$stmt_position_limit->bind_param('s',$edit_position);
+$stmt_position_limit->execute();
+$result_position_limit = $stmt_position_limit->get_result();
+$row_position_limit = $result_position_limit->fetch_assoc();
+$new_position = strtoupper($row_position_limit['position']);
+
+if($row_position_limit['position_limit'] == $row_position['official_position']){
+  exit('error');
+}
 
 
 
@@ -219,9 +242,9 @@ $stmt_official->close();
 
 
 
-  $sql_edit_official_status = "UPDATE `official_status` SET `voters` = ?, `senior` = ?, `pwd` = ?, `pwd_info` = ?, `single_parent` = ? WHERE `official_id` = ?";
+  $sql_edit_official_status = "UPDATE `official_status` SET `voters` = ?, `senior` = ?, `pwd` = ?, `pwd_info` = ?, `single_parent` = ?, `term_from` = ?, `term_to` = ?, `position` = ? WHERE `official_id` = ?";
   $stmt_edit_official_status = $con->prepare($sql_edit_official_status) or die ($con->error);
-  $stmt_edit_official_status->bind_param('ssssss',$edit_voters,$senior,$edit_pwd,$edit_pwd_info,$edit_single_parent,$official_id);
+  $stmt_edit_official_status->bind_param('sssssssss',$edit_voters,$senior,$edit_pwd,$edit_pwd_info,$edit_single_parent,$edit_term_from,$edit_term_to,$edit_position,$official_id);
   $stmt_edit_official_status->execute();
   $stmt_edit_official_status->close();
 
@@ -232,7 +255,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - FIRST NAME BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_first_name.' TO '. $edit_first_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL - FIRST NAME '.' ' .$official_id.' |' .' '. ' FROM '.$old_first_name.' TO '. $edit_first_name;
     $status_activity_log = 'update';
   
   
@@ -249,26 +272,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - PWD TYPE BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_pwd_info.' TO '. $edit_pwd_info;
-    $status_activity_log = 'update';
-  
-  
-    $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
-    $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
-    $stmt_activity_log->bind_param('sss',$admin,$date_activity,$status_activity_log);
-    $stmt_activity_log->execute();
-    $stmt_activity_log->close();
-    
-  
-  }
-
-
-  
-  if($_POST['edit_single_parent_check'] == 'true' || $_POST['edit_single_parent_check'] === TRUE){
-
-  
-    $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - SINGLE PARENT BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_single_parent.' TO '. $edit_single_parent;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL - PWD TYPE  '.' ' .$official_id.' |' .' '. ' FROM '.$old_pwd_info.' TO '. $edit_pwd_info;
     $status_activity_log = 'update';
   
   
@@ -286,7 +290,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - LAST NAME BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_last_name.' TO '. $edit_last_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL LAST NAME- '.' ' .$official_id.' |' .' '. ' FROM '.$old_last_name.' TO '. $edit_last_name;
     $status_activity_log = 'update';
   
   
@@ -300,18 +304,62 @@ $stmt_official->close();
   }
 
   
+  if($_POST['edit_position_check'] == 'true' || $_POST['edit_position_check'] === TRUE){
+
+  
+    $date_activity = $now = date("j-n-Y g:i A");  
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL POSITION - '.' ' .$official_id.' |' .' '. ' FROM '.$old_position.' TO '. $new_position;
+    $status_activity_log = 'update';
+  
+  
+    $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
+    $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
+    $stmt_activity_log->bind_param('sss',$admin,$date_activity,$status_activity_log);
+    $stmt_activity_log->execute();
+    $stmt_activity_log->close();
+    
+  
+  }
 
 
+  if($_POST['edit_term_from_check'] == 'true' || $_POST['edit_term_from_check'] === TRUE){
+
+  
+    $date_activity = $now = date("j-n-Y g:i A");  
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL START - '.' ' .$official_id.' |' .' '. ' FROM '.$old_term_from.' TO '. $edit_term_from;
+    $status_activity_log = 'update';
+    $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
+    $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
+    $stmt_activity_log->bind_param('sss',$admin,$date_activity,$status_activity_log);
+    $stmt_activity_log->execute();
+    $stmt_activity_log->close();
+    
+  
+  }
 
 
+  
+  if($_POST['edit_term_to_check'] == 'true' || $_POST['edit_term_to_check'] === TRUE){
 
+  
+    $date_activity = $now = date("j-n-Y g:i A");  
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL END - '.' ' .$official_id.' |' .' '. ' FROM '.$old_term_to.' TO '. $edit_term_to;
+    $status_activity_log = 'update';
+    $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
+    $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
+    $stmt_activity_log->bind_param('sss',$admin,$date_activity,$status_activity_log);
+    $stmt_activity_log->execute();
+    $stmt_activity_log->close();
+    
+  
+  }
 
   
   if($_POST['edit_voters_check'] == 'true' || $_POST['edit_voters_check'] === TRUE){
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - VOTERS BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_voters.' TO '. $edit_voters;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL VOTERS - '.' ' .$official_id.' |' .' '. ' FROM '.$old_voters.' TO '. $edit_voters;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -327,7 +375,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - PWD BY - '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_pwd.' TO '. $edit_pwd;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL PWD - '.' ' .$official_id.' |' .' '. ' FROM '.$old_pwd.' TO '. $edit_pwd;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -343,7 +391,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - BIRTH DATE BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_birth_date.' TO '. $edit_birth_date;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL BIRTH DATE - '.' ' .$official_id.' |' .' '. ' FROM '.$old_birth_date.' TO '. $edit_birth_date;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -359,7 +407,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - BIRTH PLACE BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_birth_place.' TO '. $edit_birth_place;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL BIRTH PLACE - '.' ' .$official_id.' |' .' '. ' FROM '.$old_birth_place.' TO '. $edit_birth_place;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -375,7 +423,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - MIDDLE NAME BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_middle_name.' TO '. $edit_middle_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL MIDDLE NAME - '.' ' .$official_id.' |' .' '. ' FROM '.$old_middle_name.' TO '. $edit_middle_name;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -390,7 +438,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - SUFFIX BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_suffix.' TO '. $edit_suffix;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL SUFFIX - '.' ' .$official_id.' |' .' '. ' FROM '.$old_suffix.' TO '. $edit_suffix;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -406,7 +454,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - GENDER BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_gender.' TO '. $edit_gender;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL GENDER - '.' ' .$official_id.' |' .' '. ' FROM '.$old_gender.' TO '. $edit_gender;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -422,7 +470,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - CIVIL STATUS BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_civil_status.' TO '. $edit_civil_status;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL CIVIL STATUS - '.' ' .$official_id.' |' .' '. ' FROM '.$old_civil_status.' TO '. $edit_civil_status;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -438,7 +486,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - RELIGION BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_religion.' TO '. $edit_religion;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL RELIGION - '.' ' .$official_id.' |' .' '. ' FROM '.$old_religion.' TO '. $edit_religion;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -454,7 +502,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - NATIONALITY BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_nationality.' TO '. $edit_nationality;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL NATIONALITY - '.' ' .$official_id.' |' .' '. ' FROM '.$old_nationality.' TO '. $edit_nationality;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -469,7 +517,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - MUNICPALITY BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_municipality.' TO '. $edit_municipality;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL MUNICPALITY - '.' ' .$official_id.' |' .' '. ' FROM '.$old_municipality.' TO '. $edit_municipality;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -485,7 +533,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - ZIP BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_zip.' TO '. $edit_zip;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL ZIP - '.' ' .$official_id.' |' .' '. ' FROM '.$old_zip.' TO '. $edit_zip;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -501,7 +549,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - BARANGAY BY  '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_barangay.' TO '. $edit_barangay;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL BARANGAY - '.' ' .$official_id.' |' .' '. ' FROM '.$old_barangay.' TO '. $edit_barangay;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -516,7 +564,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - HOUSE NUMBER BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_house_number.' TO '. $edit_house_number;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL HOUSE NUMBER - '.' ' .$official_id.' |' .' '. ' FROM '.$old_house_number.' TO '. $edit_house_number;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -532,7 +580,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - STREET BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_street.' TO '. $edit_street;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL STREET - '.' ' .$official_id.' |' .' '. ' FROM '.$old_street.' TO '. $edit_street;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -548,7 +596,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - ADDRESS BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_address.' TO '. $edit_address;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL ADDRESS - '.' ' .$official_id.' |' .' '. ' FROM '.$old_address.' TO '. $edit_address;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -564,7 +612,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - EMAIL ADDRESS BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_email_address.' TO '. $edit_email_address;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL EMAIL ADDRESS - '.' ' .$official_id.' |' .' '. ' FROM '.$old_email_address.' TO '. $edit_email_address;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -579,7 +627,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - CONTACT NUMBER BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_contact_number.' TO '. $edit_contact_number;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL CONTACT NUMBER - '.' ' .$official_id.' |' .' '. ' FROM '.$old_contact_number.' TO '. $edit_contact_number;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -595,7 +643,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - FATHERS NAME  BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_fathers_name.' TO '. $edit_fathers_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL FATHERS NAME  - '.' ' .$official_id.' |' .' '. ' FROM '.$old_fathers_name.' TO '. $edit_fathers_name;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -610,7 +658,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - MOTHERS NAME BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_mothers_name.' TO '. $edit_mothers_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL MOTHERS NAME  - '.' ' .$official_id.' |' .' '. ' FROM '.$old_mothers_name.' TO '. $edit_mothers_name;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -626,7 +674,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - GUARDIAN BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_guardian.' TO '. $edit_guardian;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL GUARDIAN  - '.' ' .$official_id.' |' .' '. ' FROM '.$old_guardian.' TO '. $edit_guardian;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -642,7 +690,7 @@ $stmt_official->close();
 
   
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICIAL').':' .' '. 'UPDATED OFFICIAL - GUARDIAN CONTACT  BY '.$user_id.' - '. $first_name_user .' '. $last_name_user .' ' .$official_id.' |' .' '. ' FROM '.$old_guardian_contact.' TO '. $edit_guardian_contact;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED OFFICIAL GUARDIAN CONTACT  - '.' ' .$official_id.' |' .' '. ' FROM '.$old_guardian_contact.' TO '. $edit_guardian_contact;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);

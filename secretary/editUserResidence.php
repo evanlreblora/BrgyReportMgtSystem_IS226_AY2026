@@ -1,31 +1,6 @@
 <?php 
 
 include_once '../connection.php';
-session_start();
-
-if(isset($_SESSION['user_id']) && isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'secretary'){
-  
-  $aa = $_SESSION['user_id'];
-  $sql_user = "SELECT * FROM `users` WHERE `id` = ? ";
-  $stmt_user = $con->prepare($sql_user) or die ($con->error);
-  $stmt_user->bind_param('s',$aa);
-  $stmt_user->execute();
-  $result_user = $stmt_user->get_result();
-  $row_user = $result_user->fetch_assoc();
-  $first_name_user = $row_user['first_name'];
-  $last_name_user = $row_user['last_name'];
-  $user_type = $row_user['user_type'];
-  $user_image = $row_user['image'];
-
-
- 
-
-
-}else{
- echo '<script>
-        window.location.href = "../login.php";
-      </script>';
-}
 
 try{
 
@@ -87,7 +62,7 @@ try{
   if($_POST['edit_first_name_check'] == 'true' || $_POST['edit_first_name_check'] === TRUE){
 
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$aa.' | '. 'UPDATED RESIDENT USER`S FIRST NAME -'.' ' .$user_id.' |' .' '. ' FROM '.$old_first_name.' TO '. $first_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED RESIDENT USER`S FIRST NAME - '.' ' .$user_id.' |' .' '. ' FROM '.$old_first_name.' TO '. $first_name;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -101,7 +76,7 @@ try{
   if($_POST['edit_middle_name_check'] == 'true' || $_POST['edit_middle_name_check'] === TRUE){
 
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$aa.' | '. 'UPDATED RESIDENT USER`S MIDDLE NAME -'.' ' .$user_id.' |' .' '. ' FROM '.$old_middle_name.' TO '. $middle_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED RESIDENT USER`S MIDDLE NAME - '.' ' .$user_id.' |' .' '. ' FROM '.$old_middle_name.' TO '. $middle_name;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -114,7 +89,7 @@ try{
   if($_POST['edit_last_name_check'] == 'true' || $_POST['edit_last_name_check'] === TRUE){
 
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$aa.' | '. 'UPDATED RESIDENT USER`S LAST NAME -'.' ' .$user_id.' |' .' '. ' FROM '.$old_last_name.' TO '. $last_name;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED RESIDENT USER`S LAST NAME - '.' ' .$user_id.' |' .' '. ' FROM '.$old_last_name.' TO '. $last_name;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -127,7 +102,7 @@ try{
   if($_POST['edit_username_check'] == 'true' || $_POST['edit_username_check'] === TRUE){
 
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$aa.' | '. 'UPDATED RESIDENT USER`S USERNAME -'.' ' .$user_id.' |' .' '. ' FROM '.$old_username.' TO '. $username;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED RESIDENT USER`S USERNAME - '.' ' .$user_id.' |' .' '. ' FROM '.$old_username.' TO '. $username;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -140,7 +115,7 @@ try{
   if($_POST['edit_password_check'] == 'true' || $_POST['edit_password_check'] === TRUE){
 
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$aa.' | '. 'UPDATED RESIDENT USER`S PASSWORD -'.' ' .$user_id.' |' .' '. ' FROM '.$old_password.' TO '. $password;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED RESIDENT USER`S PASSWORD - '.' ' .$user_id.' |' .' '. ' FROM '.$old_password.' TO '. $password;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);
@@ -154,7 +129,7 @@ try{
   if($_POST['edit_contact_number_check'] == 'true' || $_POST['edit_contact_number_check'] === TRUE){
 
     $date_activity = $now = date("j-n-Y g:i A");  
-    $admin = strtoupper('OFFICAL').': ' .$first_name_user.' '.$last_name_user. ' - ' .$aa.' | '. 'UPDATED RESIDENT USER`S CONTACT NUMBER -'.' ' .$user_id.' |' .' '. ' FROM '.$old_contact_number.' TO '. $contact_number;
+    $admin = strtoupper('ADMIN').':' .' '. 'UPDATED RESIDENT USER`S CONTACT NUMBER - '.' ' .$user_id.' |' .' '. ' FROM '.$old_contact_number.' TO '. $contact_number;
     $status_activity_log = 'update';
     $sql_activity_log = "INSERT INTO activity_log (`message`,`date`,`status`)VALUES(?,?,?)";
     $stmt_activity_log = $con->prepare($sql_activity_log) or die ($con->error);

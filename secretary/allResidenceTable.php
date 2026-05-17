@@ -13,8 +13,8 @@ $voters =  $con->real_escape_string($_POST['voters']);
 $age =  $con->real_escape_string($_POST['age']);
 $pwd =  $con->real_escape_string($_POST['pwd']);
 $senior =  $con->real_escape_string($_POST['senior']);
-$resident_id =  $con->real_escape_string($_POST['resident_id']);
 $single_parent =  $con->real_escape_string($_POST['single_parent']);
+$resident_id =  $con->real_escape_string($_POST['resident_id']);
 
 $whereClause = [];
 
@@ -32,7 +32,6 @@ $whereClause[] = "residence_status.pwd='".$pwd."'";
 
 if(!empty($single_parent))  
 $whereClause[] = "residence_status.single_parent='".$single_parent."'";
-
 
 if(!empty($senior))  
 $whereClause[] = "residence_status.senior='".$senior."'";
@@ -70,9 +69,8 @@ residence_information.image,
 residence_information.image_path, 
 residence_status.residence_id,
 residence_status.voters,
-residence_status.pwd_info,
 residence_status.single_parent,
-residence_status.pwd,
+residence_status.pwd_info,
 residence_status.status
 FROM residence_information
 INNER JOIN residence_status ON residence_information.residence_id = residence_status.residence_id
@@ -126,6 +124,20 @@ while($row = $result->fetch_assoc()){
     $middle_name = '';
   }
 
+  
+  if($row['voters'] == 'YES'){
+    $voters = '<span class="badge badge-success text-md ">'.$row['voters'].'</span>';
+  }else{
+    $voters = '<span class="badge badge-danger text-md ">'.$row['voters'].'</span>';
+  }
+
+  if($row['single_parent'] == 'YES'){
+    $single_parent = '<span class="badge badge-info text-md ">'.$row['single_parent'].'</span>';
+  }else{
+    $single_parent = '<span class="badge badge-warning text-md ">'.$row['single_parent'].'</span>';
+  }
+
+
   if($row['status'] == 'ACTIVE'){
     $status = '<label class="switch">
                     <input type="checkbox" class="editStatus" data-status="ACTIVE"  id="'.$row['residence_id'].'"  checked>
@@ -144,18 +156,6 @@ while($row = $result->fetch_assoc()){
               </label> ';
 }
 
-
-if($row['voters'] == 'YES'){
-  $voters = '<span class="badge badge-success text-md">'.$row['voters'].'</span>';
-}else{
-  $voters = '<span class="badge badge-danger text-md">'.$row['voters'].'</span>';
-}
-
-if($row['single_parent'] == 'YES'){
-  $single_parent = '<span class="badge badge-info text-md ">'.$row['single_parent'].'</span>';
-}else{
-  $single_parent = '<span class="badge badge-warning text-md ">'.$row['single_parent'].'</span>';
-}
   $subdata = [];
   $subdata[] = $image;
   $subdata[] =  $row['residence_id'];

@@ -33,7 +33,7 @@ try{
     $_REQUEST['order']['0']['dir'].
     ' ';
   }else{
-    $sql_blooter_check .= ' ORDER BY date_reported DESC ';
+    $sql_blooter_check .= ' ORDER BY date_reported ASC ';
   }
 
 

@@ -14,10 +14,10 @@ try{
     $stmt_user->execute();
     $result_user = $stmt_user->get_result();
     $row_user = $result_user->fetch_assoc();
-    $first_name_user = $row_user['first_name'];
-    $last_name_user = $row_user['last_name'];
-    $user_type = $row_user['user_type'];
-    $user_image = $row_user['image'];
+    $first_name_user = $row_user['first_name']?? '';
+    $last_name_user = $row_user['last_name']?? '';
+    $user_type = $row_user['user_type']?? '';
+    $user_image = $row_user['image']?? '';
 
 
 
@@ -314,45 +314,24 @@ try{
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-             
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
- 
-            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link ">
@@ -383,8 +362,33 @@ try{
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
           
-          <li class="nav-item ">
+          <li class="nav-item">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
               <p>
@@ -392,27 +396,9 @@ try{
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user-shield"></i>
-              <p>
-                Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="usersResident.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>Resident</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
-       
-          <li class="nav-item">
-            <a href="incidentrecord.php" class="nav-link bg-indigo">
+          <li class="nav-item  bg-indigo">
+            <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>
                 Incident Record
@@ -427,9 +413,10 @@ try{
               </p>
             </a>
           </li>
-         
+
+
+
  
-         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -662,7 +649,25 @@ try{
                   <div class="col-sm-6">
                     <div class="form-group form-group-sm">
                       <label>Incident</label>
-                        <input name="incident" id="incident"  class=" form-control">
+                        <select name="incident" id="incident" class="form-control" style="width: 100%;">
+                          <option value=""></option>
+                          <?php
+                            $sql_incident_info = "SELECT incident_description FROM incident_info WHERE status = 'ACTIVE' ORDER BY incident_description ASC";
+                            $query_incident_info = $con->prepare($sql_incident_info) or die ($con->error);
+                            $query_incident_info->execute();
+                            $result_incident_info = $query_incident_info->get_result();
+                            while($row_incident_info = $result_incident_info->fetch_assoc()){
+                              $incident_description = $row_incident_info['incident_description'] ?? '';
+                              if($incident_description == ''){
+                                continue;
+                              }
+                              ?>
+                                <option value="<?= htmlspecialchars($incident_description, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($incident_description, ENT_QUOTES, 'UTF-8') ?></option>
+                              <?php
+                            }
+                            $query_incident_info->close();
+                          ?>
+                        </select>
                     </div>
                   </div>   
                   <div class="col-sm-6">
@@ -929,6 +934,7 @@ try{
                   $("#blotterRecordModal").modal('hide');
                   $("#complainant_residence").val([]).trigger("change")
                   $("#person_involed").val([]).trigger("change")
+                  $("#incident").val('').trigger("change")
                  
                 })
 
@@ -999,6 +1005,7 @@ try{
     $("#addRecord").on('click',function(){
       $("#addNewRecordForm")[0].reset();
       $(".select2-selection__choice").css('display', 'none')
+      $("#incident").val('').trigger("change")
       
     })
 
@@ -1063,6 +1070,18 @@ try{
               return $opt;
           }
       };
+
+      $('#incident').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Select Incident',
+        allowClear: true,
+        dropdownParent: $('#blotterRecordModal'),
+        language: {
+          noResults: function () {
+            return "No Incident";
+          }
+        }
+      });
 
   })
     
@@ -1149,14 +1168,28 @@ $(document).ready(function() {
          
             $.ajax({
               type: "POST",
-              url: "deleteincidentrecord.php",
+              url: "deleteIncidentRecord.php",
               cache:false,
-              data: 'id='+selected_values,
-              success: function(data) {
+              data: {
+                id: selected_values
+              },
+              dataType: 'json',
+              success: function(response) {
+                if(response.status !== 'success'){
+                  Swal.fire({
+                    title: '<strong class="text-danger">ERROR</strong>',
+                    html: '<b>' + response.message + '<b>',
+                    type: 'error',
+                    confirmButtonColor: '#6610f2',
+                    allowOutsideClick: false,
+                    width: '400px',
+                  });
+                  return;
+                }
               
                   Swal.fire({
                     title: '<strong class="text-success">SUCESS</strong>',
-                    text: "Deleted Incident Record Successfully",
+                    text: response.message,
                     type: 'success',
                     timer: 1500,
                     width: '400px',
@@ -1170,10 +1203,10 @@ $(document).ready(function() {
                 
                 
               } 
-            }).fail(function(){
+            }).fail(function(xhr){
               Swal.fire({
                 title: 'Ooppss...',
-                text: 'Something went wrong with ajax !',
+                text: xhr.responseText || 'Something went wrong with ajax !',
                 type: 'error',
                 confirmButtonColor: '#6610f2',
                 allowOutsideClick: false,
@@ -1198,6 +1231,36 @@ $(document).on('click', '.sub_checkbox', function() {
 	}
 	$("#select_count").html($("input.sub_checkbox:checked").length);
 });
+</script>
+<script>
+// Restricts input for each element in the set of matched elements to the given inputFilter.
+(function($) {
+  $.fn.inputFilter = function(inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  };
+}(jQuery));
+
+
+
+  $("#complainant_not_residence, #person_involevd_not_resident").inputFilter(function(value) {
+  return /^[a-z, ]*$/i.test(value); 
+  });
+  
+  $("#complainant_statement, #respodent,#location_incident,#person_statement").inputFilter(function(value) {
+  return /^[0-9a-z, ,-]*$/i.test(value); 
+  });
+
 </script>
 
 

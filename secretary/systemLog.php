@@ -14,10 +14,10 @@ try{
     $stmt_user->execute();
     $result_user = $stmt_user->get_result();
     $row_user = $result_user->fetch_assoc();
-    $first_name_user = $row_user['first_name'];
-    $last_name_user = $row_user['last_name'];
-    $user_type = $row_user['user_type'];
-    $user_image = $row_user['image'];
+    $first_name_user = $row_user['first_name'] ?? '';
+    $last_name_user = $row_user['last_name'] ?? '';
+    $user_type = $row_user['user_type'] ?? '';
+    $user_image = $row_user['image'] ?? '';
 
 
 
@@ -289,22 +289,22 @@ try{
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
         </div>
         <div class="info text-center">
-          <a href="#" class="d-block text-bold">OFFICIAL</a>
+          <a href="#" class="d-block text-bold"><?= strtoupper($user_type) ?></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link">
+            <a href="dashboard.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link ">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users-cog"></i>
               <p>
               Barangay Official
@@ -312,9 +312,14 @@ try{
               </p>
             </a>
             <ul class="nav nav-treeview">
-             
               <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link ">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
                   <i class="fas fa-circle nav-icon text-red"></i>
                   <p>List of Official</p>
                 </a>
@@ -351,7 +356,6 @@ try{
               </li>
             </ul>
           </li>
-          
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
               <i class="nav-icon fas fa-certificate"></i>
@@ -375,10 +379,23 @@ try{
                   <p>Resident</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="userAdministrator.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>Administrator</p>
+                </a>
+              </li>
 
             </ul>
           </li>
-       
+          <li class="nav-item">
+            <a href="position.php" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Position
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="incidentrecord.php" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>
@@ -395,9 +412,15 @@ try{
               </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="settings.php" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+              </p>
+            </a>
+          </li>
  
-         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -436,10 +459,10 @@ try{
           <div class="card ">
                 <div class="card-header">
                     <div class="card-title">
-                      <span style="font-weight: 600">SYSTEM LOGS</span>
-                 
+                     <span style="font-weight: 600">SYSTEM LOGS   </span>
+             
                     </div>
-                  
+                
                 </div>
             <div class="card-body ">
                 <table class="table table-bordered table-hover table-striped text-sm font-weight-bolder" id="systemLogsTable">
