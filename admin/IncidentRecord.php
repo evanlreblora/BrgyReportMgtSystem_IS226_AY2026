@@ -709,7 +709,25 @@ try{
                   <div class="col-sm-6">
                     <div class="form-group form-group-sm">
                       <label>Incident</label>
-                        <input name="incident" id="incident"  class=" form-control">
+                        <select name="incident" id="incident" class="form-control" style="width: 100%;">
+                          <option value=""></option>
+                          <?php
+                            $sql_incident_info = "SELECT incident_description FROM incident_info WHERE status = 'ACTIVE' ORDER BY incident_description ASC";
+                            $query_incident_info = $con->prepare($sql_incident_info) or die ($con->error);
+                            $query_incident_info->execute();
+                            $result_incident_info = $query_incident_info->get_result();
+                            while($row_incident_info = $result_incident_info->fetch_assoc()){
+                              $incident_description = $row_incident_info['incident_description'] ?? '';
+                              if($incident_description == ''){
+                                continue;
+                              }
+                              ?>
+                                <option value="<?= htmlspecialchars($incident_description, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($incident_description, ENT_QUOTES, 'UTF-8') ?></option>
+                              <?php
+                            }
+                            $query_incident_info->close();
+                          ?>
+                        </select>
                     </div>
                   </div>   
                   <div class="col-sm-6">
@@ -976,6 +994,7 @@ try{
                   $("#blotterRecordModal").modal('hide');
                   $("#complainant_residence").val([]).trigger("change")
                   $("#person_involed").val([]).trigger("change")
+                  $("#incident").val('').trigger("change")
                  
                 })
 
@@ -1046,6 +1065,7 @@ try{
     $("#addRecord").on('click',function(){
       $("#addNewRecordForm")[0].reset();
       $(".select2-selection__choice").css('display', 'none')
+      $("#incident").val('').trigger("change")
       
     })
 
@@ -1110,6 +1130,18 @@ try{
               return $opt;
           }
       };
+
+      $('#incident').select2({
+        theme: 'bootstrap4',
+        placeholder: 'Select Incident',
+        allowClear: true,
+        dropdownParent: $('#blotterRecordModal'),
+        language: {
+          noResults: function () {
+            return "No Incident";
+          }
+        }
+      });
 
   })
     
@@ -1196,14 +1228,28 @@ $(document).ready(function() {
          
             $.ajax({
               type: "POST",
-              url: "deleteincidentrecord.php",
+              url: "deleteIncidentRecord.php",
               cache:false,
-              data: 'id='+selected_values,
-              success: function(data) {
+              data: {
+                id: selected_values
+              },
+              dataType: 'json',
+              success: function(response) {
+                if(response.status !== 'success'){
+                  Swal.fire({
+                    title: '<strong class="text-danger">ERROR</strong>',
+                    html: '<b>' + response.message + '<b>',
+                    type: 'error',
+                    confirmButtonColor: '#6610f2',
+                    allowOutsideClick: false,
+                    width: '400px',
+                  });
+                  return;
+                }
               
                   Swal.fire({
                     title: '<strong class="text-success">SUCESS</strong>',
-                    text: "Deleted Incident Record Successfully",
+                    text: response.message,
                     type: 'success',
                     timer: 1500,
                     width: '400px',
@@ -1217,10 +1263,10 @@ $(document).ready(function() {
                 
                 
               } 
-            }).fail(function(){
+            }).fail(function(xhr){
               Swal.fire({
                 title: 'Ooppss...',
-                text: 'Something went wrong with ajax !',
+                text: xhr.responseText || 'Something went wrong with ajax !',
                 type: 'error',
                 confirmButtonColor: '#6610f2',
                 allowOutsideClick: false,
@@ -1271,7 +1317,7 @@ $(document).on('click', '.sub_checkbox', function() {
   return /^[a-z, ]*$/i.test(value); 
   });
   
-  $("#complainant_statement, #respodent,#incident,#location_incident,#person_statement").inputFilter(function(value) {
+  $("#complainant_statement, #respodent,#location_incident,#person_statement").inputFilter(function(value) {
   return /^[0-9a-z, ,-]*$/i.test(value); 
   });
 

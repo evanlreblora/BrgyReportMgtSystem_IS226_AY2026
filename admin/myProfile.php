@@ -188,8 +188,6 @@ try{
 
     <!-- Sidebar -->
     <div class="sidebar">
-    
-
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../assets/dist/img/logo.png" class="img-circle elevation-5 img-bordered-sm" alt="User Image">
@@ -202,36 +200,12 @@ try{
       <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="dashboard.php" class="nav-link ">
+            <a href="dashboard.php" class="nav-link bg-indigo">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-              Barangay Official
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="newOfficial.php" class="nav-link ">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>New Official</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="allOfficial.php" class="nav-link">
-                  <i class="fas fa-circle nav-icon text-red"></i>
-                  <p>List of Official</p>
-                </a>
-              </li>
- 
-            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link ">
@@ -262,6 +236,31 @@ try{
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+              Barangay Official
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="newOfficial.php" class="nav-link ">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>New Official</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="allOfficial.php" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-red"></i>
+                  <p>List of Official</p>
+                </a>
+              </li>
+ 
+            </ul>
+          </li>
+
           
           <li class="nav-item ">
             <a href="requestCertificate.php" class="nav-link">
@@ -271,11 +270,38 @@ try{
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="incidentrecord.php" class="nav-link">
+              <i class="nav-icon fas fa-clipboard"></i>
+              <p>
+                Incident Record
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="report.php" class="nav-link">
+              <i class="nav-icon fas fa-bookmark"></i>
+              <p>
+                Reports
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                        <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
-                Users
+                User Management
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -295,38 +321,35 @@ try{
 
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="position.php" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
-              <p>
-                Position
-              </p>
-            </a>
+
+              <li class="nav-item">
+                <a href="incidentInfo.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Incident Info
+                  </p>
+                </a>
+              </li>   
+              <li class="nav-item">
+                <a href="position.php" class="nav-link">
+                  <i class="nav-icon fas fa-user-tie"></i>
+                  <p>
+                    Position
+                  </p>
+                </a>
+              </li>       
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link">
+                  <i class="nav-icon fas fa-cog"></i>
+                  <p>
+                    Location
+                  </p>
+                </a>
+              </li>
+
+            </ul>
           </li>
-          <li class="nav-item">
-            <a href="incidentrecord.php" class="nav-link">
-              <i class="nav-icon fas fa-clipboard"></i>
-              <p>
-                Incident Record
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="report.php" class="nav-link">
-              <i class="nav-icon fas fa-bookmark"></i>
-              <p>
-                Reports
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="settings.php" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Settings
-              </p>
-            </a>
-          </li>
+
  
         </ul>
       </nav>

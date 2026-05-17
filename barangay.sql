@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3307
--- Generation Time: May 02, 2026 at 02:39 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost
+-- Generation Time: May 17, 2026 at 05:44 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -207,16 +207,36 @@ INSERT INTO `activity_log` (`id`, `message`, `date`, `status`) VALUES
 (1415, 'RESIDENT: tatebangis tatebangis | LOGIN', '1-5-2026 4:40 PM', 'login'),
 (1416, 'RESIDENT: tatebangis tatebangis - 31081982211755 | UPDATED RESIDENT EMAIL ADDRESS - 31081982211755 |  FROM tatebangis TO tatebangis@fas.com', '1-5-2026 10:41 AM', 'update'),
 (1417, 'RESIDENT: tatebangis tatebangis - 31081982211755 | UPDATED RESIDENT GUARDIAN - 31081982211755 |  FROM  TO dadi', '1-5-2026 10:41 AM', 'update'),
-(1418, 'ADMIN: Admin Admin | LOGIN', '1-5-2026 8:45 PM', 'login'),
-(1419, 'ADMIN: ADDED INCIDENT RECORD  -  4508911937018354 | Complainant - Eduardo Abad | Incident - kaso | Date Incident 2026-04-27T21:04 | Location Incident LB | Complainant Statement - stab | Respondent - zoey', '1-5-2026 9:05 PM', 'delete'),
-(1420, 'ADMIN: ADDED INCIDENT RECORD  -  4508911937018354 | Person Involved - Eduardo Abad | Incident - kaso | Date Incident 2026-04-27T21:04 | Location Incident LB | Complainant Statement - stab | Respondent - zoey', '1-5-2026 9:05 PM', 'delete'),
-(1421, 'ADMIN: Admin Admin | LOGIN', '2-5-2026 9:54 AM', 'login'),
-(1422, 'ADMIN: Admin Admin | LOGIN', '2-5-2026 7:49 PM', 'login'),
-(1423, 'ADMIN: ADDED INCIDENT RECORD  -  2269121759192422 | Complainant - Eduardo Abad | Incident - gfhg | Date Incident 2026-05-02T19:59 | Location Incident asdasd | Complainant Statement - asf | Respondent - fasf', '2-5-2026 7:59 PM', 'delete'),
-(1424, 'ADMIN: ADDED INCIDENT RECORD  -  3269080914689933 | Complainant - Eduardo Abad | Incident - dfgjdg | Date Incident 2026-05-02T20:01 | Location Incident asdasd | Complainant Statement - jfghj | Respondent - gfjdfgj', '2-5-2026 8:01 PM', 'delete'),
-(1425, 'ADMIN: Evan Reblora | LOGOUT', '2-5-2026 2:11 PM', 'logout'),
-(1426, 'ADMIN: Evan Reblora | LOGIN', '2-5-2026 8:15 PM', 'login'),
-(1427, 'ADMIN: ADDED RESIDENT - 32729528657568 |  Evan  Reblora ', '2-5-2026 8:17 PM', 'create');
+(1418, 'RESIDENT: tatebangis tatebangis | LOGOUT', '1-5-2026 10:44 AM', 'logout'),
+(1419, 'ADMIN: Admin Admin | LOGIN', '1-5-2026 4:44 PM', 'login'),
+(1420, 'ADMIN: ADDED INCIDENT RECORD  -  4122418954287019 | Complainant - Eduardo Abad | Incident - asfasf | Date Incident 2026-05-01T17:11 | Location Incident asdasd | Complainant Statement - sdfsd | Respondent - asdasd', '1-5-2026 5:11 PM', 'delete'),
+(1421, 'ADMIN: ADDED INCIDENT RECORD  -  4122418954287019 | Person Involved - Eduardo Abad | Incident - asfasf | Date Incident 2026-05-01T17:11 | Location Incident asdasd | Complainant Statement - sdfsd | Respondent - asdasd', '1-5-2026 5:11 PM', 'delete'),
+(1422, 'ADMIN: ADDED INCIDENT RECORD  -  4122418954287019 | Person Not Resident - fsf | Incident - asfasf | Date Incident 2026-05-01T17:11 | Location Incident asdasd | Complainant Statement - sdfsdf | Respondent - asdasd', '1-5-2026 5:11 PM', 'delete'),
+(1423, 'ADMIN: ADDED INCIDENT RECORD  -  4122418954287019 | Complainant Not Resident - dfsf | Incident - asfasf | Date Incident 2026-05-01T17:11 | Location Incident asdasd | Complainant Statement - sdfsd | Respondent - asdasd', '1-5-2026 5:11 PM', 'delete'),
+(1424, 'ADMIN: Admin Admin | LOGOUT', '17-5-2026 4:29 AM', 'logout'),
+(1425, 'ADMIN: Admin Admin | LOGIN', '17-5-2026 10:30 AM', 'login'),
+(1426, 'ADMIN: ADDED RESIDENT - 26952075963777 |  Genalyn Soriano ', '17-5-2026 10:31 AM', 'create'),
+(1427, 'ADMIN: ADDED INCIDENT RECORD  -  1914558584215692 | Complainant - Eduardo Abad | Incident - stat | Date Incident 2026-05-14T10:33 | Location Incident LB | Complainant Statement - test | Respondent - evan', '17-5-2026 10:33 AM', 'delete'),
+(1428, 'ADMIN: ADDED INCIDENT RECORD  -  1914558584215692 | Person Involved - Eduardo Abad | Incident - stat | Date Incident 2026-05-14T10:33 | Location Incident LB | Complainant Statement - test | Respondent - evan', '17-5-2026 10:33 AM', 'delete'),
+(1429, 'ADMIN: ADDED INCIDENT RECORD  -  1914558584215692 | Person Not Resident - test | Incident - stat | Date Incident 2026-05-14T10:33 | Location Incident LB | Complainant Statement - tet | Respondent - evan', '17-5-2026 10:33 AM', 'delete'),
+(1430, 'ADMIN: ADDED INCIDENT RECORD  -  1914558584215692 | Complainant Not Resident - test | Incident - stat | Date Incident 2026-05-14T10:33 | Location Incident LB | Complainant Statement - test | Respondent - evan', '17-5-2026 10:33 AM', 'delete'),
+(1431, 'ADMIN: ADDED INCIDENT RECORD  -  3567893545879719 | Complainant - Rosa Aguilar | Incident - test | Date Incident 2026-05-17T10:35 | Location Incident LB | Complainant Statement - test | Respondent - evan', '17-5-2026 10:35 AM', 'delete'),
+(1432, 'ADMIN: ADDED INCIDENT RECORD  -  3567893545879719 | Person Involved - Rosa Aguilar | Incident - test | Date Incident 2026-05-17T10:35 | Location Incident LB | Complainant Statement - test | Respondent - evan', '17-5-2026 10:35 AM', 'delete'),
+(1433, 'ADMIN: ADDED INCIDENT RECORD  -  3567893545879719 | Person Not Resident - test | Incident - test | Date Incident 2026-05-17T10:35 | Location Incident LB | Complainant Statement - test | Respondent - evan', '17-5-2026 10:35 AM', 'delete'),
+(1434, 'ADMIN: ADDED INCIDENT RECORD  -  3567893545879719 | Complainant Not Resident - test | Incident - test | Date Incident 2026-05-17T10:35 | Location Incident LB | Complainant Statement - test | Respondent - evan', '17-5-2026 10:35 AM', 'delete'),
+(1435, 'ADMIN: DELETED INCIDENT INFO - 5 | CODE INC0005', '17-5-2026 4:56 AM', 'delete'),
+(1436, 'ADMIN: ADDED INCIDENT RECORD  -  3200121902049180 | Complainant - Rosa Aguilar | Incident - Fire Outbreakfas232344 | Date Incident 2026-05-01T11:12 | Location Incident LB | Complainant Statement - asdasd | Respondent - asdasd', '17-5-2026 11:12 AM', 'delete'),
+(1437, 'ADMIN: ADDED INCIDENT RECORD  -  3200121902049180 | Person Involved - Rosa Aguilar | Incident - Fire Outbreakfas232344 | Date Incident 2026-05-01T11:12 | Location Incident LB | Complainant Statement - asdasd | Respondent - asdasd', '17-5-2026 11:12 AM', 'delete'),
+(1438, 'ADMIN: ADDED INCIDENT RECORD  -  3200121902049180 | Person Not Resident - saga | Incident - Fire Outbreakfas232344 | Date Incident 2026-05-01T11:12 | Location Incident LB | Complainant Statement - gasg | Respondent - asdasd', '17-5-2026 11:12 AM', 'delete'),
+(1439, 'ADMIN: ADDED INCIDENT RECORD  -  3200121902049180 | Complainant Not Resident - asdasd | Incident - Fire Outbreakfas232344 | Date Incident 2026-05-01T11:12 | Location Incident LB | Complainant Statement - asdasd | Respondent - asdasd', '17-5-2026 11:12 AM', 'delete'),
+(1440, 'ADMIN: DELETED INCIDENT RECORD - 3200121902049180 | 2026-05-01T11:12 2026-05-30T04:12 LB', '17-5-2026 11:35 AM', 'delete'),
+(1441, 'ADMIN: Admin Admin | LOGOUT', '17-5-2026 5:38 AM', 'logout'),
+(1442, 'RESIDENT: Evan Reblora | LOGIN', '17-5-2026 11:38 AM', 'login'),
+(1443, 'RESIDENT: Evan Reblora - 24956588345933 | UPDATED RESIDENT HOUSE NUMBER - 24956588345933 |  FROM 6791 TO 67911', '17-5-2026 5:38 AM', 'update'),
+(1444, 'RESIDENT: Evan Reblora | LOGOUT', '17-5-2026 5:39 AM', 'logout'),
+(1445, 'ADMIN: Admin Admin | LOGIN', '17-5-2026 11:39 AM', 'login'),
+(1446, 'ADMIN: Admin Admin | LOGOUT', '17-5-2026 5:40 AM', 'logout'),
+(1447, 'ADMIN: Admin Admin | LOGIN', '17-5-2026 11:40 AM', 'login');
 
 -- --------------------------------------------------------
 
@@ -336,107 +356,7 @@ CREATE TABLE `clearance_request` (
 INSERT INTO `clearance_request` (`a_i`, `id`, `residence_id`, `certificate_type`, `purpose`, `message`, `date_issued`, `date_request`, `date_expired`, `status`) VALUES
 (64, '65880691503212026164929462189554539069be5b9970dd2', '24956588345933', 'none', 'CERT', 'none', '2026-03-21', '03/21/2026', '2026-03-22', 'ACCEPTED'),
 (65, '10407702060404202619465274480831137569d0fa2cb5b7a', '24956588345933', 'none', 'CERT', 'none', '2026-04-04', '04/04/2026', '2026-04-30', 'ACCEPTED'),
-(66, '81940255005012026095214577193553406869f4074e8d0e6', '24956588345933', 'none', 'test', 'none', '', '05/01/2026', '', 'PENDING'),
-(101, 'CLR0001', '20260000001', 'Barangay Clearance', 'ENROLLMENT', 'Needed for residency proof', '1/14/2026 9:00', '1/15/2026 9:00', '1/15/2027', 'ACCEPTED'),
-(102, 'CLR0002', '20260000001', 'Residency Certification', 'WORK - DOMESTIC', 'Required for scholarship', '1/31/2026 10:00', '2/1/2026 10:00', '2/1/2027', 'ACCEPTED'),
-(103, 'CLR0003', '20260000002', 'Employment Clearance', 'WORK - OVERSEAS', 'Needed for job application', '2/9/2026 11:00', '2/10/2026 11:00', '2/10/2027', 'ACCEPTED'),
-(104, 'CLR0004', '20260000003', 'Business Clearance', 'TOURISM', 'For new sari‑sari store permit', '3/4/2026 14:00', '3/5/2026 14:00', '3/5/2027', 'ACCEPTED'),
-(105, 'CLR0005', '20260000003', 'Barangay Clearance', 'NBI', 'Needed for loan application', '3/19/2026 9:30', '3/20/2026 9:30', '3/20/2027', 'ACCEPTED'),
-(106, 'CLR0006', '20260000004', 'Residency Certification', 'DRIVER LICENSE', 'Proof of residence for housing', '1/19/2026 15:00', '1/20/2026 15:00', '1/20/2027', 'ACCEPTED'),
-(107, 'CLR0007', '20260000005', 'Travel Clearance', 'CITY HALL PERMIT', 'Minor traveling outside barangay', '3/31/2026 8:30', '4/1/2026 8:30', '4/1/2027', 'ACCEPTED'),
-(108, 'CLR0008', '20260000006', 'Business Clearance', 'BUSINESS PERMIT', 'Renewal of eatery permit', '2/17/2026 13:00', '2/18/2026 13:00', '2/18/2027', 'ACCEPTED'),
-(109, 'CLR0009', '20260000007', 'School Requirement', 'ENROLLMENT', 'Needed for enrollment', '3/11/2026 9:15', '3/12/2026 9:15', '3/12/2027', 'ACCEPTED'),
-(110, 'CLR0010', '20260000007', 'Indigency Certification', 'WORK - DOMESTIC', 'For medical assistance program', '3/24/2026 10:45', '3/25/2026 10:45', '3/25/2027', 'ACCEPTED'),
-(111, 'CLR0011', '20260000008', 'Barangay Clearance', 'WORK - OVERSEAS', 'Needed for residency proof', '1/24/2026 15:00', '1/25/2026 15:00', '1/25/2027', 'ACCEPTED'),
-(112, 'CLR0012', '20260000009', 'Employment Clearance', 'TOURISM', 'Required for job application', '2/27/2026 10:30', '2/28/2026 10:30', '2/28/2027', 'ACCEPTED'),
-(113, 'CLR0013', '20260000010', 'Business Clearance', 'NBI', 'For hardware store permit', '3/14/2026 11:45', '3/15/2026 11:45', '3/15/2027', 'ACCEPTED'),
-(114, 'CLR0014', '20260000011', 'Indigency Certification', 'DRIVER LICENSE', 'Needed for financial aid', '1/29/2026 9:00', '1/30/2026 9:00', '1/30/2027', 'ACCEPTED'),
-(115, 'CLR0015', '20260000012', 'Travel Clearance', 'CITY HALL PERMIT', 'For travel outside barangay', '4/4/2026 8:45', '4/5/2026 8:45', '4/5/2027', 'ACCEPTED'),
-(116, 'CLR0016', '20260000013', 'Business Clearance', 'BUSINESS PERMIT', 'For bakery permit', '2/21/2026 14:00', '2/22/2026 14:00', '2/22/2027', 'ACCEPTED'),
-(117, 'CLR0017', '20260000013', 'Barangay Clearance', 'ENROLLMENT', 'Needed for loan application', '02/29/26 09:15', '3/1/2026 9:15', '3/1/2027', 'ACCEPTED'),
-(118, 'CLR0018', '20260000014', 'Employment Clearance', 'WORK - DOMESTIC', 'Required for job application', '3/17/2026 9:30', '3/18/2026 9:30', '3/18/2027', 'PENDING'),
-(119, 'CLR0019', '20260000015', 'Barangay Clearance', 'WORK - OVERSEAS', 'Needed for residency proof', '1/11/2026 16:00', '1/12/2026 16:00', '1/12/2027', 'PENDING'),
-(120, 'CLR0020', '20260000015', 'Residency Certification', 'TOURISM', 'Required for scholarship', '2/1/2026 10:15', '2/2/2026 10:15', '2/2/2027', 'PENDING'),
-(121, 'CLR0021', '20260000016', 'Business Clearance', 'NBI', 'For trading permit', '2/24/2026 13:30', '2/25/2026 13:30', '2/25/2027', 'PENDING'),
-(122, 'CLR0022', '20260000016', 'Barangay Clearance', 'DRIVER LICENSE', 'Needed for loan application', '3/4/2026 9:00', '3/5/2026 9:00', '3/5/2027', 'PENDING'),
-(123, 'CLR0023', '20260000017', 'School Requirement', 'CITY HALL PERMIT', 'For enrollment documents', '3/21/2026 10:00', '3/22/2026 10:00', '3/22/2027', 'PENDING'),
-(124, 'CLR0024', '20260000018', 'Residency Certification', 'BUSINESS PERMIT', 'Proof of residence for housing aid', '1/17/2026 15:30', '1/18/2026 15:30', '1/18/2027', 'PENDING'),
-(125, 'CLR0025', '20260000019', 'Indigency Certification', 'ENROLLMENT', 'For medical assistance program', '2/13/2026 9:45', '2/14/2026 9:45', '2/14/2027', 'PENDING'),
-(126, 'CLR0026', '20260000020', 'Business Clearance', 'WORK - DOMESTIC', 'For mini‑mart permit', '3/9/2026 11:00', '3/10/2026 11:00', '3/10/2027', 'PENDING'),
-(127, 'CLR0027', '20260000021', 'Barangay Clearance', 'WORK - OVERSEAS', 'Needed for residency proof', '1/21/2026 14:00', '1/22/2026 14:00', '1/22/2027', 'PENDING'),
-(128, 'CLR0028', '20260000022', 'Employment Clearance', 'TOURISM', 'Required for job application', '2/7/2026 9:30', '2/8/2026 9:30', '2/8/2027', 'ACCEPTED'),
-(129, 'CLR0029', '20260000023', 'Travel Clearance', 'NBI', 'Minor traveling outside barangay', '4/1/2026 8:45', '4/2/2026 8:45', '4/2/2027', 'ACCEPTED'),
-(130, 'CLR0030', '20260000023', 'Barangay Clearance', 'DRIVER LICENSE', 'Needed for loan application', '4/9/2026 9:15', '4/10/2026 9:15', '4/10/2027', 'PENDING'),
-(131, 'CLR0031', '20260000024', 'Indigency Certification', 'CITY HALL PERMIT', 'For financial aid', '1/27/2026 10:00', '1/28/2026 10:00', '1/28/2027', 'ACCEPTED'),
-(132, 'CLR0032', '20260000025', 'Business Clearance', 'BUSINESS PERMIT', 'For store permit', '2/19/2026 13:00', '2/20/2026 13:00', '2/20/2027', 'PENDING'),
-(133, 'CLR0033', '20260000025', 'Residency Certification', 'ENROLLMENT', 'Proof of residence for scholarship', '3/1/2026 9:30', '3/2/2026 9:30', '3/2/2027', 'ACCEPTED'),
-(134, 'CLR0034', '20260000026', 'Barangay Clearance', 'WORK - DOMESTIC', 'Needed for residency proof', '1/18/2026 14:00', '1/19/2026 14:00', '1/19/2027', 'PENDING'),
-(135, 'CLR0035', '20260000027', 'Employment Clearance', 'WORK - OVERSEAS', 'Required for job application', '2/11/2026 9:45', '2/12/2026 9:45', '2/12/2027', 'ACCEPTED'),
-(136, 'CLR0036', '20260000028', 'School Requirement', 'TOURISM', 'For enrollment documents', '3/13/2026 10:15', '3/14/2026 10:15', '3/14/2027', 'PENDING'),
-(137, 'CLR0037', '20260000029', 'Barangay Clearance', 'NBI', 'Needed for residency proof', '1/25/2026 15:00', '1/26/2026 15:00', '1/26/2027', 'ACCEPTED'),
-(138, 'CLR0038', '20260000030', 'Business Clearance', 'DRIVER LICENSE', 'For poultry permit', '2/15/2026 13:30', '2/16/2026 13:30', '2/16/2027', 'PENDING'),
-(139, 'CLR0039', '20260000030', 'Barangay Clearance', 'CITY HALL PERMIT', 'Needed for loan application', '3/5/2026 9:00', '3/6/2026 9:00', '3/6/2027', 'ACCEPTED'),
-(140, 'CLR0040', '20260000031', 'Residency Certification', 'BUSINESS PERMIT', 'Proof of residence for housing aid', '1/22/2026 14:30', '1/23/2026 14:30', '1/23/2027', 'PENDING'),
-(141, 'CLR0041', '20260000032', 'Barangay Clearance', 'ENROLLMENT', 'Needed for residency proof', '1/26/2026 9:00', '1/27/2026 9:00', '1/27/2027', 'ACCEPTED'),
-(142, 'CLR0042', '20260000032', 'Indigency Certification', 'WORK - DOMESTIC', 'For medical assistance program', '2/14/2026 10:30', '2/15/2026 10:30', '2/15/2027', 'PENDING'),
-(143, 'CLR0043', '20260000033', 'Employment Clearance', 'WORK - OVERSEAS', 'Required for job application', '3/7/2026 11:00', '3/8/2026 11:00', '3/8/2027', 'ACCEPTED'),
-(144, 'CLR0044', '20260000034', 'Residency Certification', 'TOURISM', 'Proof of residence for housing aid', '1/28/2026 14:00', '1/29/2026 14:00', '1/29/2027', 'ACCEPTED'),
-(145, 'CLR0045', '20260000035', 'Business Clearance', 'NBI', 'For tailoring shop permit', '2/20/2026 13:30', '2/21/2026 13:30', '2/21/2027', 'ACCEPTED'),
-(146, 'CLR0046', '20260000035', 'Barangay Clearance', 'DRIVER LICENSE', 'Needed for loan application', '3/2/2026 9:15', '3/3/2026 9:15', '3/3/2027', 'ACCEPTED'),
-(147, 'CLR0047', '20260000036', 'Travel Clearance', 'CITY HALL PERMIT', 'Minor traveling outside barangay', '4/5/2026 8:45', '4/6/2026 8:45', '4/6/2027', 'ACCEPTED'),
-(148, 'CLR0048', '20260000037', 'School Requirement', 'BUSINESS PERMIT', 'For enrollment documents', '3/15/2026 10:00', '3/16/2026 10:00', '3/16/2027', 'ACCEPTED'),
-(149, 'CLR0049', '20260000038', 'Barangay Clearance', 'ENROLLMENT', 'Needed for residency proof', '1/30/2026 15:00', '1/31/2026 15:00', '1/31/2027', 'ACCEPTED'),
-(150, 'CLR0050', '20260000038', 'Residency Certification', 'WORK - DOMESTIC', 'Proof of residence for scholarship', '2/17/2026 9:30', '2/18/2026 9:30', '2/18/2027', 'ACCEPTED'),
-(151, 'CLR0051', '20260000039', 'Indigency Certification', 'WORK - OVERSEAS', 'For financial aid', '1/23/2026 9:45', '1/24/2026 9:45', '1/24/2027', 'ACCEPTED'),
-(152, 'CLR0052', '20260000040', 'Business Clearance', 'TOURISM', 'For printing shop permit', '2/25/2026 13:00', '2/26/2026 13:00', '2/26/2027', 'ACCEPTED'),
-(153, 'CLR0053', '20260000040', 'Barangay Clearance', 'NBI', 'Needed for loan application', '3/11/2026 9:30', '3/12/2026 9:30', '3/12/2027', 'ACCEPTED'),
-(154, 'CLR0054', '20260000041', 'Employment Clearance', 'DRIVER LICENSE', 'Required for job application', '2/8/2026 10:15', '2/9/2026 10:15', '2/9/2027', 'ACCEPTED'),
-(155, 'CLR0055', '20260000042', 'School Requirement', 'CITY HALL PERMIT', 'For enrollment documents', '3/18/2026 9:00', '3/19/2026 9:00', '3/19/2027', 'ACCEPTED'),
-(156, 'CLR0056', '20260000043', 'Barangay Clearance', 'BUSINESS PERMIT', 'Needed for residency proof', '1/20/2026 14:00', '1/21/2026 14:00', '1/21/2027', 'ACCEPTED'),
-(157, 'CLR0057', '20260000044', 'Residency Certification', 'ENROLLMENT', 'Proof of residence for housing aid', '2/10/2026 9:30', '2/11/2026 9:30', '2/11/2027', 'ACCEPTED'),
-(158, 'CLR0058', '20260000045', 'Business Clearance', 'WORK - DOMESTIC', 'For pharmacy permit', '3/6/2026 13:15', '3/7/2026 13:15', '3/7/2027', 'ACCEPTED'),
-(159, 'CLR0059', '20260000045', 'Barangay Clearance', 'WORK - OVERSEAS', 'Needed for loan application', '3/19/2026 9:45', '3/20/2026 9:45', '3/20/2027', 'ACCEPTED'),
-(160, 'CLR0060', '20260000046', 'Indigency Certification', 'TOURISM', 'For medical assistance program', '1/16/2026 10:00', '1/17/2026 10:00', '1/17/2027', 'ACCEPTED'),
-(161, 'CLR0061', '20260000047', 'Barangay Clearance', 'NBI', 'Needed for residency proof', '1/24/2026 9:00', '1/25/2026 9:00', '1/25/2027', 'ACCEPTED'),
-(162, 'CLR0062', '20260000047', 'Residency Certification', 'DRIVER LICENSE', 'Proof of residence for scholarship', '2/12/2026 10:30', '2/13/2026 10:30', '2/13/2027', 'ACCEPTED'),
-(163, 'CLR0063', '20260000048', 'Employment Clearance', 'CITY HALL PERMIT', 'Required for job application', '3/8/2026 11:00', '3/9/2026 11:00', '3/9/2027', 'ACCEPTED'),
-(164, 'CLR0064', '20260000049', 'Indigency Certification', 'BUSINESS PERMIT', 'For medical assistance program', '1/27/2026 14:00', '1/28/2026 14:00', '1/28/2027', 'ACCEPTED'),
-(165, 'CLR0065', '20260000050', 'Business Clearance', 'ENROLLMENT', 'For grocery store permit', '2/21/2026 13:30', '2/22/2026 13:30', '2/22/2027', 'ACCEPTED'),
-(166, 'CLR0066', '20260000050', 'Barangay Clearance', 'WORK - DOMESTIC', 'Needed for loan application', '3/3/2026 9:15', '3/4/2026 9:15', '3/4/2027', 'ACCEPTED'),
-(167, 'CLR0067', '20260000051', 'Travel Clearance', 'WORK - OVERSEAS', 'Minor traveling outside barangay', '4/6/2026 8:45', '4/7/2026 8:45', '4/7/2027', 'ACCEPTED'),
-(168, 'CLR0068', '20260000052', 'School Requirement', 'TOURISM', 'For enrollment documents', '3/16/2026 10:00', '3/17/2026 10:00', '3/17/2027', 'ACCEPTED'),
-(169, 'CLR0069', '20260000053', 'Barangay Clearance', 'NBI', 'Needed for residency proof', '1/29/2026 15:00', '1/30/2026 15:00', '1/30/2027', 'ACCEPTED'),
-(170, 'CLR0070', '20260000053', 'Residency Certification', 'DRIVER LICENSE', 'Proof of residence for scholarship', '2/18/2026 9:30', '2/19/2026 9:30', '2/19/2027', 'ACCEPTED'),
-(171, 'CLR0071', '20260000054', 'Indigency Certification', 'CITY HALL PERMIT', 'For financial aid', '1/22/2026 9:45', '1/23/2026 9:45', '1/23/2027', 'ACCEPTED'),
-(172, 'CLR0072', '20260000055', 'Business Clearance', 'BUSINESS PERMIT', 'For meat shop permit', '2/26/2026 13:00', '2/27/2026 13:00', '2/27/2027', 'ACCEPTED'),
-(173, 'CLR0073', '20260000055', 'Barangay Clearance', 'ENROLLMENT', 'Needed for loan application', '3/12/2026 9:30', '3/13/2026 9:30', '3/13/2027', 'ACCEPTED'),
-(174, 'CLR0074', '20260000056', 'Employment Clearance', 'WORK - DOMESTIC', 'Required for job application', '2/9/2026 10:15', '2/10/2026 10:15', '2/10/2027', 'ACCEPTED'),
-(175, 'CLR0075', '20260000057', 'School Requirement', 'WORK - OVERSEAS', 'For enrollment documents', '3/19/2026 9:00', '3/20/2026 9:00', '3/20/2027', 'ACCEPTED'),
-(176, 'CLR0076', '20260000058', 'Barangay Clearance', 'TOURISM', 'Needed for residency proof', '1/21/2026 14:00', '1/22/2026 14:00', '1/22/2027', 'ACCEPTED'),
-(177, 'CLR0077', '20260000059', 'Residency Certification', 'NBI', 'Proof of residence for housing aid', '2/11/2026 9:30', '2/12/2026 9:30', '2/12/2027', 'ACCEPTED'),
-(178, 'CLR0078', '20260000060', 'Business Clearance', 'DRIVER LICENSE', 'For café permit', '3/7/2026 13:15', '3/8/2026 13:15', '3/8/2027', 'ACCEPTED'),
-(179, 'CLR0079', '20260000060', 'Barangay Clearance', 'CITY HALL PERMIT', 'Needed for loan application', '3/20/2026 9:45', '3/21/2026 9:45', '3/21/2027', 'ACCEPTED'),
-(180, 'CLR0080', '20260000061', 'Indigency Certification', 'BUSINESS PERMIT', 'For medical assistance program', '1/17/2026 10:00', '1/18/2026 10:00', '1/18/2027', 'ACCEPTED'),
-(181, 'CLR0081', '20260000062', 'Barangay Clearance', 'ENROLLMENT', 'Needed for residency proof', '1/25/2026 9:00', '1/26/2026 9:00', '1/26/2027', 'ACCEPTED'),
-(182, 'CLR0082', '20260000062', 'Residency Certification', 'WORK - DOMESTIC', 'Proof of residence for scholarship', '2/13/2026 10:30', '2/14/2026 10:30', '2/14/2027', 'ACCEPTED'),
-(183, 'CLR0083', '20260000063', 'Employment Clearance', 'WORK - OVERSEAS', 'Required for job application', '3/9/2026 11:00', '3/10/2026 11:00', '3/10/2027', 'ACCEPTED'),
-(184, 'CLR0084', '20260000064', 'Indigency Certification', 'TOURISM', 'For medical assistance program', '1/28/2026 14:00', '1/29/2026 14:00', '1/29/2027', 'ACCEPTED'),
-(185, 'CLR0085', '20260000065', 'Business Clearance', 'NBI', 'For furniture shop permit', '2/22/2026 13:30', '2/23/2026 13:30', '2/23/2027', 'ACCEPTED'),
-(186, 'CLR0086', '20260000065', 'Barangay Clearance', 'DRIVER LICENSE', 'Needed for loan application', '3/4/2026 9:15', '3/5/2026 9:15', '3/5/2027', 'ACCEPTED'),
-(187, 'CLR0087', '20260000066', 'Travel Clearance', 'CITY HALL PERMIT', 'Minor traveling outside barangay', '4/7/2026 8:45', '4/8/2026 8:45', '4/8/2027', 'ACCEPTED'),
-(188, 'CLR0088', '20260000067', 'School Requirement', 'BUSINESS PERMIT', 'For enrollment documents', '3/17/2026 10:00', '3/18/2026 10:00', '3/18/2027', 'ACCEPTED'),
-(189, 'CLR0089', '20260000068', 'Barangay Clearance', 'ENROLLMENT', 'Needed for residency proof', '1/31/2026 15:00', '2/1/2026 15:00', '2/1/2027', 'ACCEPTED'),
-(190, 'CLR0090', '20260000068', 'Residency Certification', 'WORK - DOMESTIC', 'Proof of residence for scholarship', '2/19/2026 9:30', '2/20/2026 9:30', '2/20/2027', 'ACCEPTED'),
-(191, 'CLR0091', '20260000069', 'Indigency Certification', 'WORK - OVERSEAS', 'For financial aid', '1/23/2026 9:45', '1/24/2026 9:45', '1/24/2027', 'ACCEPTED'),
-(192, 'CLR0092', '20260000070', 'Business Clearance', 'TOURISM', 'For electronics shop permit', '2/27/2026 13:00', '2/28/2026 13:00', '2/28/2027', 'ACCEPTED'),
-(193, 'CLR0093', '20260000070', 'Barangay Clearance', 'NBI', 'Needed for loan application', '3/13/2026 9:30', '3/14/2026 9:30', '3/14/2027', 'ACCEPTED'),
-(194, 'CLR0094', '20260000071', 'Employment Clearance', 'DRIVER LICENSE', 'Required for job application', '2/10/2026 10:15', '2/11/2026 10:15', '2/11/2027', 'ACCEPTED'),
-(195, 'CLR0095', '20260000072', 'School Requirement', 'CITY HALL PERMIT', 'For enrollment documents', '3/20/2026 9:00', '3/21/2026 9:00', '3/21/2027', 'ACCEPTED'),
-(196, 'CLR0096', '20260000073', 'Barangay Clearance', 'BUSINESS PERMIT', 'Needed for residency proof', '1/22/2026 14:00', '1/23/2026 14:00', '1/23/2027', 'ACCEPTED'),
-(197, 'CLR0097', '20260000074', 'Residency Certification', 'ENROLLMENT', 'Proof of residence for housing aid', '2/12/2026 9:30', '2/13/2026 9:30', '2/13/2027', 'ACCEPTED'),
-(198, 'CLR0098', '20260000075', 'Business Clearance', 'WORK - DOMESTIC', 'For auto repair permit', '3/8/2026 13:15', '3/9/2026 13:15', '3/9/2027', 'ACCEPTED'),
-(199, 'CLR0099', '20260000075', 'Barangay Clearance', 'WORK - OVERSEAS', 'Needed for loan application', '3/21/2026 9:45', '3/22/2026 9:45', '3/22/2027', 'ACCEPTED'),
-(200, 'CLR0100', '20260000076', 'Indigency Certification', 'TOURISM', 'For medical assistance program', '1/18/2026 10:00', '1/19/2026 10:00', '1/19/2027', 'ACCEPTED');
+(66, '81940255005012026095214577193553406869f4074e8d0e6', '24956588345933', 'none', 'test', 'none', '', '05/01/2026', '', 'PENDING');
 
 -- --------------------------------------------------------
 
@@ -499,10 +419,10 @@ CREATE TABLE `incident_complainant` (
 INSERT INTO `incident_complainant` (`id`, `blotter_main`, `complainant_id`) VALUES
 ('1207845377307', '2147088204548172', '24956588345933'),
 ('158658479884887', '2518801136852798', '24301084988720'),
+('186819135913072', '1914558584215692', '20260000089'),
 ('212253843699436', '2658237517722424', '24301084988720'),
-('261832561026626', '4508911937018354', '20260000089'),
-('387790419023039', '3269080914689933', '20260000089'),
-('6667983192706', '2269121759192422', '20260000089');
+('306280655797631', '4122418954287019', '20260000089'),
+('452561463574206', '3567893545879719', '20260000026');
 
 -- --------------------------------------------------------
 
@@ -546,14 +466,15 @@ INSERT INTO `incident_info` (`incident_id`, `incident_code`, `incident_type`, `i
 (2, 'INC0002', 'Drug-related', 'Drug-related', 'Pull residence record, attach evidence', 'evidence', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (3, 'INC0003', 'Street Robbery', 'Street Robbery', 'Record for date and time occurrence, location, things that are robbed', 'evidence check, CCTV footage', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (4, 'INC0004', 'Flooding', 'Flooding', 'Check location of flooding, coordinate with MMDA or rescuer', 'none', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
-(5, 'INC0005', 'Domestic Dispute', 'Domestic Dispute', 'Get the name of the complainant, evidence, location', 'Evidence check', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (6, 'INC0006', 'Vehicular Incident', 'Vehicular Incident', 'Get the location of the incident, people involved and casualty', 'none', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (7, 'INC0007', 'Theft Case', 'Theft Case', 'Get the location of the incident, time, items that had been theft', 'documentation for the incident', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (8, 'INC0008', 'Illegal Gambling', 'Illegal Gambling', 'Location, Time, Complaint details', 'Visit on the location, evidence check', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (9, 'INC0009', 'Public Disturbance', 'Public Disturbance', 'Location, Time, Complaint details', 'Evidence and visit on location', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (10, 'INC0010', 'Health Related Incident', 'Health Related Incident', 'Get information of the disease, verified by local health center', 'check list from health center', 'ACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
 (11, 'INC0011', 'Others', 'Others', 'Depending on the report', '', 'INACTIVE', '0000-00-00 00:00:00.000000', 'Admin', '', ''),
-(111, 'INC0001', 'Fire Outbreak', 'Fire Outbreakfas232344', 'Record for Date', 'nonne', 'ACTIVE', '2026-04-27 16:17:39.000000', 'Admin', '', '');
+(111, 'INC0001', 'Fire Outbreak', 'Fire Outbreakfas232344', 'Record for Date', 'nonne', 'ACTIVE', '2026-04-27 16:17:39.000000', 'Admin', '', ''),
+(511, 'hfhsdfh', '', 'agasa', '', '', 'ACTIVE', '0000-00-00 00:00:00.000000', '', '', ''),
+(8111, 'gasfas', '', 'safasf', '', '', 'ACTIVE', '0000-00-00 00:00:00.000000', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -562,126 +483,32 @@ INSERT INTO `incident_info` (`incident_id`, `incident_code`, `incident_type`, `i
 --
 
 CREATE TABLE `incident_record` (
-  `blotter_id` int(11) NOT NULL,
-  `complainant_not_resident` varchar(512) DEFAULT NULL,
-  `statement` varchar(512) DEFAULT NULL,
-  `respodent` varchar(512) DEFAULT NULL,
-  `involved_not_resident` varchar(512) DEFAULT NULL,
-  `statement_person` varchar(512) DEFAULT NULL,
-  `date_incident` varchar(512) DEFAULT NULL,
-  `date_reported` varchar(512) DEFAULT NULL,
-  `type_of_incident` varchar(512) DEFAULT NULL,
-  `location_incident` int(11) DEFAULT NULL,
-  `status` varchar(512) DEFAULT NULL,
-  `remarks` varchar(512) DEFAULT NULL,
-  `date_added` varchar(512) DEFAULT NULL
+  `blotter_id` varchar(255) NOT NULL,
+  `complainant_not_residence` varchar(255) NOT NULL DEFAULT 'none',
+  `statement` varchar(255) NOT NULL DEFAULT 'none',
+  `respodent` varchar(255) NOT NULL DEFAULT 'none',
+  `involved_not_resident` varchar(255) NOT NULL DEFAULT 'none',
+  `statement_person` varchar(255) NOT NULL DEFAULT 'none',
+  `date_incident` varchar(255) NOT NULL DEFAULT 'none',
+  `date_reported` varchar(255) NOT NULL DEFAULT 'none',
+  `type_of_incident` varchar(255) NOT NULL DEFAULT 'none',
+  `location_incident` varchar(255) NOT NULL DEFAULT 'none',
+  `status` varchar(69) NOT NULL DEFAULT 'none',
+  `remarks` varchar(69) NOT NULL DEFAULT 'none',
+  `date_added` varchar(255) NOT NULL DEFAULT 'none'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `incident_record`
 --
 
-INSERT INTO `incident_record` (`blotter_id`, `complainant_not_resident`, `statement`, `respodent`, `involved_not_resident`, `statement_person`, `date_incident`, `date_reported`, `type_of_incident`, `location_incident`, `status`, `remarks`, `date_added`) VALUES
-(111000001, 'none', 'A small fire started in a kitchen area.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000002, 'none', 'Police confiscated illegal substances.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000003, 'none', 'A street altercation caused disturbance.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10003, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000004, 'none', 'A wallet was taken without permission.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10004, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000005, 'none', 'A family dispute required mediation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10005, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000006, 'none', 'A minor collision caused traffic delay.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000007, 'none', 'A victim was robbed along the street.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10007, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000008, 'none', 'A warehouse caught fire unexpectedly.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10008, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000009, 'none', 'A verbal altercation was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10009, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000010, 'none', 'A theft incident occurred in public.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10010, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000011, 'none', 'Drug paraphernalia was found in a residence.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10011, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000012, 'none', 'Residents evacuated due to rising water.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10012, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000013, 'none', 'A minor issue was documented.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10013, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000014, 'none', 'A group caused disruption in public.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10014, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000015, 'none', 'An unusual incident was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10015, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000016, 'none', 'A suspect was arrested for illegal drug possession.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000017, 'none', 'A medical emergency was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000018, 'none', 'Fire damaged several houses in the area.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10003, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000019, 'none', 'Residents evacuated due to rising water.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10004, 'ONGOING', '', '4/1/2026 13:33'),
-(111000020, 'none', 'Several individuals were caught gambling.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10005, 'ONGOING', '', '4/1/2026 13:33'),
-(111000021, 'none', 'A victim was robbed along the street.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33'),
-(111000022, 'none', 'A motorcycle accident resulted in injury.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10007, 'ONGOING', '', '4/1/2026 13:33'),
-(111000023, 'none', 'Authorities received a miscellaneous complaint.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10008, 'ONGOING', '', '4/1/2026 13:33'),
-(111000024, 'none', 'A minor collision caused traffic delay.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10009, 'ONGOING', '', '4/1/2026 13:33'),
-(111000025, 'none', 'A complaint about gambling was filed.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10010, 'ONGOING', '', '4/1/2026 13:33'),
-(111000026, 'none', 'A victim was robbed along the street.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'ONGOING', '', '4/1/2026 13:33'),
-(111000027, 'none', 'A complaint about gambling was filed.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000028, 'none', 'A suspect was arrested for illegal drug possession.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10003, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000029, 'none', 'Roads became impassable due to flooding.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10004, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000030, 'none', 'Fire damaged several houses in the area.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10005, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000031, 'none', 'A complaint about gambling was filed.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000032, 'none', 'A suspect fled after stealing belongings.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10007, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000033, 'none', 'A verbal altercation was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10008, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000034, 'none', 'Shop items were reported missing.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10009, 'ONGOING', '', '4/1/2026 13:33'),
-(111000035, 'none', 'Illegal betting activities were reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10010, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000036, 'none', 'Authorities conducted a buy-bust operation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10011, 'ONGOING', '', '4/1/2026 13:33'),
-(111000037, 'none', 'A motorcycle accident resulted in injury.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10012, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000038, 'none', 'A suspect was arrested for illegal drug possession.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10013, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000039, 'none', 'A report was filed for an unknown case.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10014, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000040, 'none', 'Fire damaged several houses in the area.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10015, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000041, 'none', 'An incident required further investigation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000042, 'none', 'A pedestrian was struck by a vehicle.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000043, 'none', 'A report was filed for an unknown case.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10013, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000044, 'none', 'A group caused disruption in public.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10014, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000045, 'none', 'A wallet was taken without permission.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10011, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000046, 'none', 'A verbal altercation was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10012, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000047, 'none', 'A verbal altercation was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10013, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000048, 'none', 'Neighbors complained about noise.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10014, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000049, 'none', 'A patient required immediate care.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10015, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000050, 'none', 'Roads became impassable due to flooding.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'ONGOING', '', '4/1/2026 13:33'),
-(111000051, 'none', 'A complaint about gambling was filed.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000052, 'none', 'A motorcycle accident resulted in injury.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10013, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000053, 'none', 'A couple had a heated argument.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10014, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000054, 'none', 'Floodwaters entered residential homes.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10011, 'ONGOING', '', '4/1/2026 13:33'),
-(111000055, 'none', 'A phone was snatched by a suspect.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10012, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000056, 'none', 'Neighbors complained about noise.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10013, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000057, 'none', 'A group caused disruption in public.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10014, 'ONGOING', '', '4/1/2026 13:33'),
-(111000058, 'none', 'A street altercation caused disturbance.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10015, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000059, 'none', 'A motorcycle accident resulted in injury.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000060, 'none', 'A loud noise complaint was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'ONGOING', '', '4/1/2026 13:33'),
-(111000061, 'none', 'A report of drug activity was received.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10013, 'ONGOING', '', '4/1/2026 13:33'),
-(111000062, 'none', 'An incident required further investigation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10014, 'ONGOING', '', '4/1/2026 13:33'),
-(111000063, 'none', 'Authorities responded to a commotion.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10015, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000064, 'none', 'A theft incident occurred in public.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000065, 'none', 'Floodwaters entered residential homes.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000066, 'none', 'A warehouse caught fire unexpectedly.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10003, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000067, 'none', 'Authorities conducted a buy-bust operation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10015, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000068, 'none', 'Fire damaged several houses in the area.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000069, 'none', 'Authorities conducted a buy-bust operation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'ONGOING', '', '4/1/2026 13:33'),
-(111000070, 'none', 'A verbal altercation was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10003, 'ONGOING', '', '4/1/2026 13:33'),
-(111000071, 'none', 'A patient required immediate care.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10004, 'ONGOING', '', '4/1/2026 13:33'),
-(111000072, 'none', 'Neighbors reported a domestic conflict.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10005, 'ONGOING', '', '4/1/2026 13:33'),
-(111000073, 'none', 'Health workers responded to a case.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33'),
-(111000074, 'none', 'A complaint about gambling was filed.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10007, 'ONGOING', '', '4/1/2026 13:33'),
-(111000075, 'none', 'A family dispute required mediation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10008, 'ONGOING', '', '4/1/2026 13:33'),
-(111000076, 'none', 'A couple had a heated argument.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10009, 'ONGOING', '', '4/1/2026 13:33'),
-(111000077, 'none', 'A couple had a heated argument.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10010, 'ONGOING', '', '4/1/2026 13:33'),
-(111000078, 'none', 'Neighbors reported a domestic conflict.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10004, 'ONGOING', '', '4/1/2026 13:33'),
-(111000079, 'none', 'A complaint about gambling was filed.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10005, 'ONGOING', '', '4/1/2026 13:33'),
-(111000080, 'none', 'Roads became impassable due to flooding.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33'),
-(111000081, 'none', 'A loud noise complaint was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10007, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000082, 'none', 'A family dispute required mediation.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10008, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000083, 'none', 'A minor collision caused traffic delay.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10009, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000084, 'none', 'Illegal betting activities were reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10010, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000085, 'none', 'A report of drug activity was received.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'ONGOING', '', '4/1/2026 13:33'),
-(111000086, 'none', 'A medical emergency was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000087, 'none', 'Several individuals were caught gambling.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10003, 'RESOLVED', '', '4/1/2026 13:33'),
-(111000088, 'none', 'A complaint about gambling was filed.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10015, 'ONGOING', '', '4/1/2026 13:33'),
-(111000089, 'none', 'A street altercation caused disturbance.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10001, 'ONGOING', '', '4/1/2026 13:33'),
-(111000090, 'none', 'Barangay officials intervened in a dispute.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10002, 'ONGOING', '', '4/1/2026 13:33'),
-(111000091, 'none', 'A theft incident occurred in public.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10003, 'ONGOING', '', '4/1/2026 13:33'),
-(111000092, 'none', 'Several individuals were caught gambling.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10004, 'ONGOING', '', '4/1/2026 13:33'),
-(111000093, 'none', 'A verbal altercation was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10005, 'ONGOING', '', '4/1/2026 13:33'),
-(111000094, 'none', 'A robbery incident occurred near a store.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33'),
-(111000095, 'none', 'A patient required immediate care.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10007, 'ONGOING', '', '4/1/2026 13:33'),
-(111000096, 'none', 'A loud noise complaint was reported.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10008, 'ONGOING', '', '4/1/2026 13:33'),
-(111000097, 'none', 'A health alert was issued.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33'),
-(111000098, 'none', 'A victim was robbed along the street.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33'),
-(111000099, 'none', 'Gambling materials were confiscated.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33'),
-(111000100, 'none', 'A suspect fled after stealing belongings.', 'none', 'none', 'none', '4/1/2026 13:33', '4/1/2026 13:33', 'OTHER', 10006, 'ONGOING', '', '4/1/2026 13:33');
+INSERT INTO `incident_record` (`blotter_id`, `complainant_not_residence`, `statement`, `respodent`, `involved_not_resident`, `statement_person`, `date_incident`, `date_reported`, `type_of_incident`, `location_incident`, `status`, `remarks`, `date_added`) VALUES
+('2147088204548172', 'ascxasdas', 'dasdasda', 'asdasd', 'sadasd', 'asdasd', '2026-03-21T16:52', '2026-03-21T16:52', 'Vehicular Incident', 'asdasd', 'NEW', 'OPEN', '2026'),
+('2518801136852798', 'hotdog', 'doghot', 'si kuya', 'asd', 'asd', '2026-04-08T15:09', '2026-04-27T15:09', 'Health Related Incident', 'LB', 'NEW', 'OPEN', '2026'),
+('2658237517722424', 'dgasdg', 'asdgadg', 'dfasdfasdf', 'asdasd', 'asdasd', '2026-04-04T19:34', '2026-04-10T19:34', 'Flooding', 'LB', 'NEW', 'OPEN', '2026'),
+('4122418954287019', 'dfsf', 'sdfsd', 'asdasd', 'fsf', 'sdfsdf', '2026-05-01T17:11', '2026-05-01T17:10', 'Health Related Incident', 'asdasd', 'NEW', 'OPEN', '2026'),
+('1914558584215692', 'test', 'test', 'evan', 'test', 'tet', '2026-05-14T10:33', '2026-05-17T10:33', 'Public Disturbance', 'LB', 'NEW', 'OPEN', '2026'),
+('3567893545879719', 'test', 'test', 'evan', 'test', 'test', '2026-05-17T10:35', '2026-05-17T10:35', 'Illegal Gambling', 'LB', 'NEW', 'OPEN', '2026');
 
 -- --------------------------------------------------------
 
@@ -690,9 +517,9 @@ INSERT INTO `incident_record` (`blotter_id`, `complainant_not_resident`, `statem
 --
 
 CREATE TABLE `incident_status` (
-  `blotter_id` int(11) NOT NULL,
-  `blotter_main` int(11) DEFAULT NULL,
-  `person_id` double DEFAULT NULL
+  `blotter_id` varchar(255) NOT NULL,
+  `blotter_main` varchar(255) NOT NULL,
+  `person_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -700,117 +527,126 @@ CREATE TABLE `incident_status` (
 --
 
 INSERT INTO `incident_status` (`blotter_id`, `blotter_main`, `person_id`) VALUES
-(111000001, 111000001, 24956600000000),
-(111000002, 111000002, 24956600000000),
-(111000003, 111000003, 24956600000000),
-(111000004, 111000004, 24956600000000),
-(111000005, 111000005, 24956600000000),
-(111000006, 111000006, 24956600000000),
-(111000007, 111000007, 24956600000000),
-(111000008, 111000008, 24956600000000),
-(111000009, 111000009, 24956600000000),
-(111000010, 111000010, 24956600000000),
-(111000011, 111000011, 24956600000000),
-(111000012, 111000012, 24956600000000),
-(111000013, 111000013, 24956600000000),
-(111000014, 111000014, 24956600000000),
-(111000015, 111000015, 24956600000000),
-(111000016, 111000016, 24956600000000),
-(111000017, 111000017, 24956600000000),
-(111000018, 111000018, 24956600000000),
-(111000019, 111000019, 24956600000000),
-(111000020, 111000020, 24956600000000),
-(111000021, 111000021, 24956600000000),
-(111000022, 111000022, 24956600000000),
-(111000023, 111000023, 24956600000000),
-(111000024, 111000024, 24956600000000),
-(111000025, 111000025, 24956600000000),
-(111000026, 111000026, 24956600000000),
-(111000027, 111000027, 24956600000000),
-(111000028, 111000028, 24956600000000),
-(111000029, 111000029, 24956600000000),
-(111000030, 111000030, 24956600000000),
-(111000031, 111000031, 24956600000000),
-(111000032, 111000032, 24956600000000),
-(111000033, 111000033, 24956600000000),
-(111000034, 111000034, 24956600000000),
-(111000035, 111000035, 24956600000000),
-(111000036, 111000036, 24956600000000),
-(111000037, 111000037, 24956600000000),
-(111000038, 111000038, 24956600000000),
-(111000039, 111000039, 24956600000000),
-(111000040, 111000040, 24956600000000),
-(111000041, 111000041, 24956600000000),
-(111000042, 111000042, 24956600000000),
-(111000043, 111000043, 24956600000000),
-(111000044, 111000044, 24956600000000),
-(111000045, 111000045, 24956600000000),
-(111000046, 111000046, 24956600000000),
-(111000047, 111000047, 24956600000000),
-(111000048, 111000048, 24956600000000),
-(111000049, 111000049, 24956600000000),
-(111000050, 111000050, 24956600000000),
-(111000051, 111000051, 24956600000000),
-(111000052, 111000052, 24956600000000),
-(111000053, 111000053, 24956600000000),
-(111000054, 111000054, 24956600000000),
-(111000055, 111000055, 24956600000000),
-(111000056, 111000056, 24956600000000),
-(111000057, 111000057, 24956600000000),
-(111000058, 111000058, 24956600000000),
-(111000059, 111000059, 24956600000000),
-(111000060, 111000060, 24956600000000),
-(111000061, 111000061, 24956600000000),
-(111000062, 111000062, 24956600000000),
-(111000063, 111000063, 24956600000000),
-(111000064, 111000064, 24956600000000),
-(111000065, 111000065, 24956600000000),
-(111000066, 111000066, 24956600000000),
-(111000067, 111000067, 24956600000000),
-(111000068, 111000068, 24956600000000),
-(111000069, 111000069, 24956600000000),
-(111000070, 111000070, 24956600000000),
-(111000071, 111000071, 24956600000000),
-(111000072, 111000072, 24956600000000),
-(111000073, 111000073, 24956600000000),
-(111000074, 111000074, 24956600000000),
-(111000075, 111000075, 24956600000000),
-(111000076, 111000076, 24956600000000),
-(111000077, 111000077, 24956600000000),
-(111000078, 111000078, 24956600000000),
-(111000079, 111000079, 24956600000000),
-(111000080, 111000080, 24956600000000),
-(111000081, 111000081, 24956600000000),
-(111000082, 111000082, 24956600000000),
-(111000083, 111000083, 24956600000000),
-(111000084, 111000084, 24956600000000),
-(111000085, 111000085, 24956600000000),
-(111000086, 111000086, 24956600000000),
-(111000087, 111000087, 24956600000000),
-(111000088, 111000088, 24956600000000),
-(111000089, 111000089, 24956600000000),
-(111000090, 111000090, 24956600000000),
-(111000091, 111000091, 24956600000000),
-(111000092, 111000092, 24956600000000),
-(111000093, 111000093, 24956600000000),
-(111000094, 111000094, 24956600000000),
-(111000095, 111000095, 24956600000000),
-(111000096, 111000096, 24956600000000),
-(111000097, 111000097, 24956600000000),
-(111000098, 111000098, 24956600000000),
-(111000099, 111000099, 24956600000000),
-(111000100, 111000100, 24956600000000),
-(111000101, 111000101, 24956600000000),
-(111000102, 111000102, 24956600000000),
-(111000103, 111000103, 24956600000000),
-(111000104, 111000104, 24956600000000),
-(111000105, 111000105, 24956600000000),
-(111000106, 111000106, 24956600000000),
-(111000107, 111000107, 24956600000000),
-(111000108, 111000108, 24956600000000),
-(111000109, 111000109, 24956600000000),
-(111000110, 111000110, 24956600000000),
-(2147483647, 2147483647, 20260000090);
+('194939222083180', '2147088204548172', ''),
+('263585291859014', '4122418954287019', '20260000084'),
+('369877915252804', '2518801136852798', '24956588345933'),
+('390284140912512', '2658237517722424', '24956588345933'),
+('461043143504311', '1914558584215692', '24301084988720'),
+('465976117090987', '3567893545879719', '20260000078'),
+('INCTR00001', '', ''),
+('INCTR00002', '', ''),
+('INCTR00003', '', ''),
+('INCTR00004', '', ''),
+('INCTR00005', '', ''),
+('INCTR00006', '', ''),
+('INCTR00007', '', ''),
+('INCTR00008', '', ''),
+('INCTR00009', '', ''),
+('INCTR00010', '', ''),
+('INCTR00011', '', ''),
+('INCTR00012', '', ''),
+('INCTR00013', '', ''),
+('INCTR00014', '', ''),
+('INCTR00015', '', ''),
+('INCTR00016', '', ''),
+('INCTR00017', '', ''),
+('INCTR00018', '', ''),
+('INCTR00019', '', ''),
+('INCTR00020', '', ''),
+('INCTR00021', '', ''),
+('INCTR00022', '', ''),
+('INCTR00023', '', ''),
+('INCTR00024', '', ''),
+('INCTR00025', '', ''),
+('INCTR00026', '', ''),
+('INCTR00027', '', ''),
+('INCTR00028', '', ''),
+('INCTR00029', '', ''),
+('INCTR00030', '', ''),
+('INCTR00031', '', ''),
+('INCTR00032', '', ''),
+('INCTR00033', '', ''),
+('INCTR00034', '', ''),
+('INCTR00035', '', ''),
+('INCTR00036', '', ''),
+('INCTR00037', '', ''),
+('INCTR00038', '', ''),
+('INCTR00039', '', ''),
+('INCTR00040', '', ''),
+('INCTR00041', '', ''),
+('INCTR00042', '', ''),
+('INCTR00043', '', ''),
+('INCTR00044', '', ''),
+('INCTR00045', '', ''),
+('INCTR00046', '', ''),
+('INCTR00047', '', ''),
+('INCTR00048', '', ''),
+('INCTR00049', '', ''),
+('INCTR00050', '', ''),
+('INCTR00051', '', ''),
+('INCTR00052', '', ''),
+('INCTR00053', '', ''),
+('INCTR00054', '', ''),
+('INCTR00055', '', ''),
+('INCTR00056', '', ''),
+('INCTR00057', '', ''),
+('INCTR00058', '', ''),
+('INCTR00059', '', ''),
+('INCTR00060', '', ''),
+('INCTR00061', '', ''),
+('INCTR00062', '', ''),
+('INCTR00063', '', ''),
+('INCTR00064', '', ''),
+('INCTR00065', '', ''),
+('INCTR00066', '', ''),
+('INCTR00067', '', ''),
+('INCTR00068', '', ''),
+('INCTR00069', '', ''),
+('INCTR00070', '', ''),
+('INCTR00071', '', ''),
+('INCTR00072', '', ''),
+('INCTR00073', '', ''),
+('INCTR00074', '', ''),
+('INCTR00075', '', ''),
+('INCTR00076', '', ''),
+('INCTR00077', '', ''),
+('INCTR00078', '', ''),
+('INCTR00079', '', ''),
+('INCTR00080', '', ''),
+('INCTR00081', '', ''),
+('INCTR00082', '', ''),
+('INCTR00083', '', ''),
+('INCTR00084', '', ''),
+('INCTR00085', '', ''),
+('INCTR00086', '', ''),
+('INCTR00087', '', ''),
+('INCTR00088', '', ''),
+('INCTR00089', '', ''),
+('INCTR00090', '', ''),
+('INCTR00091', '', ''),
+('INCTR00092', '', ''),
+('INCTR00093', '', ''),
+('INCTR00094', '', ''),
+('INCTR00095', '', ''),
+('INCTR00096', '', ''),
+('INCTR00097', '', ''),
+('INCTR00098', '', ''),
+('INCTR00099', '', ''),
+('INCTR00100', '', ''),
+('INCTR00101', '', ''),
+('INCTR00102', '', ''),
+('INCTR00103', '', ''),
+('INCTR00104', '', ''),
+('INCTR00105', '', ''),
+('INCTR00106', '', ''),
+('INCTR00107', '', ''),
+('INCTR00108', '', ''),
+('INCTR00109', '', ''),
+('INCTR00110', '', ''),
+('INCTR00111', '', ''),
+('INCTR00112', '', ''),
+('INCTR00113', '', ''),
+('INCTR00114', '', '');
 
 -- --------------------------------------------------------
 
@@ -1047,7 +883,7 @@ CREATE TABLE `residence_information` (
 --
 
 INSERT INTO `residence_information` (`a_i`, `residence_id`, `first_name`, `middle_name`, `last_name`, `age`, `suffix`, `alias`, `gender`, `civil_status`, `religion`, `nationality`, `contact_number`, `email_address`, `address`, `birth_date`, `birth_place`, `municipality`, `zip`, `barangay`, `zone_id`, `house_number`, `street`, `fathers_name`, `mothers_name`, `guardian`, `guardian_contact`, `occupation`, `employer_name`, `family_relation`, `national_number`, `sss_number`, `tin_number`, `gsis_number`, `pagibig_number`, `philhealth_number`, `bloodtype`, `image`, `image_path`) VALUES
-(182, '24956588345933', 'Evan', 'Llegado', 'Reblora', '49', '', '', 'Male', 'Married', 'catholic', 'filipino', '12312312312', 'evan.reblora@gmail.com', '6791', '1976-11-11', 'Los banos', 'Los banos', '4030', 'san antonio', '', '6791', 'bangkal', 'asdasd', 'asdasd', 'asdas', '123123123', '', '', '', '', '', '', '', '', '', '', '', ''),
+(182, '24956588345933', 'Evan', 'Llegado', 'Reblora', '49', '', '', 'Male', 'Married', 'catholic', 'filipino', '12312312312', 'evan.reblora@gmail.com', '6791', '1976-11-11', ' Los banos', 'Los banos', '4030', 'san antonio', '', '67911', 'bangkal', 'asdasd', 'asdasd', 'asdas', '123123123', '', '', '', '', '', '', '', '', '', '', '', ''),
 (183, '24301084988720', 'Zoey Alyana', 'q', 'Reblora', '23', '', '', 'Female', 'Single', 'catholic', 'fil', '12312312312', 'evan.reblora@gmail.com', '6791', '2026-03-06', 'fasfa', 'gadgasdg', '21321', 'asdasd', '', 'asdasda', 'asdasd', 'asfasfas', 'fasfas', 'fasfasf', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (184, '7845627397547', 'Evanlhjkl', '', 'Reblora', '44', 'hjklh', '', 'Male', 'Married', 'hjklhjk', 'lhjklhj', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-29', 'uyjkljklhjkl', 'hkjlhjkl', '856858', 'klhjklhjk', '1', '123123', '7', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
 (185, '41188505331447', 'Evanlhjkl', 'asdasd', 'Reblora', '23', 'asdasd', '', 'Male', 'Single', 'asdasd', 'sdasda', '09566643437', 'erlreblora@aseanbiodiversity.org', 'erlreblora@aseanbiodiversity.org', '2026-04-01', 'asdasd', 'asdasd', '123123', 'asda', '2', 'dasdasd', 'asd', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -1163,7 +999,7 @@ INSERT INTO `residence_information` (`a_i`, `residence_id`, `first_name`, `middl
 (394, '29251090282699', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', '', 'bagsiwbagsiw', 'none', 'Male', 'Single', 'bagsiwbagsiw', 'bagsiwbagsiw', '12312312312', 'bagsiwbagsiw', 'bagsiwbagsiw', '2026-05-01', 'bagsiw', 'bagsiwbagsiw', '12123', 'bagsiwbagsiw', '1', 'bagsiwbagsiw', 'bagsiw', '', '', '', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', ''),
 (395, '38451659238862', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', '', 'tatetatetatetate', 'none', 'Male', 'Single', 'tatetatetatetate', 'tatetatetatetate', '21312312312', 'tatetatetatetate', 'tatetatetatetate', '2026-05-01', 'tatetate', 'tatetatetatetate', '123123', 'tatetatetatetate', '2', 'tatetatetatetate', '', '', '', '', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', ''),
 (396, '31081982211755', 'tatebangis', 'tatebangistatebangis', 'tatebangis', '0', 'tatebangis', 'none', 'Female', 'Single', 'tatebangis', 'tatebangis', '12312313123', 'tatebangis@fas.com', 'tatebangis', '2026-05-01', ' tatebangis', 'tatebangis', '12312', 'tatebangis', '2', 'tatebangis', '123123', '', '', 'dadi', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', ''),
-(397, '32729528657568', 'Evan ', 'L', 'Reblora', '26', '', 'none', 'Male', 'Married', 'Catholic', 'Filipino', '09566643437', 'erlreblora@aseanbiodiversity.org', 'Bangkal St. LBL', '2000-05-02', 'Los banos laguna', 'Los banos', '4030', 'San Antonio', '2', '6791', '', 'Danilo Reblora', 'Letty Reblora', 'none', '09566643437', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', '');
+(397, '26952075963777', 'Genalyn', 'Bagon', 'Soriano', '37', '', 'none', 'Female', 'Single', 'Catholic', 'Filipino', '09566643437', 'erlreblora@aseanbiodiversity.org', 'LBL', '1988-06-29', 'LB', 'Los banos', '4031', 'batong malaki', '2', '', '', '', '', '', '', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', '', '');
 
 -- --------------------------------------------------------
 
@@ -1198,13 +1034,13 @@ CREATE TABLE `residence_status` (
 INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, `voters`, `pwd`, `pwd_info`, `senior`, `single_parent`, `wra`, `4ps`, `zone_id`, `precint_id`, `archive`, `date_added`, `date_archive`, `date_unarchive`) VALUES
 (182, '24956588345933', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '03/21/2026 04:48 PM', 'none', 'none'),
 (183, '24301084988720', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '03/23/2026 09:10 AM', 'none', 'none'),
-(184, '7845627397547', 'INACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:44 PM', 'none', 'none'),
-(185, '41188505331447', 'INACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:52 PM', 'none', 'none'),
-(186, '36445072116160', 'INACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:55 PM', 'none', 'none'),
-(187, '42667846377806', 'INACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:55 PM', 'none', 'none'),
-(188, '34671135097236', 'INACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:56 PM', 'none', 'none'),
-(189, '16108157999844', 'INACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:56 PM', 'none', 'none'),
-(190, '3924402791161', 'INACTIVE', '', 'YES', 'YES', 'sadasdasd', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:56 PM', 'none', 'none'),
+(184, '7845627397547', 'ACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:44 PM', 'none', 'none'),
+(185, '41188505331447', 'ACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:52 PM', 'none', 'none'),
+(186, '36445072116160', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:55 PM', 'none', 'none'),
+(187, '42667846377806', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:55 PM', 'none', 'none'),
+(188, '34671135097236', 'ACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:56 PM', 'none', 'none'),
+(189, '16108157999844', 'ACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:56 PM', 'none', 'none'),
+(190, '3924402791161', 'ACTIVE', '', 'YES', 'YES', 'sadasdasd', 'NO', 'NO', '', '', '', '', 'NO', '04/29/2026 08:56 PM', 'none', 'none'),
 (191, '20260000001', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', 'YES', '1000', '10001', '101', 'NO', '04/01/26 13:33', 'none', 'none'),
 (192, '20260000002', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'YES', 'YES', '800', '10001', '102', 'NO', '04/01/26 13:33', 'none', 'none'),
 (193, '20260000003', 'ACTIVE', 'YES', 'NO', 'YES', 'Blind', 'NO', 'NO', 'YES', '', '10002', '103', 'NO', '04/01/26 13:33', 'none', 'none'),
@@ -1254,7 +1090,7 @@ INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, 
 (237, '20260000047', 'ACTIVE', 'YES', 'NO', 'NO', '', 'NO', 'NO', 'YES', '1000', '10010', '107', 'NO', '04/01/26 13:33', 'none', 'none'),
 (238, '20260000048', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', 'YES', '800', '10010', '108', 'NO', '04/01/26 13:33', 'none', 'none'),
 (239, '20260000049', 'ACTIVE', 'YES', 'YES', 'NO', '', 'YES', 'NO', '', '1200', '10010', '109', 'NO', '04/01/26 13:33', 'none', 'none'),
-(240, '20260000050', 'INACTIVE', 'YES', 'NO', 'YES', 'Blind', 'NO', 'NO', 'YES', '1000', '10012', '110', 'NO', '04/01/26 13:33', 'none', 'none'),
+(240, '20260000050', 'ACTIVE', 'YES', 'NO', 'YES', 'Blind', 'NO', 'NO', 'YES', '1000', '10012', '110', 'NO', '04/01/26 13:33', 'none', 'none'),
 (241, '20260000051', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', 'YES', '1000', '10010', '101', 'NO', '04/01/26 13:33', 'none', 'none'),
 (242, '20260000052', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'YES', 'YES', '1200', '10012', '102', 'NO', '04/01/26 13:33', 'none', 'none'),
 (243, '20260000053', 'ACTIVE', 'YES', 'NO', 'NO', '', 'YES', 'NO', '', '800', '10012', '103', 'NO', '04/01/26 13:33', 'none', 'none'),
@@ -1269,7 +1105,7 @@ INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, 
 (252, '20260000062', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'YES', 'YES', '800', '10010', '102', 'NO', '04/01/26 13:33', 'none', 'none'),
 (253, '20260000063', 'ACTIVE', 'YES', 'NO', 'NO', '', 'YES', 'NO', '', '1200', '10011', '103', 'NO', '04/01/26 13:33', 'none', 'none'),
 (254, '20260000064', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', 'YES', '1000', '10012', '104', 'NO', '04/01/26 13:33', 'none', 'none'),
-(255, '20260000065', 'INACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'YES', 'YES', '800', '10013', '105', 'NO', '04/01/26 13:33', 'none', 'none'),
+(255, '20260000065', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'YES', 'YES', '800', '10013', '105', 'NO', '04/01/26 13:33', 'none', 'none'),
 (256, '20260000066', 'ACTIVE', 'YES', 'YES', 'NO', '', 'YES', 'NO', '', '1200', '10014', '106', 'NO', '04/01/26 13:33', 'none', 'none'),
 (257, '20260000067', 'ACTIVE', 'YES', 'NO', 'NO', '', 'NO', 'NO', 'YES', '1000', '10015', '107', 'NO', '04/01/26 13:33', 'none', 'none'),
 (258, '20260000068', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', 'YES', '800', '10001', '108', 'NO', '04/01/26 13:33', 'none', 'none'),
@@ -1303,10 +1139,10 @@ INSERT INTO `residence_status` (`a_i`, `residence_id`, `status`, `is_approved`, 
 (286, '20260000096', 'ACTIVE', 'YES', 'YES', 'NO', '', 'YES', 'NO', '', '1200', '10012', '106', 'NO', '04/01/26 13:33', 'none', 'none'),
 (287, '20260000097', 'ACTIVE', 'YES', 'NO', 'NO', '', 'NO', 'NO', 'YES', '1000', '10013', '107', 'NO', '04/01/26 13:33', 'none', 'none'),
 (288, '20260000098', 'INACTIVE', 'YES', 'NO', 'YES', 'Autism Spectrum Disorder', 'NO', 'NO', 'YES', '', '10014', '108', 'NO', '04/01/26 13:33', 'none', 'none'),
-(289, '20260000099', 'INACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', '', '800', '10015', '109', 'NO', '04/01/26 13:33', 'none', 'none'),
+(289, '20260000099', 'ACTIVE', 'YES', 'YES', 'NO', '', 'NO', 'NO', '', '800', '10015', '109', 'NO', '04/01/26 13:33', 'none', 'none'),
 (290, '20260000100', 'ACTIVE', 'YES', 'NO', 'NO', '', 'NO', 'YES', 'YES', '1000', '10001', '110', 'NO', '04/01/26 13:33', 'none', 'none'),
 (291, '31081982211755', 'ACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', '2', '', 'NO', '05/01/2026 04:37 PM', 'none', 'none'),
-(292, '32729528657568', 'ACTIVE', '', 'NO', 'NO', '', 'NO', 'NO', '', '', 'none', '', 'NO', '05/02/2026 08:17 PM', 'none', 'none');
+(292, '26952075963777', 'ACTIVE', '', 'YES', 'NO', '', 'NO', 'NO', '', '', 'none', '', 'NO', '05/17/2026 10:31 AM', 'none', 'none');
 
 -- --------------------------------------------------------
 
@@ -1333,7 +1169,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`a_i`, `id`, `first_name`, `middle_name`, `last_name`, `username`, `password`, `user_type`, `contact_number`, `image`, `image_path`) VALUES
-(52, '1506135735699', 'Evan', 'L', 'Reblora', 'Administrator', 'admin123', 'admin', '11111111111', '28368867469f5e8dedcff9.jpg', '../assets/dist/img/28368867469f5e8dedcff9.jpg'),
+(52, '1506135735699', 'Admin', 'Admin', 'Admin', 'administrator', 'admin123', 'admin', '11111111111', '11763306616a092d44800b4.jpg', '../assets/dist/img/11763306616a092d44800b4.jpg'),
 (195, '174668789044820710152022021619941', 'Secretary', 'Secretary', 'Secretary', 'secretary123', 'secretary123', 'secretary', '99999999999', '', ''),
 (205, '24956588345933', 'Evan', 'Llegado', 'Reblora', 'evanreblora', '12345678', 'resident', '12312312312', '', ''),
 (206, '24301084988720', 'Zoey Alyana', 'q', 'Reblora', 'zoey1234', '12345678', 'resident', '12312312312', '', ''),
@@ -1357,7 +1193,7 @@ INSERT INTO `users` (`a_i`, `id`, `first_name`, `middle_name`, `last_name`, `use
 (224, '29251090282699', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', 'bagsiwbagsiw', 'resident', '12312312312', '', ''),
 (225, '38451659238862', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', 'tatetatetatetate', 'resident', '21312312312', '', ''),
 (226, '31081982211755', 'tatebangis', 'tatebangistatebangis', 'tatebangis', 'tatebangistatebangis', 'tatebangistatebangis', 'resident', '12312313123', '', ''),
-(227, '32729528657568', 'Evan ', 'L', 'Reblora', '32729528657568', '05022026201748407', 'resident', '09566643437', '', '');
+(227, '26952075963777', 'Genalyn', 'Bagon', 'Soriano', '26952075963777', '05172026103150966', 'resident', '09566643437', '', '');
 
 -- --------------------------------------------------------
 
@@ -1451,19 +1287,19 @@ ALTER TABLE `incident_detail`
 -- Indexes for table `incident_info`
 --
 ALTER TABLE `incident_info`
-  ADD PRIMARY KEY (`incident_id`) USING BTREE;
+  ADD UNIQUE KEY `incident_id` (`incident_id`);
 
 --
 -- Indexes for table `incident_record`
 --
 ALTER TABLE `incident_record`
-  ADD PRIMARY KEY (`blotter_id`);
+  ADD KEY `blotter_id` (`blotter_id`);
 
 --
 -- Indexes for table `incident_status`
 --
 ALTER TABLE `incident_status`
-  ADD PRIMARY KEY (`blotter_id`) USING BTREE;
+  ADD PRIMARY KEY (`blotter_id`);
 
 --
 -- Indexes for table `official_end_information`
@@ -1527,7 +1363,7 @@ ALTER TABLE `zone_info`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1428;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1448;
 
 --
 -- AUTO_INCREMENT for table `backup`
@@ -1557,7 +1393,7 @@ ALTER TABLE `clearance_info`
 -- AUTO_INCREMENT for table `clearance_request`
 --
 ALTER TABLE `clearance_request`
-  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `a_i` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `house_holds`
@@ -1570,18 +1406,6 @@ ALTER TABLE `house_holds`
 --
 ALTER TABLE `incident_info`
   MODIFY `incident_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
-
---
--- AUTO_INCREMENT for table `incident_record`
---
-ALTER TABLE `incident_record`
-  MODIFY `blotter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111000101;
-
---
--- AUTO_INCREMENT for table `incident_status`
---
-ALTER TABLE `incident_status`
-  MODIFY `blotter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
 
 --
 -- AUTO_INCREMENT for table `official_information`
